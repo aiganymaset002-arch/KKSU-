@@ -29,9 +29,14 @@ struct ParentHomeView: View {
                     .pickerStyle(.segmented)
                 }
                 if let childID {
+                    EnrollmentStatusCard(studentID: childID)
                     ParentProgressView(studentID: childID)
                     KSectionHeader(title: "Для родителя", icon: "person.2.fill")
                     KCard {
+                        RouteRow(route: .subscriptions, subtitle: "Семейная подписка на всех детей")
+                        Divider()
+                        RouteRow(route: .paymentHistory, subtitle: "Счета, чеки и оплаты")
+                        Divider()
                         RouteRow(route: .consents, subtitle: "Подписать или отозвать согласия")
                         Divider()
                         RouteRow(route: .intake, subtitle: "Анкета первичного поступления")

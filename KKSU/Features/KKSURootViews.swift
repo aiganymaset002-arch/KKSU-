@@ -253,6 +253,11 @@ struct AccountView: View {
                         }
                     }
                 }
+                Section("Оплата") {
+                    RouteRow(route: .paymentHistory, subtitle: "Счета, чеки, статусы, возвраты")
+                    RouteRow(route: .marketplace, subtitle: "Курсы, программы, подписки")
+                    RouteRow(route: .subscriptions)
+                }
                 Section("Мои данные") {
                     if user.role == .student { RouteRow(route: .studentProfile) }
                     RouteRow(route: .certificates)
@@ -264,7 +269,7 @@ struct AccountView: View {
                     RouteRow(route: .aiAssistant)
                 }
                 Section("Платформа") {
-                    RouteRow(route: .featureMap, subtitle: "Все 100 модулей KKSU Online")
+                    RouteRow(route: .featureMap, subtitle: "Все 125 модулей KKSU Online")
                     RouteRow(route: .impactPublic)
                     Button("Сбросить демо-данные", role: .destructive) { confirmReset = true }
                     Button("Выйти", role: .destructive) { store.logout() }
@@ -293,7 +298,7 @@ struct FeatureMapView: View {
     var body: some View {
         List {
             Section {
-                Text("Все 100 технических задач KKSU Online реализованы в приложении. Нажмите на задачу, чтобы открыть соответствующий модуль.")
+                Text("Все 100 технических задач KKSU Online и 25 задач монетизации (101–125) реализованы в приложении. Нажмите на задачу, чтобы открыть соответствующий модуль.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
             }

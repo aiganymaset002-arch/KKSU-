@@ -30,6 +30,9 @@ struct RegistrationView: View {
             VStack(alignment: .leading, spacing: 14) {
                 Text("Создайте аккаунт KKSU Online")
                     .font(.title2.bold())
+                Label("Регистрация бесплатная", systemImage: "gift")
+                    .font(.callout)
+                    .foregroundStyle(KKSUTheme.success)
 
                 Text("Роль").font(.subheadline.weight(.semibold)).foregroundStyle(.secondary)
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 140))], spacing: 10) {

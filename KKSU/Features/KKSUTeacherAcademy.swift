@@ -44,6 +44,8 @@ struct TeacherAcademyView: View {
                 KSectionHeader(title: "Мои курсы", icon: "book.fill")
                 ForEach(myCourses) { TeacherCourseCard(course: $0) }
             }
+            RouteRow(route: .teacherCertification, subtitle: "Платная сертификация преподавателя KKSU")
+            RouteRow(route: .teacherMarketplace, subtitle: "Разместите свой курс в каталоге KKSU")
             KSectionHeader(title: "Разделы", icon: "square.grid.2x2")
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 150), spacing: 10)], spacing: 10) {
                 ForEach([KKSURoute.academyCourses, .academyLibrary, .academyTasks, .certificates, .methodologies, .pilots, .methodologyReview, .pilotRegistry], id: \.self) {
@@ -126,6 +128,7 @@ struct TeacherCourseCard: View {
             HStack {
                 Text(course.title).font(.headline)
                 Spacer()
+                PriceBadge(product: store.product(forRef: course.id))
                 KBadge(text: "\(course.hours) ч")
             }
             Text("\(course.level) · модулей: \(course.modules.count) · слушателей: \(course.enrolledIDs.count)").font(.caption).foregroundStyle(.secondary)
@@ -134,8 +137,10 @@ struct TeacherCourseCard: View {
                 KProgressBar(value: course.modules.isEmpty ? 0 : Double(done.count) / Double(course.modules.count), color: KKSUTheme.success)
                 NavigationLink("Продолжить обучение") { TeacherCourseDetailView(courseID: course.id) }
             } else {
-                Button("Записаться на курс") { store.enroll(inTeacherCourse: course.id) }
-                    .buttonStyle(.borderedProminent)
+                PaywallGate(product: store.product(forRef: course.id), message: "Платная программа Teacher Academy. Запись откроется после подтверждения оплаты.") {
+                    Button("Записаться на курс") { store.enroll(inTeacherCourse: course.id) }
+                        .buttonStyle(.borderedProminent)
+                }
             }
         }
     }

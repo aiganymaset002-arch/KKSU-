@@ -344,6 +344,7 @@ struct EventCard: View {
             }
             Text(event.title).font(.headline)
             Text("\(event.date.kksuDateTime) · \(event.location) · \(event.hours) ч").font(.caption).foregroundStyle(.secondary)
+            PriceBadge(product: store.product(forRef: event.id))
             Text(event.summary).font(.callout)
             if event.isOnline, let url = URL(string: event.meetingURL), !event.meetingURL.isEmpty, mine != nil {
                 Link(destination: url) { Label("Ссылка на трансляцию", systemImage: "video.fill") }
@@ -372,7 +373,9 @@ struct EventCard: View {
                     .buttonStyle(.borderedProminent)
                     .disabled(role == .speaker && talk.isEmpty)
                 } else {
-                    Button("Зарегистрироваться") { registering = true }.buttonStyle(.borderedProminent)
+                    PaywallGate(product: store.product(forRef: event.id), message: "Регистрационный взнос участника. После подтверждения оплаты станет доступна регистрация.") {
+                        Button("Зарегистрироваться") { registering = true }.buttonStyle(.borderedProminent)
+                    }
                 }
             }
             if store.role == .admin && !registrations.isEmpty {

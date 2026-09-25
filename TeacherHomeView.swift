@@ -58,6 +58,7 @@ struct TeacherHomeView: View {
                     RouteTile(route: $0)
                 }
             }
+            RouteRow(route: .teacherMarketplace, subtitle: "Разместите собственный курс")
             NavigationLink { TeacherStudentsView() } label: {
                 Label("Мои ученики", systemImage: "person.3.fill").frame(maxWidth: .infinity)
             }

@@ -1,6 +1,6 @@
-# KKSU Online — 100 технических задач
+# KKSU Online — технические задачи
 
-Все 100 задач реализованы в iOS-приложении (SwiftUI). В самом приложении их список открывается в разделе **Профиль → Карта 100 задач** (`FeatureMapView`): каждая строка ведёт в соответствующий модуль.
+В iOS-приложении (SwiftUI) реализованы 100 технических задач платформы и 25 задач монетизации (101–125). В приложении список открывается в разделе **Профиль → Карта 100 задач** (`FeatureMapView`): каждая строка ведёт в соответствующий модуль.
 
 | № | Задача | Экран / тип | Файл |
 |---|---|---|---|
@@ -104,3 +104,33 @@
 | 98 | Регистрация на конференции | `EventsView` | `KKSU/Features/KKSUPartnersEventsAnalytics.swift` |
 | 99 | Электронные сертификаты участников | `CertificatesView` | `KKSU/Features/KKSUTeacherAcademy.swift` |
 | 100 | Единая административная аналитика KKSU | `AnalyticsView` | `KKSU/Features/KKSUPartnersEventsAnalytics.swift` |
+
+## Монетизация (101–125)
+
+| № | Задача | Экран / тип | Файл |
+|---|---|---|---|
+| 101 | Регистрация пользователя — бесплатно | `RegistrationView` | `RegistrationView.swift` |
+| 102 | Подача заявки в KKSU — бесплатно | `EnrollmentApplicationView` | `KKSU/Features/KKSUStudentModules.swift` |
+| 103 | Статус ученика KKSU (enrollment) — $200 | `EnrollmentGate, EnrollmentStatusCard` | `KKSU/Features/KKSUPayments.swift` |
+| 104 | Отдельный образовательный курс — $10–50 | `LibraryItemDetailView + PaywallGate` | `KKSU/Features/KKSULibraryAndTests.swift` |
+| 105 | Teacher Academy — платные программы | `AcademyCoursesView` | `KKSU/Features/KKSUTeacherAcademy.swift` |
+| 106 | Учитель размещает свой курс — $300 | `TeacherMarketplaceView` | `KKSU/Features/KKSUPayments.swift` |
+| 107 | Платная сертификация преподавателя | `TeacherCertificationView` | `KKSU/Features/KKSUPayments.swift` |
+| 108 | Future Engineers — бесплатные и платные программы | `EngineeringCoursesView` | `KKSU/Features/KKSUGlobalAndEngineering.swift` |
+| 109 | Global Classroom — платные международные программы | `GlobalClassesView` | `KKSU/Features/KKSUGlobalAndEngineering.swift` |
+| 110 | Young Inventors — платная регистрация | `YoungInventorsApplyView` | `KKSU/Features/KKSUInventions.swift` |
+| 111 | KKSU Inventions — платные услуги | `InventionsServicesView` | `KKSU/Features/KKSUPayments.swift` |
+| 112 | Конференции — регистрационный взнос | `EventsView` | `KKSU/Features/KKSUPartnersEventsAnalytics.swift` |
+| 113 | Teacher Marketplace | `TeacherMarketplaceView` | `KKSU/Features/KKSUPayments.swift` |
+| 114 | KKSU Marketplace — каталог платных продуктов | `MarketplaceView` | `KKSU/Features/KKSUPayments.swift` |
+| 115 | Подписка KKSU — месяц / год | `SubscriptionsView` | `KKSU/Features/KKSUPayments.swift` |
+| 116 | Семейная подписка — несколько детей | `SubscriptionsView` | `KKSU/Features/KKSUPayments.swift` |
+| 117 | Промокоды и скидки | `PromoCodesAdminView` | `KKSU/Features/KKSUPayments.swift` |
+| 118 | Стипендия / бесплатный доступ от администратора | `ScholarshipsView` | `KKSU/Features/KKSUPayments.swift` |
+| 119 | История платежей пользователя | `PaymentHistoryView` | `KKSU/Features/KKSUPayments.swift` |
+| 120 | Инвойсы, чеки и статусы оплаты | `InvoiceDetailView, InvoicePDFPage` | `KKSU/Features/KKSUPayments.swift` |
+| 121 | Панель администратора по выручке | `RevenueDashboardView` | `KKSU/Features/KKSUPayments.swift` |
+| 122 | Продажи по курсам, преподавателям и программам | `RevenueDashboardView` | `KKSU/Features/KKSUPayments.swift` |
+| 123 | Возвраты и отмены | `PaymentsAdminView` | `KKSU/Features/KKSUPayments.swift` |
+| 124 | Автооткрытие курса после подтверждённой оплаты | `KKSUStore.confirmPayment → fulfill` | `KKSU/Core/KKSUBillingLogic.swift` |
+| 125 | Блокировка платного контента до оплаты | `PaywallGate, PaywallCard` | `KKSU/Features/KKSUPayments.swift` |

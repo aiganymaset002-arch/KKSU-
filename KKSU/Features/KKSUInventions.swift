@@ -52,6 +52,7 @@ struct InventionsView: View {
             }
             if store.role == .student || store.role.canTeach || store.role == .mentor {
                 PrimaryButton(title: "Новый проект", icon: "plus") { showEditor = true }
+                RouteRow(route: .inventionsServices, subtitle: "Консультации, 3D-печать, патентная помощь")
             }
         }
         .sheet(isPresented: $showEditor) {
@@ -663,15 +664,21 @@ struct YoungInventorsApplyView: View {
                 Label("Есть материалы (фото/видео/чертежи)", systemImage: mediaOK ? "checkmark.circle.fill" : "circle")
                 Label("Есть записи в журнале экспериментов", systemImage: experimentsOK ? "checkmark.circle.fill" : "circle")
             }
+            Section("Регистрационный взнос") {
+                PaywallGate(product: store.product(titled: KKSUBillingSeed.Key.youngInventors), message: "Регистрация на сезон Young Inventors 30 платная. Подать заявку можно после подтверждения оплаты.") {
+                    Label("Взнос оплачен", systemImage: "checkmark.seal.fill").foregroundStyle(KKSUTheme.success)
+                }
+            }
             Section {
                 Button("Подать заявку") { submit() }
-                    .disabled(projectID == nil || motivation.isEmpty || !stageOK)
+                    .disabled(projectID == nil || motivation.isEmpty || !stageOK || !feePaid)
             }
         }
         .navigationTitle("Заявка Young Inventors")
     }
 
     private var project: InventionProject? { projectID.flatMap { store.project($0) } }
+    private var feePaid: Bool { store.hasAccess(store.currentUser?.id, to: store.product(titled: KKSUBillingSeed.Key.youngInventors)) }
     private var stageOK: Bool { (project?.stage ?? .idea) >= .prototype }
     private var mediaOK: Bool { !(project?.media.isEmpty ?? true) }
     private var experimentsOK: Bool { store.db.experiments.contains { $0.projectID == projectID } }

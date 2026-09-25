@@ -60,6 +60,7 @@ struct StudentCabinetView: View {
                     NavigationLink("Подробный дашборд", value: KKSURoute.progressDashboard)
                 }
 
+                EnrollmentStatusCard(studentID: me)
                 KSectionHeader(title: "Сегодня", icon: "sun.max.fill")
                 let today = store.db.sessions.filter { Calendar.current.isDateInToday($0.start) && $0.participantIDs.contains(me) }.sorted { $0.start < $1.start }
                 if today.isEmpty {
@@ -294,6 +295,10 @@ struct AdminPanelView: View {
             }
             KSectionHeader(title: "Управление", icon: "gearshape.2.fill")
             KCard {
+                RouteRow(route: .revenue, subtitle: "Выручка, продажи по курсам, педагогам и программам")
+                Divider()
+                RouteRow(route: .paymentsAdmin, subtitle: "Подтвердить оплаты, оформить возвраты")
+                Divider()
                 RouteRow(route: .users, subtitle: "Роли, блокировка, привязка детей")
                 Divider()
                 RouteRow(route: .analytics, subtitle: "Единая аналитика KKSU")
@@ -306,7 +311,7 @@ struct AdminPanelView: View {
                 Divider()
                 RouteRow(route: .events, subtitle: "Мероприятия и сертификаты")
                 Divider()
-                RouteRow(route: .featureMap, subtitle: "Статус 100 модулей")
+                RouteRow(route: .featureMap, subtitle: "Статус 125 модулей")
             }
         }
     }

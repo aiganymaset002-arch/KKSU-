@@ -76,6 +76,7 @@ struct LibraryItemRow: View {
                         if !item.captions.isEmpty { KBadge(text: "CC субтитры", color: KKSUTheme.success) }
                         if !item.textAlternative.isEmpty { KBadge(text: "Текстовая версия", color: .purple) }
                         if item.durationMinutes > 0 { KBadge(text: "\(item.durationMinutes) мин") }
+                        LibraryPriceBadge(itemID: item.id)
                     }
                 }
             }
@@ -92,6 +93,7 @@ struct LibraryItemDetailView: View {
     var body: some View {
         if let item = store.db.library.first(where: { $0.id == itemID }) {
             KPage(item.title) {
+                PaywallGate(product: store.product(forRef: item.id), message: "Платный курс. Видео, субтитры и материалы откроются после подтверждения оплаты или по подписке KKSU.") {
                 if item.kind == .video, let url = URL(string: item.url), !item.url.isEmpty {
                     CaptionedVideoPlayer(url: url, captions: item.captions, captionsOn: a11y.captionsEnabled)
                 } else if item.kind == .video {
@@ -132,6 +134,7 @@ struct LibraryItemDetailView: View {
                             }
                         }
                     }
+                }
                 }
             }
             .onAppear { markViewed(item) }
@@ -331,8 +334,16 @@ struct TestListView: View {
                 }
                 .buttonStyle(.bordered)
             }
-            ForEach(tests) { test in
-                TestCard(test: test)
+            if audience == .students {
+                EnrollmentGate {
+                    ForEach(tests) { test in
+                        TestCard(test: test)
+                    }
+                }
+            } else {
+                ForEach(tests) { test in
+                    TestCard(test: test)
+                }
             }
         }
     }
@@ -678,5 +689,16 @@ struct QuestionEditor: View {
             TextField("Правильный ответ (варианты через |)", text: $question.correctText)
         }
         TextField("Пояснение после проверки", text: $question.explanation, axis: .vertical)
+    }
+}
+
+struct LibraryPriceBadge: View {
+    @EnvironmentObject private var store: KKSUStore
+    let itemID: UUID
+
+    var body: some View {
+        if let product = store.product(forRef: itemID) {
+            PriceBadge(product: product)
+        }
     }
 }

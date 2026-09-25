@@ -221,6 +221,11 @@ struct EnrollmentApplicationView: View {
                     }
                 }
             } else {
+                Section {
+                    Label("Подача заявки — бесплатно. Оплата статуса ученика KKSU — только после одобрения заявки.", systemImage: "gift")
+                        .font(.callout)
+                        .foregroundStyle(KKSUTheme.success)
+                }
                 Section("Ребёнок") {
                     TextField("ФИО ребёнка", text: $app.childName)
                     Stepper("Возраст: \(app.childAge)", value: $app.childAge, in: 5...18)
@@ -661,6 +666,7 @@ struct HomeworkListView: View {
                     .buttonStyle(.plain)
                 }
             } else {
+                EnrollmentGate {
                 StudentScoped { studentID in
                     let all = store.assignments(for: studentID)
                     let active = all.filter { store.submission(for: $0.id, studentID: studentID) == nil }
@@ -680,6 +686,7 @@ struct HomeworkListView: View {
                         }
                         .buttonStyle(.plain)
                     }
+                }
                 }
             }
         }

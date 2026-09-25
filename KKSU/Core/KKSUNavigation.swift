@@ -33,6 +33,9 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     case impactDashboard, impactReport, impactPublic
     case partners, internships, events, analytics
     case users, featureMap, legacyScreens
+    // Монетизация
+    case marketplace, subscriptions, paymentHistory, teacherMarketplace, teacherCertification, inventionsServices
+    case revenue, paymentsAdmin, promoCodes, scholarships, pricing, paymentSettings
 
     var id: String { rawValue }
 
@@ -117,6 +120,18 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .users: return "Пользователи и роли"
         case .featureMap: return "Карта 100 задач"
         case .legacyScreens: return "Прототипы экранов"
+        case .marketplace: return "KKSU Marketplace"
+        case .subscriptions: return "Подписка KKSU"
+        case .paymentHistory: return "История платежей"
+        case .teacherMarketplace: return "Teacher Marketplace"
+        case .teacherCertification: return "Сертификация преподавателя"
+        case .inventionsServices: return "Услуги KKSU Inventions"
+        case .revenue: return "Выручка и продажи"
+        case .paymentsAdmin: return "Подтверждение оплат"
+        case .promoCodes: return "Промокоды и скидки"
+        case .scholarships: return "Стипендии"
+        case .pricing: return "Цены и продукты"
+        case .paymentSettings: return "Настройки оплаты"
         }
     }
 
@@ -201,6 +216,18 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .users: return "person.3.sequence.fill"
         case .featureMap: return "map.fill"
         case .legacyScreens: return "iphone.gen3"
+        case .marketplace: return "cart.fill"
+        case .subscriptions: return "star.circle.fill"
+        case .paymentHistory: return "list.bullet.rectangle.portrait.fill"
+        case .teacherMarketplace: return "storefront.fill"
+        case .teacherCertification: return "rosette"
+        case .inventionsServices: return "hammer.fill"
+        case .revenue: return "dollarsign.circle.fill"
+        case .paymentsAdmin: return "checkmark.rectangle.stack.fill"
+        case .promoCodes: return "tag.fill"
+        case .scholarships: return "gift.fill"
+        case .pricing: return "tablecells.badge.ellipsis"
+        case .paymentSettings: return "banknote.fill"
         }
     }
 
@@ -213,7 +240,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .expertCabinet, .methodologyReview, .yiReview: return [.expert, .mentor, .admin]
         case .psychologistCabinet: return [.psychologist, .admin]
         case .partnerCabinet: return [.partner, .admin]
-        case .adminPanel, .analytics, .users, .impactReport: return [.admin]
+        case .adminPanel, .analytics, .users, .impactReport, .revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings: return [.admin]
+        case .teacherCertification: return [.teacher, .psychologist, .admin]
         case .teacherAcademy, .academyRegistration, .academyCourses, .academyLibrary, .academyTasks, .methodologies, .pilots, .pilotRegistry:
             return [.teacher, .psychologist, .expert, .mentor, .admin]
         case .progressAnalysis: return [.teacher, .psychologist, .parent, .mentor, .admin]
@@ -318,6 +346,18 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .users: return AnyView(UserManagementView())
         case .featureMap: return AnyView(FeatureMapView())
         case .legacyScreens: return AnyView(LegacyScreensView())
+        case .marketplace: return AnyView(MarketplaceView())
+        case .subscriptions: return AnyView(SubscriptionsView())
+        case .paymentHistory: return AnyView(PaymentHistoryView())
+        case .teacherMarketplace: return AnyView(TeacherMarketplaceView())
+        case .teacherCertification: return AnyView(TeacherCertificationView())
+        case .inventionsServices: return AnyView(InventionsServicesView())
+        case .revenue: return AnyView(RevenueDashboardView())
+        case .paymentsAdmin: return AnyView(PaymentsAdminView())
+        case .promoCodes: return AnyView(PromoCodesAdminView())
+        case .scholarships: return AnyView(ScholarshipsView())
+        case .pricing: return AnyView(PricingAdminView())
+        case .paymentSettings: return AnyView(PaymentSettingsView())
         }
     }
 }
@@ -342,6 +382,8 @@ struct KKSUModuleSection: Identifiable {
         KKSUModuleSection(title: "AI и персонализация", routes: [.aiAssistant, .recommendations, .learningSettings, .accessibility]),
         KKSUModuleSection(title: "Партнёрство и события", routes: [.partners, .internships, .events]),
         KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .adminPanel]),
+        KKSUModuleSection(title: "Оплата и Marketplace", routes: [.marketplace, .subscriptions, .paymentHistory, .teacherMarketplace, .teacherCertification, .inventionsServices]),
+        KKSUModuleSection(title: "Финансы (администратор)", routes: [.revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings]),
         KKSUModuleSection(title: "О платформе", routes: [.featureMap, .legacyScreens])
     ]
 }
@@ -454,7 +496,33 @@ struct KKSUFeature: Identifiable {
         KKSUFeature(id: 97, title: "Конференции и мероприятия", route: .events),
         KKSUFeature(id: 98, title: "Регистрация на конференции", route: .events),
         KKSUFeature(id: 99, title: "Электронные сертификаты участников", route: .certificates),
-        KKSUFeature(id: 100, title: "Единая административная аналитика KKSU", route: .analytics)
+        KKSUFeature(id: 100, title: "Единая административная аналитика KKSU", route: .analytics),
+        // Монетизация
+        KKSUFeature(id: 101, title: "Регистрация пользователя — бесплатно", route: .marketplace, note: "RegistrationView: без оплаты"),
+        KKSUFeature(id: 102, title: "Подача заявки в KKSU — бесплатно", route: .application),
+        KKSUFeature(id: 103, title: "Статус ученика KKSU (enrollment) — $200", route: .marketplace, note: "Школьные модули закрыты до оплаты или стипендии"),
+        KKSUFeature(id: 104, title: "Отдельный образовательный курс — $10–50", route: .videoLibrary, note: "Платные видеокурсы в библиотеке"),
+        KKSUFeature(id: 105, title: "Teacher Academy — платные программы", route: .academyCourses),
+        KKSUFeature(id: 106, title: "Учитель размещает свой курс — $300", route: .teacherMarketplace),
+        KKSUFeature(id: 107, title: "Платная сертификация преподавателя", route: .teacherCertification),
+        KKSUFeature(id: 108, title: "Future Engineers — бесплатные и платные программы", route: .engineeringCourses),
+        KKSUFeature(id: 109, title: "Global Classroom — платные международные программы", route: .globalClasses),
+        KKSUFeature(id: 110, title: "Young Inventors — платная регистрация", route: .yiApply),
+        KKSUFeature(id: 111, title: "KKSU Inventions — платные услуги", route: .inventionsServices),
+        KKSUFeature(id: 112, title: "Конференции — регистрационный взнос", route: .events),
+        KKSUFeature(id: 113, title: "Teacher Marketplace", route: .teacherMarketplace),
+        KKSUFeature(id: 114, title: "KKSU Marketplace — каталог платных продуктов", route: .marketplace),
+        KKSUFeature(id: 115, title: "Подписка KKSU — месяц / год", route: .subscriptions),
+        KKSUFeature(id: 116, title: "Семейная подписка — несколько детей", route: .subscriptions),
+        KKSUFeature(id: 117, title: "Промокоды и скидки", route: .promoCodes),
+        KKSUFeature(id: 118, title: "Стипендия / бесплатный доступ от администратора", route: .scholarships),
+        KKSUFeature(id: 119, title: "История платежей пользователя", route: .paymentHistory),
+        KKSUFeature(id: 120, title: "Инвойсы, чеки и статусы оплаты", route: .paymentHistory, note: "PDF счёта и чека"),
+        KKSUFeature(id: 121, title: "Панель администратора по выручке", route: .revenue),
+        KKSUFeature(id: 122, title: "Продажи по курсам, преподавателям и программам", route: .revenue),
+        KKSUFeature(id: 123, title: "Возвраты и отмены", route: .paymentsAdmin),
+        KKSUFeature(id: 124, title: "Автооткрытие курса после подтверждённой оплаты", route: .paymentsAdmin),
+        KKSUFeature(id: 125, title: "Блокировка платного контента до оплаты", route: .marketplace, note: "PaywallGate во всех платных модулях")
     ]
 }
 

@@ -73,13 +73,16 @@ struct GlobalClassCard: View {
             HStack {
                 Text(globalClass.title).font(.headline)
                 Spacer()
+                PriceBadge(product: store.product(forRef: globalClass.id))
                 KBadge(text: globalClass.country)
             }
             Text("\(globalClass.partnerSchool) · \(globalClass.teacherName) · язык: \(globalClass.language)").font(.caption).foregroundStyle(.secondary)
             Text(globalClass.summary).font(.callout)
             Text(globalClass.start.kksuDateTime).font(.caption)
             HStack {
-                if store.role == .student, !joined, let index = store.db.globalClasses.firstIndex(where: { $0.id == globalClass.id }), let me {
+                if store.role == .student, !joined, !store.hasAccess(me, toRef: globalClass.id), let product = store.product(forRef: globalClass.id) {
+                    PaywallCard(product: product, message: "Международная программа Global Classroom. Вы будете записаны автоматически после подтверждения оплаты.")
+                } else if store.role == .student, !joined, let index = store.db.globalClasses.firstIndex(where: { $0.id == globalClass.id }), let me {
                     Button("Записаться") {
                         store.db.globalClasses[index].participantIDs.append(me)
                         store.log(me, "Запись в Global Classroom", details: globalClass.title, icon: "globe")
@@ -270,6 +273,7 @@ struct EngineeringCourseCard: View {
             HStack {
                 Label(course.title, systemImage: course.track.icon).font(.headline)
                 Spacer()
+                PriceBadge(product: store.product(forRef: course.id))
                 KBadge(text: course.level)
             }
             Text(course.track.title).font(.caption).foregroundStyle(.tint)
@@ -281,6 +285,8 @@ struct EngineeringCourseCard: View {
             }
             if enrolled {
                 KBadge(text: "Вы записаны", color: KKSUTheme.success)
+            } else if store.role == .student, !store.hasAccess(me, toRef: course.id), let product = store.product(forRef: course.id) {
+                PaywallCard(product: product, message: "Платная программа Future Engineers. Курс откроется автоматически после подтверждения оплаты.")
             } else if let me, store.role == .student, let index = store.db.engineeringCourses.firstIndex(where: { $0.id == course.id }) {
                 Button("Записаться на курс") {
                     store.db.engineeringCourses[index].enrolledIDs.append(me)

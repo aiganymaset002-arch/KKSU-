@@ -87,19 +87,38 @@ final class KKSUStore: ObservableObject {
         didSet { scheduleSave() }
     }
 
+    /// Платежи, продукты и доступы хранятся отдельным файлом (см. KKSUBilling.swift).
+    @Published var billing: KKSUBillingDatabase {
+        didSet { scheduleSave() }
+    }
+
     private let fileURL: URL
+    private let billingURL: URL
+    private let persists: Bool
     private var saveTask: Task<Void, Never>?
 
     init(inMemory: Bool = false) {
         let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         fileURL = docs.appendingPathComponent("kksu-database.json")
+        billingURL = docs.appendingPathComponent("kksu-billing.json")
+        persists = !inMemory
 
+        let database: KKSUDatabase
         if !inMemory,
            let data = try? Data(contentsOf: fileURL),
            let loaded = try? JSONDecoder.kksu.decode(KKSUDatabase.self, from: data) {
-            db = loaded
+            database = loaded
         } else {
-            db = KKSUSeed.makeDatabase()
+            database = KKSUSeed.makeDatabase()
+        }
+        db = database
+
+        if !inMemory,
+           let data = try? Data(contentsOf: billingURL),
+           let loaded = try? JSONDecoder.kksu.decode(KKSUBillingDatabase.self, from: data) {
+            billing = loaded
+        } else {
+            billing = KKSUBillingSeed.make(db: database)
         }
     }
 
@@ -115,9 +134,12 @@ final class KKSUStore: ObservableObject {
     }
 
     func saveNow() {
+        guard persists else { return }
         do {
             let data = try JSONEncoder.kksu.encode(db)
             try data.write(to: fileURL, options: .atomic)
+            let billingData = try JSONEncoder.kksu.encode(billing)
+            try billingData.write(to: billingURL, options: .atomic)
         } catch {
             print("KKSU: не удалось сохранить базу — \(error)")
         }
@@ -126,6 +148,7 @@ final class KKSUStore: ObservableObject {
     func resetDemoData() {
         let current = db.currentUserID
         db = KKSUSeed.makeDatabase()
+        billing = KKSUBillingSeed.make(db: db)
         if let current, db.users.contains(where: { $0.id == current }) { db.currentUserID = current }
     }
 
