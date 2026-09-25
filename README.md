@@ -262,7 +262,7 @@ The project aims to explore how digital technologies can improve accessibility a
 
 **Запуск**
 
-1. Откройте проект в Xcode (iOS 17+). Папку `KKSU/` добавьте в таргет приложения. Если в проекте используются синхронизируемые папки (так по умолчанию в Xcode 16 и новее), она подключится сама.
+1. Откройте файл **`KKSU.xcodeproj`** в Xcode 16 или новее (iOS 17+). Все файлы уже подключены. Выберите симулятор iPhone и нажмите Run (▶︎). Для запуска на своём iPhone выберите команду в Signing & Capabilities.
 2. Соберите и запустите. Демо-данные создаются при первом запуске и сохраняются в `Documents/kksu-database.json`.
 3. Демо-аккаунты (пароль у всех: `kksu2026`): `student@kksu.kz`, `parent@kksu.kz`, `teacher@kksu.kz`, `psychologist@kksu.kz`, `expert@kksu.kz`, `mentor@kksu.kz`, `partner@kksu.kz`, `admin@kksu.kz`. На экране входа есть кнопка «Демо-вход» для выбранной роли.
 

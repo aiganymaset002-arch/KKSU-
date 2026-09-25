@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		53AB2D0161A247335320A65E /* Comfort_School_UnivercityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */; };
+		62ADFAF7EDC910F8379C61C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */; };
+		DC0B9EDD637BA175693E867D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD64D2860E593044184618B /* CustomTextField.swift */; };
+		BA2524356F76677C365C847C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */; };
+		0E62EA294028E9622BE36922 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269B015C0B25DB460A0152D /* Item.swift */; };
+		8C71C6161C5FAAC73D26F78A /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AA701F354634602AED6F6 /* LessonsView.swift */; };
+		81F720EBC9C246661F819B28 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4122E8730A51762B13F4F /* LoginView.swift */; };
+		DF7EFBF9D73365AFA748FA97 /* MathCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601E9072DAA52D83E90B2057 /* MathCourseView.swift */; };
+		3A58F1D8B9D91667B3A90A94 /* ParentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083695199F32E74250D6FE45 /* ParentHomeView.swift */; };
+		D27D82207D5ED5CC47D81091 /* ParentProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96C32434E53B4513864635 /* ParentProgressView.swift */; };
+		80CC0D3AA1455C6331DC4126 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */; };
+		ACC48813D65B34F148D1FF90 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BE2D208A0552197F54353E /* ProgressView.swift */; };
+		30C65593B3231D82F5A30707 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1057DBB427694E5D219B92 /* RegistrationView.swift */; };
+		B851FF94860E42AFE05AC791 /* RoleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C47099DB611610E54A65A2 /* RoleCard.swift */; };
+		40AB9B4EC4835A0F6BFDC43D /* StudentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117948CE33374C2DC61EC0AA /* StudentHomeView.swift */; };
+		895C94C313A144207809736D /* StudentProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */; };
+		88D5286126C8538F1BB9000A /* StudentTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */; };
+		32CC8AE9D8F0EE051029D277 /* TeacherHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */; };
+		7FA50059655DF7F348ECB150 /* TeacherStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */; };
+		AC61A71BFFFE264384B75624 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E3894B76CA1C5394A78FF /* Untitled.swift */; };
+		475AB791167F6A535B7EECBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FA82CE06667F216BCB773 /* User.swift */; };
+		1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */; };
+		9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */; };
+		5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146EB5138648104DF743767 /* KKSUBilling.swift */; };
+		25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */; };
+		EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5DB70E620E98DCC39F050 /* KKSUModels.swift */; };
+		53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF08BD985871C8881E996C /* KKSUNavigation.swift */; };
+		0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968425F513916E8637D28971 /* KKSUSeed.swift */; };
+		FFBA844910EC79721FAB1E7E /* KKSUStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E33D2D01AD95DEB0D64FCD2 /* KKSUStore.swift */; };
+		BE9AC1757270551BC9ACD9AF /* KKSUTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10963ED13059342885D15F47 /* KKSUTheme.swift */; };
+		BD3AFC4726941E1C3B783328 /* KKSUAIAndPersonalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */; };
+		13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */; };
+		0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE292168B8F015324A61AC /* KKSUCommunication.swift */; };
+		84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */; };
+		69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */; };
+		712F75D75C39680610641B1B /* KKSUInventions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */; };
+		53B2A7BD1F77167E9C3FBB05 /* KKSULibraryAndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */; };
+		127A81D4101BB5F8215AE36F /* KKSUPartnersEventsAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */; };
+		7109F58A2235000D12855C29 /* KKSUPayments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */; };
+		348526DC61DEC1C0C33AB338 /* KKSURootViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA214039B0D0A99C41094E /* KKSURootViews.swift */; };
+		312D11EBE7D3C95DCCAE767C /* KKSUStudentModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */; };
+		B02622A77BBDE5F9208EDCEE /* KKSUTeacherAcademy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comfort_School_UnivercityApp.swift"; sourceTree = "<group>"; };
+		1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
+		4BD64D2860E593044184618B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField.swift"; sourceTree = "<group>"; };
+		2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForgotPasswordView.swift"; sourceTree = "<group>"; };
+		5269B015C0B25DB460A0152D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item.swift"; sourceTree = "<group>"; };
+		993AA701F354634602AED6F6 /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonsView.swift"; sourceTree = "<group>"; };
+		0DD4122E8730A51762B13F4F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView.swift"; sourceTree = "<group>"; };
+		601E9072DAA52D83E90B2057 /* MathCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MathCourseView.swift"; sourceTree = "<group>"; };
+		083695199F32E74250D6FE45 /* ParentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentHomeView.swift"; sourceTree = "<group>"; };
+		7F96C32434E53B4513864635 /* ParentProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentProgressView.swift"; sourceTree = "<group>"; };
+		781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimaryButton.swift"; sourceTree = "<group>"; };
+		A9BE2D208A0552197F54353E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView.swift"; sourceTree = "<group>"; };
+		EE1057DBB427694E5D219B92 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationView.swift"; sourceTree = "<group>"; };
+		15C47099DB611610E54A65A2 /* RoleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoleCard.swift"; sourceTree = "<group>"; };
+		117948CE33374C2DC61EC0AA /* StudentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentHomeView.swift"; sourceTree = "<group>"; };
+		75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentProfileView.swift"; sourceTree = "<group>"; };
+		BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentTaskView.swift"; sourceTree = "<group>"; };
+		098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherHomeView.swift"; sourceTree = "<group>"; };
+		C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherStudentsView.swift"; sourceTree = "<group>"; };
+		DD4E3894B76CA1C5394A78FF /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Untitled.swift"; sourceTree = "<group>"; };
+		653FA82CE06667F216BCB773 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User.swift"; sourceTree = "<group>"; };
+		8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAIService.swift"; sourceTree = "<group>"; };
+		FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAnalyticsEngine.swift"; sourceTree = "<group>"; };
+		4146EB5138648104DF743767 /* KKSUBilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBilling.swift"; sourceTree = "<group>"; };
+		AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBillingLogic.swift"; sourceTree = "<group>"; };
+		01A5DB70E620E98DCC39F050 /* KKSUModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUModels.swift"; sourceTree = "<group>"; };
+		03AF08BD985871C8881E996C /* KKSUNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUNavigation.swift"; sourceTree = "<group>"; };
+		968425F513916E8637D28971 /* KKSUSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUSeed.swift"; sourceTree = "<group>"; };
+		5E33D2D01AD95DEB0D64FCD2 /* KKSUStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUStore.swift"; sourceTree = "<group>"; };
+		10963ED13059342885D15F47 /* KKSUTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTheme.swift"; sourceTree = "<group>"; };
+		66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAIAndPersonalization.swift"; sourceTree = "<group>"; };
+		A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCabinets.swift"; sourceTree = "<group>"; };
+		56DE292168B8F015324A61AC /* KKSUCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCommunication.swift"; sourceTree = "<group>"; };
+		9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUGlobalAndEngineering.swift"; sourceTree = "<group>"; };
+		3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUImpact.swift"; sourceTree = "<group>"; };
+		259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUInventions.swift"; sourceTree = "<group>"; };
+		C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSULibraryAndTests.swift"; sourceTree = "<group>"; };
+		BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUPartnersEventsAnalytics.swift"; sourceTree = "<group>"; };
+		34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUPayments.swift"; sourceTree = "<group>"; };
+		E1FA214039B0D0A99C41094E /* KKSURootViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSURootViews.swift"; sourceTree = "<group>"; };
+		1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUStudentModules.swift"; sourceTree = "<group>"; };
+		7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTeacherAcademy.swift"; sourceTree = "<group>"; };
+		CAF9B6B99962BF5C22648242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3905D7917F2B3429490B01CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
+		F5BF48AA40CAD7891EB709FC /* KKSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KKSU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8F51EF3B9040A527832BEBBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAD58DE7366495DB4650CFEF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D2A57DC1D883FD21FB995169 /* Comfort School-Univercity */,
+				F7C54FDA6297135D8DEA6B36 /* KKSU */,
+				6823509808722D15FFBB8BF6 /* Docs */,
+				86024CAD1E83101D97359D73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D2A57DC1D883FD21FB995169 /* Comfort School-Univercity */ = {
+			isa = PBXGroup;
+			children = (
+				F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */,
+				1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */,
+				4BD64D2860E593044184618B /* CustomTextField.swift */,
+				2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */,
+				5269B015C0B25DB460A0152D /* Item.swift */,
+				993AA701F354634602AED6F6 /* LessonsView.swift */,
+				0DD4122E8730A51762B13F4F /* LoginView.swift */,
+				601E9072DAA52D83E90B2057 /* MathCourseView.swift */,
+				083695199F32E74250D6FE45 /* ParentHomeView.swift */,
+				7F96C32434E53B4513864635 /* ParentProgressView.swift */,
+				781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */,
+				A9BE2D208A0552197F54353E /* ProgressView.swift */,
+				EE1057DBB427694E5D219B92 /* RegistrationView.swift */,
+				15C47099DB611610E54A65A2 /* RoleCard.swift */,
+				117948CE33374C2DC61EC0AA /* StudentHomeView.swift */,
+				75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */,
+				BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */,
+				098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */,
+				C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */,
+				DD4E3894B76CA1C5394A78FF /* Untitled.swift */,
+				653FA82CE06667F216BCB773 /* User.swift */,
+				CAF9B6B99962BF5C22648242 /* Info.plist */,
+			);
+			name = "Comfort School-Univercity";
+			sourceTree = "<group>";
+		};
+		F7C54FDA6297135D8DEA6B36 /* KKSU */ = {
+			isa = PBXGroup;
+			children = (
+				A74AD8DFACD4F985EB397751 /* Core */,
+				1BA8ABA1A88B9C65257F4A4E /* Features */,
+			);
+			path = KKSU;
+			sourceTree = "<group>";
+		};
+		A74AD8DFACD4F985EB397751 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */,
+				FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */,
+				4146EB5138648104DF743767 /* KKSUBilling.swift */,
+				AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */,
+				01A5DB70E620E98DCC39F050 /* KKSUModels.swift */,
+				03AF08BD985871C8881E996C /* KKSUNavigation.swift */,
+				968425F513916E8637D28971 /* KKSUSeed.swift */,
+				5E33D2D01AD95DEB0D64FCD2 /* KKSUStore.swift */,
+				10963ED13059342885D15F47 /* KKSUTheme.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1BA8ABA1A88B9C65257F4A4E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */,
+				A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */,
+				56DE292168B8F015324A61AC /* KKSUCommunication.swift */,
+				9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */,
+				3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */,
+				259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */,
+				C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */,
+				BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */,
+				34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */,
+				E1FA214039B0D0A99C41094E /* KKSURootViews.swift */,
+				1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */,
+				7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		6823509808722D15FFBB8BF6 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				3905D7917F2B3429490B01CF /* README.md */,
+				2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */,
+			);
+			name = "Docs";
+			sourceTree = "<group>";
+		};
+		86024CAD1E83101D97359D73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5BF48AA40CAD7891EB709FC /* KKSU.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42AEFBAE01D2DFD981F7DA7D /* KKSU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD5B959833E219C36151D647 /* Build configuration list for PBXNativeTarget "KKSU" */;
+			buildPhases = (
+				25D902C24283AB8CFBAC54DF /* Sources */,
+				8F51EF3B9040A527832BEBBA /* Frameworks */,
+				9B207167E5381C47682C6B4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KKSU;
+			productName = KKSU;
+			productReference = F5BF48AA40CAD7891EB709FC /* KKSU.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					42AEFBAE01D2DFD981F7DA7D = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 2CA666E9AB7FD185F98B8152 /* Build configuration list for PBXProject "KKSU" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ru;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ru,
+				en,
+				Base,
+			);
+			mainGroup = FAD58DE7366495DB4650CFEF;
+			productRefGroup = 86024CAD1E83101D97359D73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42AEFBAE01D2DFD981F7DA7D /* KKSU */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B207167E5381C47682C6B4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25D902C24283AB8CFBAC54DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53AB2D0161A247335320A65E /* Comfort_School_UnivercityApp.swift in Sources */,
+				62ADFAF7EDC910F8379C61C6 /* ContentView.swift in Sources */,
+				DC0B9EDD637BA175693E867D /* CustomTextField.swift in Sources */,
+				BA2524356F76677C365C847C /* ForgotPasswordView.swift in Sources */,
+				0E62EA294028E9622BE36922 /* Item.swift in Sources */,
+				8C71C6161C5FAAC73D26F78A /* LessonsView.swift in Sources */,
+				81F720EBC9C246661F819B28 /* LoginView.swift in Sources */,
+				DF7EFBF9D73365AFA748FA97 /* MathCourseView.swift in Sources */,
+				3A58F1D8B9D91667B3A90A94 /* ParentHomeView.swift in Sources */,
+				D27D82207D5ED5CC47D81091 /* ParentProgressView.swift in Sources */,
+				80CC0D3AA1455C6331DC4126 /* PrimaryButton.swift in Sources */,
+				ACC48813D65B34F148D1FF90 /* ProgressView.swift in Sources */,
+				30C65593B3231D82F5A30707 /* RegistrationView.swift in Sources */,
+				B851FF94860E42AFE05AC791 /* RoleCard.swift in Sources */,
+				40AB9B4EC4835A0F6BFDC43D /* StudentHomeView.swift in Sources */,
+				895C94C313A144207809736D /* StudentProfileView.swift in Sources */,
+				88D5286126C8538F1BB9000A /* StudentTaskView.swift in Sources */,
+				32CC8AE9D8F0EE051029D277 /* TeacherHomeView.swift in Sources */,
+				7FA50059655DF7F348ECB150 /* TeacherStudentsView.swift in Sources */,
+				AC61A71BFFFE264384B75624 /* Untitled.swift in Sources */,
+				475AB791167F6A535B7EECBF /* User.swift in Sources */,
+				1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */,
+				9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */,
+				5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */,
+				25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */,
+				EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */,
+				53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */,
+				0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */,
+				FFBA844910EC79721FAB1E7E /* KKSUStore.swift in Sources */,
+				BE9AC1757270551BC9ACD9AF /* KKSUTheme.swift in Sources */,
+				BD3AFC4726941E1C3B783328 /* KKSUAIAndPersonalization.swift in Sources */,
+				13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */,
+				0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */,
+				84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */,
+				69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */,
+				712F75D75C39680610641B1B /* KKSUInventions.swift in Sources */,
+				53B2A7BD1F77167E9C3FBB05 /* KKSULibraryAndTests.swift in Sources */,
+				127A81D4101BB5F8215AE36F /* KKSUPartnersEventsAnalytics.swift in Sources */,
+				7109F58A2235000D12855C29 /* KKSUPayments.swift in Sources */,
+				348526DC61DEC1C0C33AB338 /* KKSURootViews.swift in Sources */,
+				312D11EBE7D3C95DCCAE767C /* KKSUStudentModules.swift in Sources */,
+				B02622A77BBDE5F9208EDCEE /* KKSUTeacherAcademy.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2D53B50AE2273FABAAF8B8FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D4B2141B77146EF47E948847 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA7C752E798F561D7D156D98 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "KKSU Online";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.kksu.online;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22F75101C717335ACF4089A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "KKSU Online";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.kksu.online;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CA666E9AB7FD185F98B8152 /* Build configuration list for PBXProject "KKSU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D53B50AE2273FABAAF8B8FA /* Debug */,
+				D4B2141B77146EF47E948847 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD5B959833E219C36151D647 /* Build configuration list for PBXNativeTarget "KKSU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA7C752E798F561D7D156D98 /* Debug */,
+				22F75101C717335ACF4089A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}
