@@ -333,7 +333,6 @@ struct LegacyScreensView: View {
     var body: some View {
         List {
             Section("Первые прототипы Comfort School-University") {
-                NavigationLink("Главная ученика (прототип)") { StudentHomeView() }
                 NavigationLink("Моё обучение") { LearningView() }
                 NavigationLink("Моя траектория и прогресс") { StudentProgressView() }
                 NavigationLink("Курс «Математика»") { MathCourseView() }

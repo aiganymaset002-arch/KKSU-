@@ -55,7 +55,7 @@ struct StudentCabinetView: View {
                             }
                         }
                         Spacer()
-                        ProgressCircle(progress: analysis.overall)
+                        KProgressRing(progress: analysis.overall)
                     }
                     NavigationLink("Подробный дашборд", value: KKSURoute.progressDashboard)
                 }
