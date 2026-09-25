@@ -27,6 +27,7 @@ struct RegistrationView: View {
     @State private var showPrivacy = false
     @State private var showTerms = false
     @State private var errorMessage: String?
+    @State private var infoMessage: String?
 
     var body: some View {
         ScrollView {
@@ -74,6 +75,11 @@ struct RegistrationView: View {
                     }
                 }
 
+                if let infoMessage {
+                    Label(infoMessage, systemImage: "envelope.badge.fill")
+                        .font(.footnote)
+                        .foregroundStyle(KKSUTheme.success)
+                }
                 if let errorMessage {
                     Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
                         .font(.footnote)
@@ -109,6 +115,23 @@ struct RegistrationView: View {
         }
         guard role != .student || parentConsent else {
             errorMessage = "Для регистрации ученика младше 18 лет нужно согласие родителя."
+            return
+        }
+        if KKSUCloud.shared.isConfigured {
+            Task {
+                do {
+                    try await KKSUCloud.shared.signUp(fullName: fullName, email: email, phone: phone, password: password, role: role)
+                    dismiss()
+                } catch KKSUCloudError.emailConfirmation {
+                    infoMessage = KKSUCloudError.emailConfirmation.localizedDescription
+                    errorMessage = nil
+                } catch KKSUCloudError.pendingApproval {
+                    infoMessage = "Аккаунт создан. " + KKSUCloudError.pendingApproval.localizedDescription
+                    errorMessage = nil
+                } catch {
+                    errorMessage = error.localizedDescription
+                }
+            }
             return
         }
         do {

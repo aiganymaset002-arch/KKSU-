@@ -71,6 +71,19 @@ struct ForgotPasswordView: View {
     }
 
     private func requestCode() {
+        if KKSUCloud.shared.isConfigured {
+            Task {
+                do {
+                    try await KKSUCloud.shared.requestPasswordReset(email: email)
+                    sentCode = nil
+                    errorMessage = nil
+                    step = 1
+                } catch {
+                    errorMessage = error.localizedDescription
+                }
+            }
+            return
+        }
         do {
             sentCode = try store.requestPasswordReset(email: email)
             errorMessage = nil
@@ -81,6 +94,18 @@ struct ForgotPasswordView: View {
     }
 
     private func reset() {
+        if KKSUCloud.shared.isConfigured {
+            Task {
+                do {
+                    try await KKSUCloud.shared.resetPassword(email: email, code: code, newPassword: newPassword)
+                    errorMessage = nil
+                    done = true
+                } catch {
+                    errorMessage = error.localizedDescription
+                }
+            }
+            return
+        }
         do {
             try store.resetPassword(email: email, code: code, newPassword: newPassword)
             errorMessage = nil

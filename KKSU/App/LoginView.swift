@@ -237,6 +237,7 @@ struct LoginView: View {
                     
                     // MARK: Демо-доступ
                     
+                    if !KKSUCloud.shared.isConfigured {
                     Button {
                         fillDemo()
                     } label: {
@@ -246,7 +247,9 @@ struct LoginView: View {
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top, 12)
-                    .padding(.bottom, 40)
+                    }
+                    
+                    Spacer().frame(height: 40)
                 }
                 .padding(.horizontal, 20)
             }
@@ -263,6 +266,17 @@ struct LoginView: View {
     // MARK: Действия
     
     private func login() {
+        if KKSUCloud.shared.isConfigured {
+            Task {
+                do {
+                    try await KKSUCloud.shared.signIn(email: email, password: password, expectedRole: selectedRole)
+                    errorMessage = nil
+                } catch {
+                    errorMessage = error.localizedDescription
+                }
+            }
+            return
+        }
         do {
             try store.login(email: email, password: password, expectedRole: selectedRole)
             errorMessage = nil

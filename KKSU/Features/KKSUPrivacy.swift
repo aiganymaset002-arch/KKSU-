@@ -130,7 +130,15 @@ struct MyDataView: View {
         .navigationTitle("Данные и конфиденциальность")
         .confirmationDialog("Удалить аккаунт навсегда?", isPresented: $confirmDelete, titleVisibility: .visible) {
             Button("Удалить", role: .destructive) {
-                if let id = store.currentUser?.id { store.deleteAccount(id) }
+                guard let id = store.currentUser?.id else { return }
+                if KKSUCloud.shared.isSignedIn {
+                    Task {
+                        try? await KKSUCloud.shared.deleteAccount()
+                        store.deleteAccount(id)
+                    }
+                } else {
+                    store.deleteAccount(id)
+                }
             }
         }
         .confirmationDialog("Удалить аккаунт ребёнка и все его данные?", isPresented: Binding(get: { deleteChildID != nil }, set: { if !$0 { deleteChildID = nil } }), titleVisibility: .visible) {

@@ -36,6 +36,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     // Монетизация
     case marketplace, subscriptions, paymentHistory, teacherMarketplace, teacherCertification, inventionsServices
     case revenue, paymentsAdmin, promoCodes, scholarships, pricing, paymentSettings
+    // Сервер и конфиденциальность
+    case cloudSettings, myData
 
     var id: String { rawValue }
 
@@ -131,6 +133,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return "Стипендии"
         case .pricing: return "Цены и продукты"
         case .paymentSettings: return "Настройки оплаты"
+        case .cloudSettings: return "Сервер KKSU"
+        case .myData: return "Данные и конфиденциальность"
         }
     }
 
@@ -226,6 +230,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return "gift.fill"
         case .pricing: return "tablecells.badge.ellipsis"
         case .paymentSettings: return "banknote.fill"
+        case .cloudSettings: return "icloud.fill"
+        case .myData: return "hand.raised.fill"
         }
     }
 
@@ -355,6 +361,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return AnyView(ScholarshipsView())
         case .pricing: return AnyView(PricingAdminView())
         case .paymentSettings: return AnyView(PaymentSettingsView())
+        case .cloudSettings: return AnyView(CloudSettingsView())
+        case .myData: return AnyView(MyDataView())
         }
     }
 }
@@ -381,7 +389,7 @@ struct KKSUModuleSection: Identifiable {
         KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .adminPanel]),
         KKSUModuleSection(title: "Оплата и Marketplace", routes: [.marketplace, .subscriptions, .paymentHistory, .teacherMarketplace, .teacherCertification, .inventionsServices]),
         KKSUModuleSection(title: "Финансы (администратор)", routes: [.revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings]),
-        KKSUModuleSection(title: "О платформе", routes: [.featureMap])
+        KKSUModuleSection(title: "О платформе", routes: [.cloudSettings, .myData, .featureMap])
     ]
 }
 

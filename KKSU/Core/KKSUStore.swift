@@ -140,6 +140,7 @@ final class KKSUStore: ObservableObject {
             try data.write(to: fileURL, options: .atomic)
             let billingData = try JSONEncoder.kksu.encode(billing)
             try billingData.write(to: billingURL, options: .atomic)
+            KKSUCloud.shared.scheduleSync()
         } catch {
             print("KKSU: не удалось сохранить базу — \(error)")
         }
@@ -215,6 +216,7 @@ final class KKSUStore: ObservableObject {
 
     func logout() {
         db.currentUserID = nil
+        Task { await KKSUCloud.shared.signOut() }
     }
 
     /// Генерирует одноразовый код восстановления (действует 15 минут).

@@ -23,6 +23,7 @@ struct CabinetHeader: View {
                 Text(subtitle).font(.callout).foregroundStyle(.secondary)
             }
             Spacer()
+            CloudStatusBadge()
             NavigationLink(value: KKSURoute.notifications) {
                 Image(systemName: store.unreadCount > 0 ? "bell.badge.fill" : "bell")
                     .font(.title3)
@@ -410,6 +411,12 @@ struct UserEditorView: View {
                     .disabled(store.db.users[index].id == store.currentUser?.id)
                     Toggle("Заблокирован", isOn: $store.db.users[index].isBlocked)
                         .disabled(store.db.users[index].id == store.currentUser?.id)
+                    if KKSUCloud.shared.isSignedIn {
+                        Button("Сохранить роль и доступ на сервере") {
+                            let user = store.db.users[index]
+                            Task { try? await KKSUCloud.shared.updateMember(user.id, role: user.role, approved: !user.isBlocked, blocked: user.isBlocked) }
+                        }
+                    }
                 }
                 let role = store.db.users[index].role
                 if role == .parent || role == .mentor {

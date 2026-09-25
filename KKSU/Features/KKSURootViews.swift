@@ -23,6 +23,7 @@ struct KKSURootView: View {
         .task {
             // Встроенные покупки: загрузка каталога App Store и прослушивание транзакций.
             KKSUAppStore.shared.start(with: store)
+            KKSUCloud.shared.start(with: store)
             await KKSUAppStore.shared.refreshSubscriptions()
         }
     }
@@ -103,6 +104,20 @@ struct KKSULandingView: View {
                             AccessibilitySettingsView()
                         } label: {
                             Label("Настройки доступности", systemImage: "textformat.size")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.bordered)
+                        NavigationLink {
+                            CloudSettingsView()
+                        } label: {
+                            Label("Сервер KKSU", systemImage: "icloud")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.bordered)
+                        NavigationLink {
+                            PrivacyPolicyView()
+                        } label: {
+                            Label("Политика конфиденциальности", systemImage: "hand.raised")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
@@ -277,6 +292,7 @@ struct AccountView: View {
                     NavigationLink { MyDataView() } label: {
                         Label("Мои данные и конфиденциальность", systemImage: "hand.raised.fill")
                     }
+                    RouteRow(route: .cloudSettings, subtitle: KKSUCloud.shared.status.title)
                 }
                 Section("Платформа") {
                     RouteRow(route: .featureMap, subtitle: "Все 125 модулей KKSU Online")

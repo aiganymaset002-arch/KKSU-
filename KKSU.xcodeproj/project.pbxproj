@@ -24,6 +24,9 @@
 		41E3E3A9711AA4F1F1ABE57E /* KKSUAppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */; };
 		5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146EB5138648104DF743767 /* KKSUBilling.swift */; };
 		25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */; };
+		541A6075EA274AF4F5307B02 /* KKSUCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C173FB8812EAA419D5399 /* KKSUCloud.swift */; };
+		4E70C4050399A393F2F9F0BA /* KKSUCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */; };
+		46A974A74D431B641BB1D44A /* KKSUCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */; };
 		EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5DB70E620E98DCC39F050 /* KKSUModels.swift */; };
 		53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF08BD985871C8881E996C /* KKSUNavigation.swift */; };
 		0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968425F513916E8637D28971 /* KKSUSeed.swift */; };
@@ -31,6 +34,7 @@
 		BE9AC1757270551BC9ACD9AF /* KKSUTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10963ED13059342885D15F47 /* KKSUTheme.swift */; };
 		BD3AFC4726941E1C3B783328 /* KKSUAIAndPersonalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */; };
 		13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */; };
+		9F9E7F6FE4D601324EC9A1E5 /* KKSUCloudViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */; };
 		0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE292168B8F015324A61AC /* KKSUCommunication.swift */; };
 		84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */; };
 		69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */; };
@@ -63,6 +67,9 @@
 		45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAppStore.swift"; sourceTree = "<group>"; };
 		4146EB5138648104DF743767 /* KKSUBilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBilling.swift"; sourceTree = "<group>"; };
 		AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBillingLogic.swift"; sourceTree = "<group>"; };
+		282C173FB8812EAA419D5399 /* KKSUCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloud.swift"; sourceTree = "<group>"; };
+		1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudStore.swift"; sourceTree = "<group>"; };
+		637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudSync.swift"; sourceTree = "<group>"; };
 		01A5DB70E620E98DCC39F050 /* KKSUModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUModels.swift"; sourceTree = "<group>"; };
 		03AF08BD985871C8881E996C /* KKSUNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUNavigation.swift"; sourceTree = "<group>"; };
 		968425F513916E8637D28971 /* KKSUSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUSeed.swift"; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 		10963ED13059342885D15F47 /* KKSUTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTheme.swift"; sourceTree = "<group>"; };
 		66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAIAndPersonalization.swift"; sourceTree = "<group>"; };
 		A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCabinets.swift"; sourceTree = "<group>"; };
+		0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudViews.swift"; sourceTree = "<group>"; };
 		56DE292168B8F015324A61AC /* KKSUCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCommunication.swift"; sourceTree = "<group>"; };
 		9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUGlobalAndEngineering.swift"; sourceTree = "<group>"; };
 		3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUImpact.swift"; sourceTree = "<group>"; };
@@ -86,6 +94,8 @@
 		593AD2687342375443766B2B /* KKSU.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = KKSU.storekit; sourceTree = "<group>"; };
 		3905D7917F2B3429490B01CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = KKSU_TASKS.md; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
+		C8458A44D83AA6371A48B4BB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = "README.md"; path = "backend/README.md"; sourceTree = "<group>"; };
+		F22CC2D343AC9C2005AA4BF6 /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; name = "schema.sql"; path = "backend/supabase/schema.sql"; sourceTree = "<group>"; };
 		F5BF48AA40CAD7891EB709FC /* KKSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KKSU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +157,9 @@
 				45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */,
 				4146EB5138648104DF743767 /* KKSUBilling.swift */,
 				AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */,
+				282C173FB8812EAA419D5399 /* KKSUCloud.swift */,
+				1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */,
+				637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */,
 				01A5DB70E620E98DCC39F050 /* KKSUModels.swift */,
 				03AF08BD985871C8881E996C /* KKSUNavigation.swift */,
 				968425F513916E8637D28971 /* KKSUSeed.swift */,
@@ -161,6 +174,7 @@
 			children = (
 				66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */,
 				A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */,
+				0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */,
 				56DE292168B8F015324A61AC /* KKSUCommunication.swift */,
 				9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */,
 				3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */,
@@ -191,6 +205,8 @@
 			children = (
 				3905D7917F2B3429490B01CF /* README.md */,
 				2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */,
+				C8458A44D83AA6371A48B4BB /* README.md */,
+				F22CC2D343AC9C2005AA4BF6 /* schema.sql */,
 			);
 			name = "Docs";
 			sourceTree = "<group>";
@@ -290,6 +306,9 @@
 				41E3E3A9711AA4F1F1ABE57E /* KKSUAppStore.swift in Sources */,
 				5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */,
 				25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */,
+				541A6075EA274AF4F5307B02 /* KKSUCloud.swift in Sources */,
+				4E70C4050399A393F2F9F0BA /* KKSUCloudStore.swift in Sources */,
+				46A974A74D431B641BB1D44A /* KKSUCloudSync.swift in Sources */,
 				EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */,
 				53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */,
 				0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */,
@@ -297,6 +316,7 @@
 				BE9AC1757270551BC9ACD9AF /* KKSUTheme.swift in Sources */,
 				BD3AFC4726941E1C3B783328 /* KKSUAIAndPersonalization.swift in Sources */,
 				13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */,
+				9F9E7F6FE4D601324EC9A1E5 /* KKSUCloudViews.swift in Sources */,
 				0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */,
 				84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */,
 				69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */,
