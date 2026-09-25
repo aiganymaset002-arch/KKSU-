@@ -7,38 +7,13 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var showPassword: Bool = false
     
-    enum UserRole: String, CaseIterable {
-        case student
-        case teacher
-        case parent
-        case universityStudent
-        
-        var title: String {
-            switch self {
-            case .student:
-                return "Ученик"
-            case .teacher:
-                return "Преподаватель"
-            case .parent:
-                return "Родитель"
-            case .universityStudent:
-                return "Студент"
-            }
-        }
-        
-        var icon: String {
-            switch self {
-            case .student:
-                return "graduationcap.fill"
-            case .teacher:
-                return "person.fill"
-            case .parent:
-                return "person.2.fill"
-            case .universityStudent:
-                return "books.vertical.fill"
-            }
-        }
-    }
+    @EnvironmentObject private var store: KKSUStore
+    @State private var errorMessage: String?
+    @State private var showRegistration = false
+    @State private var showRecovery = false
+
+    /// Роли KKSU Online: ученик, родитель, педагог, психолог, эксперт, наставник, партнёр, администратор.
+    typealias UserRole = KKSURole
     
     var body: some View {
         ZStack {
@@ -53,13 +28,13 @@ struct LoginView: View {
                     
                     VStack(spacing: 8) {
                         
-                        Text("Корфоворт")
+                        Text("KKSU Online")
                             .font(.system(size: 34, weight: .bold))
                             .foregroundColor(
                                 Color(red: 0.0, green: 0.20, blue: 0.49)
                             )
                         
-                        Text("Образование без барьеров.")
+                        Text("Comfort School-University · Образование без барьеров.")
                             .font(.system(size: 18))
                             .foregroundColor(
                                 Color(red: 0.32, green: 0.38, blue: 0.41)
@@ -125,7 +100,12 @@ struct LoginView: View {
                     
                     // MARK: Email
                     
-                    TextField("Логин или Email", text: $email)
+                    TextField("Email", text: $email)
+                        .autocorrectionDisabled()
+#if os(iOS)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
+#endif
                         .padding(.horizontal, 16)
                         .frame(height: 56)
                         .background(Color.white)
@@ -177,6 +157,14 @@ struct LoginView: View {
                     )
                     .padding(.top, 14)
                     
+                    
+                    if let errorMessage {
+                        Text(errorMessage)
+                            .font(.system(size: 14))
+                            .foregroundColor(.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.top, 10)
+                    }
                     
                     // MARK: Кнопка входа
                     
@@ -246,10 +234,28 @@ struct LoginView: View {
                             .foregroundColor(.secondary)
                     }
                     .padding(.top, 18)
+                    
+                    // MARK: Демо-доступ
+                    
+                    Button {
+                        fillDemo()
+                    } label: {
+                        Text("Демо-вход для роли «\(selectedRole.title)» (пароль \(KKSUSeed.demoPassword))")
+                            .font(.system(size: 13))
+                            .foregroundColor(Color(red: 0.0, green: 0.20, blue: 0.49))
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.top, 12)
                     .padding(.bottom, 40)
                 }
                 .padding(.horizontal, 20)
             }
+        }
+        .sheet(isPresented: $showRegistration) {
+            NavigationStack { RegistrationView(initialRole: selectedRole) }
+        }
+        .sheet(isPresented: $showRecovery) {
+            NavigationStack { ForgotPasswordView(email: email) }
         }
     }
     
@@ -257,16 +263,27 @@ struct LoginView: View {
     // MARK: Действия
     
     private func login() {
-        print("Вход: \(email)")
-        print("Роль: \(selectedRole.title)")
+        do {
+            try store.login(email: email, password: password, expectedRole: selectedRole)
+            errorMessage = nil
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
     
     private func createAccount() {
-        print("Создание аккаунта")
+        showRegistration = true
     }
     
     private func forgotPassword() {
-        print("Восстановление пароля")
+        showRecovery = true
+    }
+    
+    private func fillDemo() {
+        if let account = KKSUSeed.demoAccounts.first(where: { $0.role == selectedRole }) {
+            email = account.email
+            password = KKSUSeed.demoPassword
+        }
     }
 }
 
@@ -359,5 +376,6 @@ struct LoginView_Previews: PreviewProvider {
     
     static var previews: some View {
         LoginView()
+            .environmentObject(KKSUStore(inMemory: true))
     }
 }

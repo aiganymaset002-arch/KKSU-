@@ -10,6 +10,10 @@ import SwiftData
 
 @main
 struct Comfort_School_UnivercityApp: App {
+    /// Единое хранилище KKSU Online (все 100 модулей платформы).
+    @StateObject private var store = KKSUStore()
+    @Environment(\.scenePhase) private var scenePhase
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +29,12 @@ struct Comfort_School_UnivercityApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            KKSURootView()
+                .environmentObject(store)
         }
         .modelContainer(sharedModelContainer)
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { store.saveNow() }
+        }
     }
 }

@@ -1,6 +1,7 @@
 import SwiftUI
 
-struct ProgressView: View {
+/// Переименовано из `ProgressView`, чтобы не перекрывать `SwiftUI.ProgressView` во всём модуле.
+struct StudentProgressView: View {
 
     // MARK: - Colors
 
@@ -652,5 +653,5 @@ struct ProgressView: View {
 // MARK: - Preview
 
 #Preview {
-    ProgressView()
+    StudentProgressView()
 }
