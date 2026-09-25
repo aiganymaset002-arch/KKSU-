@@ -31,10 +31,29 @@ struct PaymentSettings: Codable, Hashable {
     /// Курс для пересчёта цен в тенге (банк при переводе конвертирует по своему курсу).
     var usdToKzt = KKSUPaymentDefaults.usdToKzt
     var eurToKzt = KKSUPaymentDefaults.eurToKzt
-    var enabledMethods: [PaymentMethod] = PaymentMethod.allCases
+    var enabledMethods: [PaymentMethod] = PaymentMethod.manualCases
     /// Срок, в течение которого можно запросить возврат.
     var refundDays = 14
     var instructionsFooter = "В комментарии к переводу обязательно укажите код счёта — так мы быстрее найдём ваш платёж."
+    /// В iOS-приложении цифровой контент (курсы, подписки, программы) продаётся только через App Store —
+    /// этого требуют правила Apple (App Review Guidelines 3.1.1). Выключайте только для внутренних сборок.
+    var useAppStoreForDigital = true
+
+    init() {}
+
+    // Мягкое чтение: новые поля не ломают ранее сохранённые настройки.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let d = PaymentSettings()
+        recipientPhone = try c.decodeIfPresent(String.self, forKey: .recipientPhone) ?? d.recipientPhone
+        recipientName = try c.decodeIfPresent(String.self, forKey: .recipientName) ?? d.recipientName
+        usdToKzt = try c.decodeIfPresent(Double.self, forKey: .usdToKzt) ?? d.usdToKzt
+        eurToKzt = try c.decodeIfPresent(Double.self, forKey: .eurToKzt) ?? d.eurToKzt
+        enabledMethods = (try c.decodeIfPresent([PaymentMethod].self, forKey: .enabledMethods) ?? d.enabledMethods).filter { $0 != .appStore }
+        refundDays = try c.decodeIfPresent(Int.self, forKey: .refundDays) ?? d.refundDays
+        instructionsFooter = try c.decodeIfPresent(String.self, forKey: .instructionsFooter) ?? d.instructionsFooter
+        useAppStoreForDigital = try c.decodeIfPresent(Bool.self, forKey: .useAppStoreForDigital) ?? d.useAppStoreForDigital
+    }
 }
 
 enum PayCurrency: String, Codable, CaseIterable, Identifiable {
@@ -60,8 +79,13 @@ enum PaymentRegion: String, Codable, CaseIterable, Identifiable {
 enum PaymentMethod: String, Codable, CaseIterable, Identifiable {
     case kaspi, halyk, freedom, jusan, forte, bereke, bcc, homeCredit, otherKZBank
     case internationalCard, koronaPay, westernUnion, wise
+    /// Встроенная покупка Apple (StoreKit). Не показывается в списке ручных переводов.
+    case appStore
 
     var id: String { rawValue }
+
+    /// Способы оплаты переводом (без App Store).
+    static var manualCases: [PaymentMethod] { allCases.filter { $0 != .appStore } }
 
     var title: String {
         switch self {
@@ -78,6 +102,7 @@ enum PaymentMethod: String, Codable, CaseIterable, Identifiable {
         case .koronaPay: return "Korona Pay (Золотая Корона)"
         case .westernUnion: return "Western Union"
         case .wise: return "Wise"
+        case .appStore: return "App Store (Apple)"
         }
     }
 
@@ -87,13 +112,14 @@ enum PaymentMethod: String, Codable, CaseIterable, Identifiable {
         case .halyk: return "h.circle.fill"
         case .internationalCard: return "creditcard.fill"
         case .koronaPay, .westernUnion, .wise: return "globe.europe.africa.fill"
+        case .appStore: return "apple.logo"
         default: return "building.columns.fill"
         }
     }
 
     var region: PaymentRegion {
         switch self {
-        case .internationalCard, .koronaPay, .westernUnion, .wise: return .international
+        case .internationalCard, .koronaPay, .westernUnion, .wise, .appStore: return .international
         default: return .kazakhstan
         }
     }
@@ -101,7 +127,7 @@ enum PaymentMethod: String, Codable, CaseIterable, Identifiable {
     /// В какой валюте удобнее всего платить этим способом.
     var preferredCurrency: PayCurrency {
         switch self {
-        case .internationalCard, .westernUnion, .wise: return .usd
+        case .internationalCard, .westernUnion, .wise, .appStore: return .usd
         default: return .kzt
         }
     }
@@ -140,6 +166,8 @@ enum PaymentMethod: String, Codable, CaseIterable, Identifiable {
                     "Реквизиты получателя (IBAN Kaspi) запросите у администратора KKSU в чате.",
                     "Сумма: \(amount); конвертация выполняется Wise автоматически.",
                     "В назначении платежа укажите \(code)."]
+        case .appStore:
+            return ["Оплата прошла через App Store. Чек Apple придёт на почту вашего Apple ID."]
         }
     }
 }
@@ -183,6 +211,15 @@ enum ProductKind: String, Codable, CaseIterable, Identifiable {
         case .inventionsService: return "hammer.fill"
         case .conference: return "calendar.badge.plus"
         case .subscription: return "star.circle.fill"
+        }
+    }
+
+    /// Цифровой контент внутри приложения — в iOS продаётся через App Store.
+    /// Мероприятия, конкурсы и реальные услуги (консультации, 3D-печать) можно оплачивать переводом.
+    var isDigital: Bool {
+        switch self {
+        case .youngInventors, .inventionsService, .conference: return false
+        default: return true
         }
     }
 
@@ -288,6 +325,9 @@ struct Invoice: Identifiable, Codable, Hashable {
     var confirmedBy: UUID?
     var refundReason: String = ""
     var refundedAt: Date?
+    /// Для покупок через App Store.
+    var storeProductID: String?
+    var appStoreTransactionID: String?
 
     var totalUSD: Double { max(priceUSD - discountUSD, 0) }
     /// Код для комментария к переводу.

@@ -21,6 +21,7 @@
 		DBA7CF0DC6399B8EB9B3AAA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FF0DC346ED550DD42E4DF /* User.swift */; };
 		1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */; };
 		9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */; };
+		41E3E3A9711AA4F1F1ABE57E /* KKSUAppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */; };
 		5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146EB5138648104DF743767 /* KKSUBilling.swift */; };
 		25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */; };
 		EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5DB70E620E98DCC39F050 /* KKSUModels.swift */; };
@@ -37,9 +38,11 @@
 		53B2A7BD1F77167E9C3FBB05 /* KKSULibraryAndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */; };
 		127A81D4101BB5F8215AE36F /* KKSUPartnersEventsAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */; };
 		7109F58A2235000D12855C29 /* KKSUPayments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */; };
+		185E6E7563ACEC96F854995B /* KKSUPrivacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DBD987F3B16492CA031910 /* KKSUPrivacy.swift */; };
 		348526DC61DEC1C0C33AB338 /* KKSURootViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FA214039B0D0A99C41094E /* KKSURootViews.swift */; };
 		312D11EBE7D3C95DCCAE767C /* KKSUStudentModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */; };
 		B02622A77BBDE5F9208EDCEE /* KKSUTeacherAcademy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */; };
+		D59A1F9D1014643B20E14229 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 21CEC257FEB15BCC84E0ACD5 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,7 @@
 		940FF0DC346ED550DD42E4DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User.swift"; sourceTree = "<group>"; };
 		8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAIService.swift"; sourceTree = "<group>"; };
 		FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAnalyticsEngine.swift"; sourceTree = "<group>"; };
+		45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAppStore.swift"; sourceTree = "<group>"; };
 		4146EB5138648104DF743767 /* KKSUBilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBilling.swift"; sourceTree = "<group>"; };
 		AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBillingLogic.swift"; sourceTree = "<group>"; };
 		01A5DB70E620E98DCC39F050 /* KKSUModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUModels.swift"; sourceTree = "<group>"; };
@@ -73,10 +77,13 @@
 		C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSULibraryAndTests.swift"; sourceTree = "<group>"; };
 		BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUPartnersEventsAnalytics.swift"; sourceTree = "<group>"; };
 		34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUPayments.swift"; sourceTree = "<group>"; };
+		14DBD987F3B16492CA031910 /* KKSUPrivacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUPrivacy.swift"; sourceTree = "<group>"; };
 		E1FA214039B0D0A99C41094E /* KKSURootViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSURootViews.swift"; sourceTree = "<group>"; };
 		1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUStudentModules.swift"; sourceTree = "<group>"; };
 		7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTeacherAcademy.swift"; sourceTree = "<group>"; };
 		CAF9B6B99962BF5C22648242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21CEC257FEB15BCC84E0ACD5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		593AD2687342375443766B2B /* KKSU.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = KKSU.storekit; sourceTree = "<group>"; };
 		3905D7917F2B3429490B01CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = KKSU_TASKS.md; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
 		F5BF48AA40CAD7891EB709FC /* KKSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KKSU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +144,7 @@
 			children = (
 				8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */,
 				FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */,
+				45AB84E4FCEFA4509E08F901 /* KKSUAppStore.swift */,
 				4146EB5138648104DF743767 /* KKSUBilling.swift */,
 				AA1A8C363425669746B0DFC1 /* KKSUBillingLogic.swift */,
 				01A5DB70E620E98DCC39F050 /* KKSUModels.swift */,
@@ -160,6 +168,7 @@
 				C416659FE907961172335BC4 /* KKSULibraryAndTests.swift */,
 				BBF0E3BE402A1EE70CA3E8E9 /* KKSUPartnersEventsAnalytics.swift */,
 				34FDC7BE1641EAB5518EE85C /* KKSUPayments.swift */,
+				14DBD987F3B16492CA031910 /* KKSUPrivacy.swift */,
 				E1FA214039B0D0A99C41094E /* KKSURootViews.swift */,
 				1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */,
 				7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */,
@@ -171,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				CAF9B6B99962BF5C22648242 /* Info.plist */,
+				21CEC257FEB15BCC84E0ACD5 /* PrivacyInfo.xcprivacy */,
+				593AD2687342375443766B2B /* KKSU.storekit */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D59A1F9D1014643B20E14229 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +287,7 @@
 				DBA7CF0DC6399B8EB9B3AAA6 /* User.swift in Sources */,
 				1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */,
 				9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */,
+				41E3E3A9711AA4F1F1ABE57E /* KKSUAppStore.swift in Sources */,
 				5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */,
 				25C6422CAA90E5D960BED946 /* KKSUBillingLogic.swift in Sources */,
 				EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */,
@@ -291,6 +304,7 @@
 				53B2A7BD1F77167E9C3FBB05 /* KKSULibraryAndTests.swift in Sources */,
 				127A81D4101BB5F8215AE36F /* KKSUPartnersEventsAnalytics.swift in Sources */,
 				7109F58A2235000D12855C29 /* KKSUPayments.swift in Sources */,
+				185E6E7563ACEC96F854995B /* KKSUPrivacy.swift in Sources */,
 				348526DC61DEC1C0C33AB338 /* KKSURootViews.swift in Sources */,
 				312D11EBE7D3C95DCCAE767C /* KKSUStudentModules.swift in Sources */,
 				B02622A77BBDE5F9208EDCEE /* KKSUTeacherAcademy.swift in Sources */,

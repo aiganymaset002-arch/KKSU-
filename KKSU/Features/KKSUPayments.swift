@@ -132,6 +132,12 @@ struct CheckoutView: View {
     @State private var currency: PayCurrency = .kzt
     @State private var error: String?
     @State private var createdInvoiceID: UUID?
+    @State private var purchasing = false
+    @State private var purchaseMessage: String?
+    @ObservedObject private var appStore = KKSUAppStore.shared
+
+    /// Цифровой контент в iOS продаётся через App Store (правила Apple 3.1.1).
+    private var viaAppStore: Bool { appStore.usesAppStore(product, settings: store.billing.settings) }
 
     private var candidates: [KKSUUser] {
         guard let me = store.currentUser else { return [] }
@@ -184,68 +190,108 @@ struct CheckoutView: View {
                         }
                     }
                 }
-                Section("Промокод") {
-                    HStack {
-                        TextField("Например, KKSU10", text: $promo)
-                            .autocorrectionDisabled()
-                            #if os(iOS)
-                            .textInputAutocapitalization(.characters)
-                            #endif
-                        Button("Применить") {
-                            appliedPromo = store.validatePromo(promo, for: product)
-                            error = appliedPromo == nil ? BillingError.invalidPromo.localizedDescription : nil
+                if viaAppStore {
+                    Section {
+                        HStack {
+                            Image(systemName: "apple.logo").font(.title2)
+                            VStack(alignment: .leading) {
+                                Text("Оплата через App Store").font(.headline)
+                                Text("Apple ID, Apple Pay или карта, привязанная к App Store").font(.caption).foregroundStyle(.secondary)
+                            }
                         }
-                        .disabled(promo.isEmpty)
-                    }
-                    if let appliedPromo {
-                        Label("Скидка \(converted(discount, to: .usd)) по коду \(appliedPromo.code)", systemImage: "tag.fill")
-                            .foregroundStyle(KKSUTheme.success)
-                    }
-                }
-                Section("Откуда вы платите") {
-                    Picker("Регион", selection: $region) {
-                        ForEach(PaymentRegion.allCases) { Text($0.title).tag($0) }
-                    }
-                    .pickerStyle(.segmented)
-                    .onChange(of: region) { _, newRegion in
-                        method = store.billing.settings.enabledMethods.first { $0.region == newRegion } ?? method
-                        currency = method.preferredCurrency
-                    }
-                    Picker("Способ оплаты", selection: $method) {
-                        ForEach(store.billing.settings.enabledMethods.filter { $0.region == region }) { m in
-                            Label(m.title, systemImage: m.icon).tag(m)
+                        HStack {
+                            Text("Итого").bold()
+                            Spacer()
+                            Text(appStore.storeProduct(for: product)?.displayPrice ?? converted(product.priceUSD, to: .usd))
+                                .font(.title3.bold()).foregroundStyle(.tint)
+                        }
+                        Text("Цена в App Store указывается в валюте вашей страны. Доступ откроется сразу после оплаты. Скидки по промокодам в App Store не применяются — используйте коды предложений Apple.")
+                            .font(.caption).foregroundStyle(.secondary)
+                        if let purchaseMessage {
+                            Text(purchaseMessage).font(.callout).foregroundStyle(KKSUTheme.success)
                         }
                     }
-                    .onChange(of: method) { _, m in currency = m.preferredCurrency }
-                    Picker("Валюта отображения", selection: $currency) {
-                        ForEach(PayCurrency.allCases) { Text($0.rawValue).tag($0) }
+                    if let error {
+                        Section { Text(error).foregroundStyle(KKSUTheme.danger) }
                     }
-                    .pickerStyle(.segmented)
-                }
-                Section("К оплате") {
-                    KInfoRow(label: "Цена", value: converted(product.priceUSD, to: .usd))
-                    if discount > 0 { KInfoRow(label: "Скидка", value: "−" + converted(discount, to: .usd)) }
-                    HStack {
-                        Text("Итого").bold()
-                        Spacer()
-                        Text(converted(totalUSD, to: currency)).font(.title3.bold()).foregroundStyle(.tint)
+                    Section {
+                        Button {
+                            Task { await buyInAppStore() }
+                        } label: {
+                            HStack {
+                                if purchasing { SwiftUI.ProgressView() }
+                                Label("Купить через App Store", systemImage: "apple.logo").frame(maxWidth: .infinity)
+                            }
+                        }
+                        .fontWeight(.semibold)
+                        .disabled(purchasing)
+                        Button("Восстановить покупки") { Task { await appStore.restore() } }
+                            .font(.caption)
                     }
-                    Text("≈ \(converted(totalUSD, to: .usd)) · \(converted(totalUSD, to: .eur)) · \(converted(totalUSD, to: .kzt))")
-                        .font(.caption).foregroundStyle(.secondary)
-                    Text("Деньги зачисляются на счёт получателя KKSU в тенге. Если вы платите в долларах или евро, ваш банк или сервис перевода сконвертирует сумму автоматически по своему курсу.")
-                        .font(.caption).foregroundStyle(.secondary)
-                }
-                if let error {
-                    Section { Text(error).foregroundStyle(KKSUTheme.danger) }
-                }
-                Section {
-                    Button {
-                        createInvoice()
-                    } label: {
-                        Label(totalUSD > 0 ? "Выставить счёт и перейти к оплате" : "Получить доступ бесплатно", systemImage: "doc.text.fill")
-                            .frame(maxWidth: .infinity)
+                } else {
+                    Section("Промокод") {
+                        HStack {
+                            TextField("Например, KKSU10", text: $promo)
+                                .autocorrectionDisabled()
+                                #if os(iOS)
+                                .textInputAutocapitalization(.characters)
+                                #endif
+                            Button("Применить") {
+                                appliedPromo = store.validatePromo(promo, for: product)
+                                error = appliedPromo == nil ? BillingError.invalidPromo.localizedDescription : nil
+                            }
+                            .disabled(promo.isEmpty)
+                        }
+                        if let appliedPromo {
+                            Label("Скидка \(converted(discount, to: .usd)) по коду \(appliedPromo.code)", systemImage: "tag.fill")
+                                .foregroundStyle(KKSUTheme.success)
+                        }
                     }
-                    .fontWeight(.semibold)
+                    Section("Откуда вы платите") {
+                        Picker("Регион", selection: $region) {
+                            ForEach(PaymentRegion.allCases) { Text($0.title).tag($0) }
+                        }
+                        .pickerStyle(.segmented)
+                        .onChange(of: region) { _, newRegion in
+                            method = store.billing.settings.enabledMethods.first { $0.region == newRegion } ?? method
+                            currency = method.preferredCurrency
+                        }
+                        Picker("Способ оплаты", selection: $method) {
+                            ForEach(store.billing.settings.enabledMethods.filter { $0.region == region }) { m in
+                                Label(m.title, systemImage: m.icon).tag(m)
+                            }
+                        }
+                        .onChange(of: method) { _, m in currency = m.preferredCurrency }
+                        Picker("Валюта отображения", selection: $currency) {
+                            ForEach(PayCurrency.allCases) { Text($0.rawValue).tag($0) }
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    Section("К оплате") {
+                        KInfoRow(label: "Цена", value: converted(product.priceUSD, to: .usd))
+                        if discount > 0 { KInfoRow(label: "Скидка", value: "−" + converted(discount, to: .usd)) }
+                        HStack {
+                            Text("Итого").bold()
+                            Spacer()
+                            Text(converted(totalUSD, to: currency)).font(.title3.bold()).foregroundStyle(.tint)
+                        }
+                        Text("≈ \(converted(totalUSD, to: .usd)) · \(converted(totalUSD, to: .eur)) · \(converted(totalUSD, to: .kzt))")
+                            .font(.caption).foregroundStyle(.secondary)
+                        Text("Деньги зачисляются на счёт получателя KKSU в тенге. Если вы платите в долларах или евро, ваш банк или сервис перевода сконвертирует сумму автоматически по своему курсу.")
+                            .font(.caption).foregroundStyle(.secondary)
+                    }
+                    if let error {
+                        Section { Text(error).foregroundStyle(KKSUTheme.danger) }
+                    }
+                    Section {
+                        Button {
+                            createInvoice()
+                        } label: {
+                            Label(totalUSD > 0 ? "Выставить счёт и перейти к оплате" : "Получить доступ бесплатно", systemImage: "doc.text.fill")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .fontWeight(.semibold)
+                    }
                 }
             }
             .navigationTitle("Оплата")
@@ -258,6 +304,30 @@ struct CheckoutView: View {
                 method = store.billing.settings.enabledMethods.first { $0.region == region } ?? .kaspi
                 currency = method.preferredCurrency
             }
+        }
+    }
+
+    private func buyInAppStore() async {
+        purchasing = true
+        defer { purchasing = false }
+        let list = candidates.count > 1 || store.role == .parent ? Array(beneficiaries) : [store.currentUser?.id].compactMap { $0 }
+        guard !list.isEmpty else {
+            error = BillingError.noBeneficiary.localizedDescription
+            return
+        }
+        do {
+            switch try await appStore.purchase(product, beneficiaries: list, targetID: targetID) {
+            case .success:
+                error = nil
+                purchaseMessage = "Оплачено! Доступ уже открыт."
+                dismiss()
+            case .pending:
+                purchaseMessage = "Покупка ожидает подтверждения (например, «Попросить купить»). Доступ откроется автоматически."
+            case .cancelled:
+                break
+            }
+        } catch {
+            self.error = error.localizedDescription
         }
     }
 
@@ -446,6 +516,7 @@ struct BankLinks: View {
         case .internationalCard, .koronaPay: return [("Korona Pay", "https://koronapay.com")]
         case .westernUnion: return [("Western Union", "https://www.westernunion.com")]
         case .wise: return [("Wise", "https://wise.com")]
+        case .appStore: return []
         }
     }
 
@@ -491,6 +562,11 @@ struct PaymentHistoryView: View {
                 ForEach(invoices) { invoice in
                     NavigationLink { InvoiceDetailView(invoiceID: invoice.id) } label: { InvoiceRow(invoice: invoice) }
                 }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Восстановить") { Task { await KKSUAppStore.shared.restore() } }
             }
         }
         .navigationTitle("История платежей")
@@ -636,6 +712,16 @@ struct SubscriptionsView: View {
             }
             Text("Подписка открывает все образовательные курсы, Future Engineers и Global Classroom. Семейная подписка — до 4 детей в одном аккаунте родителя.")
                 .font(.callout).foregroundStyle(.secondary)
+            HStack {
+                Button("Восстановить покупки") { Task { await KKSUAppStore.shared.restore() } }
+                Spacer()
+                if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                    Link("Управлять подписками", destination: url)
+                }
+            }
+            .font(.callout)
+            Text("Подписка продлевается автоматически, пока вы её не отмените в настройках Apple ID не позднее чем за 24 часа до конца периода.")
+                .font(.caption2).foregroundStyle(.secondary)
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 240), spacing: 12)], spacing: 12) {
                 ForEach(plans) { plan in
                     KCard {
@@ -1143,8 +1229,15 @@ struct PaymentSettingsView: View {
                 Stepper("1 EUR = \(Int(store.billing.settings.eurToKzt)) ₸", value: $store.billing.settings.eurToKzt, in: 100...2000, step: 1)
                 Text("Цены хранятся в долларах. Банк плательщика конвертирует валюту по своему курсу.").font(.caption).foregroundStyle(.secondary)
             }
-            Section("Способы оплаты") {
-                ForEach(PaymentMethod.allCases) { method in
+            Section {
+                Toggle("Цифровой контент — через App Store", isOn: $store.billing.settings.useAppStoreForDigital)
+            } header: {
+                Text("App Store")
+            } footer: {
+                Text("Apple требует продавать курсы, программы и подписки в iOS-приложении через встроенные покупки. Переводы на счёт остаются для конференций, конкурсов и очных услуг. Выключайте только для внутренних сборок.")
+            }
+            Section("Способы оплаты переводом") {
+                ForEach(PaymentMethod.manualCases) { method in
                     Toggle(isOn: Binding(
                         get: { store.billing.settings.enabledMethods.contains(method) },
                         set: { on in

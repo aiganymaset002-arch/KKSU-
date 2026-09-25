@@ -1,0 +1,447 @@
+{
+  "identifier": "9C7D3B2A-1F4E-4C6B-9A1D-5A1B2C3D4E5F",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "10.0",
+      "familyShareable": false,
+      "internalID": "814307549",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $10.",
+          "displayName": "Доступ KKSU $10",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $10.",
+          "displayName": "Доступ KKSU $10",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd10",
+      "referenceName": "KKSU unlock $10",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "15.0",
+      "familyShareable": false,
+      "internalID": "459297111",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $15.",
+          "displayName": "Доступ KKSU $15",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $15.",
+          "displayName": "Доступ KKSU $15",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd15",
+      "referenceName": "KKSU unlock $15",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "20.0",
+      "familyShareable": false,
+      "internalID": "338031338",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $20.",
+          "displayName": "Доступ KKSU $20",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $20.",
+          "displayName": "Доступ KKSU $20",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd20",
+      "referenceName": "KKSU unlock $20",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "25.0",
+      "familyShareable": false,
+      "internalID": "744237068",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $25.",
+          "displayName": "Доступ KKSU $25",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $25.",
+          "displayName": "Доступ KKSU $25",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd25",
+      "referenceName": "KKSU unlock $25",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "30.0",
+      "familyShareable": false,
+      "internalID": "450306574",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $30.",
+          "displayName": "Доступ KKSU $30",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $30.",
+          "displayName": "Доступ KKSU $30",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd30",
+      "referenceName": "KKSU unlock $30",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "35.0",
+      "familyShareable": false,
+      "internalID": "488283436",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $35.",
+          "displayName": "Доступ KKSU $35",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $35.",
+          "displayName": "Доступ KKSU $35",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd35",
+      "referenceName": "KKSU unlock $35",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "40.0",
+      "familyShareable": false,
+      "internalID": "911949144",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $40.",
+          "displayName": "Доступ KKSU $40",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $40.",
+          "displayName": "Доступ KKSU $40",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd40",
+      "referenceName": "KKSU unlock $40",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "50.0",
+      "familyShareable": false,
+      "internalID": "338640924",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $50.",
+          "displayName": "Доступ KKSU $50",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $50.",
+          "displayName": "Доступ KKSU $50",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd50",
+      "referenceName": "KKSU unlock $50",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "60.0",
+      "familyShareable": false,
+      "internalID": "487590012",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $60.",
+          "displayName": "Доступ KKSU $60",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $60.",
+          "displayName": "Доступ KKSU $60",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd60",
+      "referenceName": "KKSU unlock $60",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "90.0",
+      "familyShareable": false,
+      "internalID": "350265828",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $90.",
+          "displayName": "Доступ KKSU $90",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $90.",
+          "displayName": "Доступ KKSU $90",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd90",
+      "referenceName": "KKSU unlock $90",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "100.0",
+      "familyShareable": false,
+      "internalID": "734521366",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $100.",
+          "displayName": "Доступ KKSU $100",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $100.",
+          "displayName": "Доступ KKSU $100",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd100",
+      "referenceName": "KKSU unlock $100",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "120.0",
+      "familyShareable": false,
+      "internalID": "201040355",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $120.",
+          "displayName": "Доступ KKSU $120",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $120.",
+          "displayName": "Доступ KKSU $120",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd120",
+      "referenceName": "KKSU unlock $120",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "150.0",
+      "familyShareable": false,
+      "internalID": "813697858",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $150.",
+          "displayName": "Доступ KKSU $150",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $150.",
+          "displayName": "Доступ KKSU $150",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd150",
+      "referenceName": "KKSU unlock $150",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "200.0",
+      "familyShareable": false,
+      "internalID": "277010593",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $200.",
+          "displayName": "Доступ KKSU $200",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $200.",
+          "displayName": "Доступ KKSU $200",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd200",
+      "referenceName": "KKSU unlock $200",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "250.0",
+      "familyShareable": false,
+      "internalID": "808902008",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $250.",
+          "displayName": "Доступ KKSU $250",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $250.",
+          "displayName": "Доступ KKSU $250",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd250",
+      "referenceName": "KKSU unlock $250",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "300.0",
+      "familyShareable": false,
+      "internalID": "258952971",
+      "localizations": [
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $300.",
+          "displayName": "Доступ KKSU $300",
+          "locale": "ru"
+        },
+        {
+          "description": "Открывает выбранный курс или программу KKSU стоимостью до $300.",
+          "displayName": "Доступ KKSU $300",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "kz.kksu.online.unlock.usd300",
+      "referenceName": "KKSU unlock $300",
+      "type": "Consumable"
+    }
+  ],
+  "settings": {
+    "_locale": "ru",
+    "_storefront": "KAZ"
+  },
+  "subscriptionGroups": [
+    {
+      "id": "175221815",
+      "localizations": [],
+      "name": "KKSU",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "15.0",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "234671880",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Подписка KKSU — месяц",
+              "locale": "ru"
+            },
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Подписка KKSU — месяц",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "kz.kksu.online.sub.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Подписка KKSU — месяц",
+          "subscriptionGroupID": "175221815",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "150.0",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "704066163",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Подписка KKSU — год",
+              "locale": "ru"
+            },
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Подписка KKSU — год",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "kz.kksu.online.sub.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Подписка KKSU — год",
+          "subscriptionGroupID": "175221815",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "25.0",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "939318414",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Семейная подписка — месяц",
+              "locale": "ru"
+            },
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Семейная подписка — месяц",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "kz.kksu.online.sub.family.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Семейная подписка — месяц",
+          "subscriptionGroupID": "175221815",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "250.0",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "264343747",
+          "introductoryOffer": null,
+          "localizations": [
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Семейная подписка — год",
+              "locale": "ru"
+            },
+            {
+              "description": "Все курсы KKSU, Future Engineers и Global Classroom.",
+              "displayName": "Семейная подписка — год",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "kz.kksu.online.sub.family.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Семейная подписка — год",
+          "subscriptionGroupID": "175221815",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

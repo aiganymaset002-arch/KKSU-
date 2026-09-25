@@ -258,6 +258,11 @@ struct AIAssistantView: View {
         .sheet(isPresented: $showSettings) { NavigationStack { AIGatewaySettingsView() } }
     }
 
+    private var aiConsentGiven: Bool {
+        guard let me = store.currentUser, me.role == .student else { return true }
+        return store.db.consents.last { $0.studentID == me.id && $0.type == .aiUsage }?.granted ?? false
+    }
+
     private func send(_ raw: String) {
         let question = raw.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !question.isEmpty, let chatKey else { return }
@@ -271,6 +276,8 @@ struct AIAssistantView: View {
         Task {
             var answer: String
             do {
+                // Для учеников вопросы уходят во внешний AI-сервис только с согласия родителя.
+                guard aiConsentGiven else { throw KKSUAIError.notConfigured }
                 answer = try await KKSUAIService.shared.complete(system: system, messages: recent)
             } catch KKSUAIError.notConfigured {
                 answer = LocalAssistant.reply(to: question, mode: mode, store: store)

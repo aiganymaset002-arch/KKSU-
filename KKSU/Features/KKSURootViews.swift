@@ -20,6 +20,11 @@ struct KKSURootView: View {
             }
         }
         .kksuAdaptive(store.accessibility)
+        .task {
+            // Встроенные покупки: загрузка каталога App Store и прослушивание транзакций.
+            KKSUAppStore.shared.start(with: store)
+            await KKSUAppStore.shared.refreshSubscriptions()
+        }
     }
 }
 
@@ -267,6 +272,11 @@ struct AccountView: View {
                     RouteRow(route: .accessibility, subtitle: "Размер текста, контраст, субтитры")
                     RouteRow(route: .learningSettings, subtitle: "Темп, форматы, цели")
                     RouteRow(route: .aiAssistant)
+                }
+                Section("Конфиденциальность") {
+                    NavigationLink { MyDataView() } label: {
+                        Label("Мои данные и конфиденциальность", systemImage: "hand.raised.fill")
+                    }
                 }
                 Section("Платформа") {
                     RouteRow(route: .featureMap, subtitle: "Все 125 модулей KKSU Online")

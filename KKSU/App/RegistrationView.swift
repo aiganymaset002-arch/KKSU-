@@ -23,6 +23,9 @@ struct RegistrationView: View {
     @State private var role: KKSURole = .student
     @State private var childEmail = ""
     @State private var acceptTerms = false
+    @State private var parentConsent = false
+    @State private var showPrivacy = false
+    @State private var showTerms = false
     @State private var errorMessage: String?
 
     var body: some View {
@@ -54,8 +57,21 @@ struct RegistrationView: View {
                 PasswordStrengthView(password: password)
 
                 Toggle(isOn: $acceptTerms) {
-                    Text("Я принимаю правила платформы и согласен на обработку персональных данных")
+                    Text("Я принимаю условия использования и согласен на обработку персональных данных")
                         .font(.footnote)
+                }
+                HStack {
+                    Button("Политика конфиденциальности") { showPrivacy = true }
+                    Text("·").foregroundStyle(.secondary)
+                    Button("Условия") { showTerms = true }
+                }
+                .font(.footnote)
+
+                if role == .student {
+                    Toggle(isOn: $parentConsent) {
+                        Text("Мне есть 18 лет, или мой родитель (законный представитель) согласен на регистрацию и обработку моих данных")
+                            .font(.footnote)
+                    }
                 }
 
                 if let errorMessage {
@@ -78,6 +94,8 @@ struct RegistrationView: View {
             }
         }
         .onAppear { role = initialRole == .admin ? .student : initialRole }
+        .sheet(isPresented: $showPrivacy) { NavigationStack { PrivacyPolicyView() } }
+        .sheet(isPresented: $showTerms) { NavigationStack { TermsOfUseView() } }
     }
 
     private func register() {
@@ -86,7 +104,11 @@ struct RegistrationView: View {
             return
         }
         guard acceptTerms else {
-            errorMessage = "Необходимо принять правила платформы."
+            errorMessage = "Необходимо принять условия использования."
+            return
+        }
+        guard role != .student || parentConsent else {
+            errorMessage = "Для регистрации ученика младше 18 лет нужно согласие родителя."
             return
         }
         do {
