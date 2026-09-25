@@ -32,7 +32,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     // Impact, партнёры, аналитика
     case impactDashboard, impactReport, impactPublic
     case partners, internships, events, analytics
-    case users, featureMap, legacyScreens
+    case users, featureMap
     // Монетизация
     case marketplace, subscriptions, paymentHistory, teacherMarketplace, teacherCertification, inventionsServices
     case revenue, paymentsAdmin, promoCodes, scholarships, pricing, paymentSettings
@@ -119,7 +119,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return "Аналитика KKSU"
         case .users: return "Пользователи и роли"
         case .featureMap: return "Карта 100 задач"
-        case .legacyScreens: return "Прототипы экранов"
         case .marketplace: return "KKSU Marketplace"
         case .subscriptions: return "Подписка KKSU"
         case .paymentHistory: return "История платежей"
@@ -215,7 +214,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return "chart.pie.fill"
         case .users: return "person.3.sequence.fill"
         case .featureMap: return "map.fill"
-        case .legacyScreens: return "iphone.gen3"
         case .marketplace: return "cart.fill"
         case .subscriptions: return "star.circle.fill"
         case .paymentHistory: return "list.bullet.rectangle.portrait.fill"
@@ -345,7 +343,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return AnyView(AnalyticsView())
         case .users: return AnyView(UserManagementView())
         case .featureMap: return AnyView(FeatureMapView())
-        case .legacyScreens: return AnyView(LegacyScreensView())
         case .marketplace: return AnyView(MarketplaceView())
         case .subscriptions: return AnyView(SubscriptionsView())
         case .paymentHistory: return AnyView(PaymentHistoryView())
@@ -384,7 +381,7 @@ struct KKSUModuleSection: Identifiable {
         KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .adminPanel]),
         KKSUModuleSection(title: "Оплата и Marketplace", routes: [.marketplace, .subscriptions, .paymentHistory, .teacherMarketplace, .teacherCertification, .inventionsServices]),
         KKSUModuleSection(title: "Финансы (администратор)", routes: [.revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings]),
-        KKSUModuleSection(title: "О платформе", routes: [.featureMap, .legacyScreens])
+        KKSUModuleSection(title: "О платформе", routes: [.featureMap])
     ]
 }
 

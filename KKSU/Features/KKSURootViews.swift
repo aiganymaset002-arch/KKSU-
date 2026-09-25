@@ -326,19 +326,3 @@ struct FeatureMapView: View {
         .navigationTitle("Карта 100 задач")
     }
 }
-
-// MARK: - Исходные прототипы экранов
-
-struct LegacyScreensView: View {
-    var body: some View {
-        List {
-            Section("Первые прототипы Comfort School-University") {
-                NavigationLink("Моё обучение") { LearningView() }
-                NavigationLink("Моя траектория и прогресс") { StudentProgressView() }
-                NavigationLink("Курс «Математика»") { MathCourseView() }
-                NavigationLink("Задание с автопроверкой") { StudentTaskView() }
-            }
-        }
-        .navigationTitle("Прототипы экранов")
-    }
-}

@@ -7,27 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53AB2D0161A247335320A65E /* Comfort_School_UnivercityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */; };
-		62ADFAF7EDC910F8379C61C6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */; };
-		DC0B9EDD637BA175693E867D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD64D2860E593044184618B /* CustomTextField.swift */; };
-		BA2524356F76677C365C847C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */; };
-		0E62EA294028E9622BE36922 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269B015C0B25DB460A0152D /* Item.swift */; };
-		8C71C6161C5FAAC73D26F78A /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993AA701F354634602AED6F6 /* LessonsView.swift */; };
-		81F720EBC9C246661F819B28 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD4122E8730A51762B13F4F /* LoginView.swift */; };
-		DF7EFBF9D73365AFA748FA97 /* MathCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601E9072DAA52D83E90B2057 /* MathCourseView.swift */; };
-		3A58F1D8B9D91667B3A90A94 /* ParentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083695199F32E74250D6FE45 /* ParentHomeView.swift */; };
-		D27D82207D5ED5CC47D81091 /* ParentProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F96C32434E53B4513864635 /* ParentProgressView.swift */; };
-		80CC0D3AA1455C6331DC4126 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */; };
-		ACC48813D65B34F148D1FF90 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BE2D208A0552197F54353E /* ProgressView.swift */; };
-		30C65593B3231D82F5A30707 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1057DBB427694E5D219B92 /* RegistrationView.swift */; };
-		B851FF94860E42AFE05AC791 /* RoleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C47099DB611610E54A65A2 /* RoleCard.swift */; };
-		40AB9B4EC4835A0F6BFDC43D /* StudentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117948CE33374C2DC61EC0AA /* StudentHomeView.swift */; };
-		895C94C313A144207809736D /* StudentProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */; };
-		88D5286126C8538F1BB9000A /* StudentTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */; };
-		32CC8AE9D8F0EE051029D277 /* TeacherHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */; };
-		7FA50059655DF7F348ECB150 /* TeacherStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */; };
-		AC61A71BFFFE264384B75624 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4E3894B76CA1C5394A78FF /* Untitled.swift */; };
-		475AB791167F6A535B7EECBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FA82CE06667F216BCB773 /* User.swift */; };
+		B7ED87FD68F8E41F0DF4957E /* Comfort_School_UnivercityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D09820490C7760CD862D33A /* Comfort_School_UnivercityApp.swift */; };
+		326AF6F8CB65D65549F09190 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF1A6E9E3349504E8C65CC /* CustomTextField.swift */; };
+		3ABF9409677A15D2783C1348 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F09BF0DBD3D34C417E6E3 /* ForgotPasswordView.swift */; };
+		A61EFF6F777B21CFB3304155 /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C411BDD87D44FE064C6A6F /* LessonsView.swift */; };
+		2DA16DF4F67CC1B9F8490153 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCE7750AFF75607935E96CA /* LoginView.swift */; };
+		B476ED753F1348A3C46FA41A /* ParentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7103EC79021C169D6FB83214 /* ParentHomeView.swift */; };
+		DADE73B095A2E89C2F3DE2DE /* ParentProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144761FDE1BC97AB95D42B98 /* ParentProgressView.swift */; };
+		E0E5EB558A23614F5CC0A787 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C31E39DB2DF219C0F2DEFCE /* PrimaryButton.swift */; };
+		729B47CF1B80CD0625F225B8 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429DB0FFC49FDD542C85F746 /* RegistrationView.swift */; };
+		6E9D584CFCB3D813F60D7107 /* TeacherHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7E0C2F0AB825F98948D741 /* TeacherHomeView.swift */; };
+		EE138B41CA37A841030DCDCF /* TeacherStudentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D68186048DD46165EBB9DC /* TeacherStudentsView.swift */; };
+		DBA7CF0DC6399B8EB9B3AAA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FF0DC346ED550DD42E4DF /* User.swift */; };
 		1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */; };
 		9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */; };
 		5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4146EB5138648104DF743767 /* KKSUBilling.swift */; };
@@ -52,27 +43,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comfort_School_UnivercityApp.swift"; sourceTree = "<group>"; };
-		1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView.swift"; sourceTree = "<group>"; };
-		4BD64D2860E593044184618B /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField.swift"; sourceTree = "<group>"; };
-		2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForgotPasswordView.swift"; sourceTree = "<group>"; };
-		5269B015C0B25DB460A0152D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item.swift"; sourceTree = "<group>"; };
-		993AA701F354634602AED6F6 /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonsView.swift"; sourceTree = "<group>"; };
-		0DD4122E8730A51762B13F4F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView.swift"; sourceTree = "<group>"; };
-		601E9072DAA52D83E90B2057 /* MathCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MathCourseView.swift"; sourceTree = "<group>"; };
-		083695199F32E74250D6FE45 /* ParentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentHomeView.swift"; sourceTree = "<group>"; };
-		7F96C32434E53B4513864635 /* ParentProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentProgressView.swift"; sourceTree = "<group>"; };
-		781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimaryButton.swift"; sourceTree = "<group>"; };
-		A9BE2D208A0552197F54353E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProgressView.swift"; sourceTree = "<group>"; };
-		EE1057DBB427694E5D219B92 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationView.swift"; sourceTree = "<group>"; };
-		15C47099DB611610E54A65A2 /* RoleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoleCard.swift"; sourceTree = "<group>"; };
-		117948CE33374C2DC61EC0AA /* StudentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentHomeView.swift"; sourceTree = "<group>"; };
-		75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentProfileView.swift"; sourceTree = "<group>"; };
-		BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudentTaskView.swift"; sourceTree = "<group>"; };
-		098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherHomeView.swift"; sourceTree = "<group>"; };
-		C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherStudentsView.swift"; sourceTree = "<group>"; };
-		DD4E3894B76CA1C5394A78FF /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Untitled.swift"; sourceTree = "<group>"; };
-		653FA82CE06667F216BCB773 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User.swift"; sourceTree = "<group>"; };
+		3D09820490C7760CD862D33A /* Comfort_School_UnivercityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comfort_School_UnivercityApp.swift"; sourceTree = "<group>"; };
+		37EF1A6E9E3349504E8C65CC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomTextField.swift"; sourceTree = "<group>"; };
+		481F09BF0DBD3D34C417E6E3 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForgotPasswordView.swift"; sourceTree = "<group>"; };
+		07C411BDD87D44FE064C6A6F /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LessonsView.swift"; sourceTree = "<group>"; };
+		ABCE7750AFF75607935E96CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView.swift"; sourceTree = "<group>"; };
+		7103EC79021C169D6FB83214 /* ParentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentHomeView.swift"; sourceTree = "<group>"; };
+		144761FDE1BC97AB95D42B98 /* ParentProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParentProgressView.swift"; sourceTree = "<group>"; };
+		0C31E39DB2DF219C0F2DEFCE /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrimaryButton.swift"; sourceTree = "<group>"; };
+		429DB0FFC49FDD542C85F746 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationView.swift"; sourceTree = "<group>"; };
+		4D7E0C2F0AB825F98948D741 /* TeacherHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherHomeView.swift"; sourceTree = "<group>"; };
+		87D68186048DD46165EBB9DC /* TeacherStudentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeacherStudentsView.swift"; sourceTree = "<group>"; };
+		940FF0DC346ED550DD42E4DF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User.swift"; sourceTree = "<group>"; };
 		8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAIService.swift"; sourceTree = "<group>"; };
 		FB1C414B24CCA7715BD842A9 /* KKSUAnalyticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUAnalyticsEngine.swift"; sourceTree = "<group>"; };
 		4146EB5138648104DF743767 /* KKSUBilling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUBilling.swift"; sourceTree = "<group>"; };
@@ -96,7 +78,7 @@
 		7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTeacherAcademy.swift"; sourceTree = "<group>"; };
 		CAF9B6B99962BF5C22648242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3905D7917F2B3429490B01CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
+		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = KKSU_TASKS.md; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
 		F5BF48AA40CAD7891EB709FC /* KKSU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KKSU.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,52 +96,43 @@
 		FAD58DE7366495DB4650CFEF /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D2A57DC1D883FD21FB995169 /* Comfort School-Univercity */,
 				F7C54FDA6297135D8DEA6B36 /* KKSU */,
+				434990C8A25D2BE94863561A /* Supporting Files */,
 				6823509808722D15FFBB8BF6 /* Docs */,
 				86024CAD1E83101D97359D73 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D2A57DC1D883FD21FB995169 /* Comfort School-Univercity */ = {
-			isa = PBXGroup;
-			children = (
-				F41061F6AABA473C6C28709B /* Comfort_School_UnivercityApp.swift */,
-				1A4C8F32E95A9FD25E99B0F8 /* ContentView.swift */,
-				4BD64D2860E593044184618B /* CustomTextField.swift */,
-				2D74D21FE9DF3A283FDEF689 /* ForgotPasswordView.swift */,
-				5269B015C0B25DB460A0152D /* Item.swift */,
-				993AA701F354634602AED6F6 /* LessonsView.swift */,
-				0DD4122E8730A51762B13F4F /* LoginView.swift */,
-				601E9072DAA52D83E90B2057 /* MathCourseView.swift */,
-				083695199F32E74250D6FE45 /* ParentHomeView.swift */,
-				7F96C32434E53B4513864635 /* ParentProgressView.swift */,
-				781F809A8F8024A9352DC4D6 /* PrimaryButton.swift */,
-				A9BE2D208A0552197F54353E /* ProgressView.swift */,
-				EE1057DBB427694E5D219B92 /* RegistrationView.swift */,
-				15C47099DB611610E54A65A2 /* RoleCard.swift */,
-				117948CE33374C2DC61EC0AA /* StudentHomeView.swift */,
-				75F9BC54F46A1D94128548F3 /* StudentProfileView.swift */,
-				BE6DA7CDA1AAD406EE6CFBBF /* StudentTaskView.swift */,
-				098460DF8AAF6F956D924D7B /* TeacherHomeView.swift */,
-				C5CB615983B25A8F8D01D5F7 /* TeacherStudentsView.swift */,
-				DD4E3894B76CA1C5394A78FF /* Untitled.swift */,
-				653FA82CE06667F216BCB773 /* User.swift */,
-				CAF9B6B99962BF5C22648242 /* Info.plist */,
-			);
-			name = "Comfort School-Univercity";
-			sourceTree = "<group>";
-		};
 		F7C54FDA6297135D8DEA6B36 /* KKSU */ = {
 			isa = PBXGroup;
 			children = (
-				A74AD8DFACD4F985EB397751 /* Core */,
-				1BA8ABA1A88B9C65257F4A4E /* Features */,
+				30BAE363BF904CFF4BA52B3A /* App */,
+				5624E3F01804C9A0FC687E23 /* Core */,
+				45DAB6B8C2FC2337C0F86FDD /* Features */,
 			);
 			path = KKSU;
 			sourceTree = "<group>";
 		};
-		A74AD8DFACD4F985EB397751 /* Core */ = {
+		30BAE363BF904CFF4BA52B3A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3D09820490C7760CD862D33A /* Comfort_School_UnivercityApp.swift */,
+				37EF1A6E9E3349504E8C65CC /* CustomTextField.swift */,
+				481F09BF0DBD3D34C417E6E3 /* ForgotPasswordView.swift */,
+				07C411BDD87D44FE064C6A6F /* LessonsView.swift */,
+				ABCE7750AFF75607935E96CA /* LoginView.swift */,
+				7103EC79021C169D6FB83214 /* ParentHomeView.swift */,
+				144761FDE1BC97AB95D42B98 /* ParentProgressView.swift */,
+				0C31E39DB2DF219C0F2DEFCE /* PrimaryButton.swift */,
+				429DB0FFC49FDD542C85F746 /* RegistrationView.swift */,
+				4D7E0C2F0AB825F98948D741 /* TeacherHomeView.swift */,
+				87D68186048DD46165EBB9DC /* TeacherStudentsView.swift */,
+				940FF0DC346ED550DD42E4DF /* User.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5624E3F01804C9A0FC687E23 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				8CE201E73A8FAA34CB8AAFF0 /* KKSUAIService.swift */,
@@ -175,7 +148,7 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		1BA8ABA1A88B9C65257F4A4E /* Features */ = {
+		45DAB6B8C2FC2337C0F86FDD /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				66FEF75C066576F88838C2BB /* KKSUAIAndPersonalization.swift */,
@@ -192,6 +165,14 @@
 				7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */,
 			);
 			path = Features;
+			sourceTree = "<group>";
+		};
+		434990C8A25D2BE94863561A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CAF9B6B99962BF5C22648242 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		6823509808722D15FFBB8BF6 /* Docs */ = {
@@ -280,27 +261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53AB2D0161A247335320A65E /* Comfort_School_UnivercityApp.swift in Sources */,
-				62ADFAF7EDC910F8379C61C6 /* ContentView.swift in Sources */,
-				DC0B9EDD637BA175693E867D /* CustomTextField.swift in Sources */,
-				BA2524356F76677C365C847C /* ForgotPasswordView.swift in Sources */,
-				0E62EA294028E9622BE36922 /* Item.swift in Sources */,
-				8C71C6161C5FAAC73D26F78A /* LessonsView.swift in Sources */,
-				81F720EBC9C246661F819B28 /* LoginView.swift in Sources */,
-				DF7EFBF9D73365AFA748FA97 /* MathCourseView.swift in Sources */,
-				3A58F1D8B9D91667B3A90A94 /* ParentHomeView.swift in Sources */,
-				D27D82207D5ED5CC47D81091 /* ParentProgressView.swift in Sources */,
-				80CC0D3AA1455C6331DC4126 /* PrimaryButton.swift in Sources */,
-				ACC48813D65B34F148D1FF90 /* ProgressView.swift in Sources */,
-				30C65593B3231D82F5A30707 /* RegistrationView.swift in Sources */,
-				B851FF94860E42AFE05AC791 /* RoleCard.swift in Sources */,
-				40AB9B4EC4835A0F6BFDC43D /* StudentHomeView.swift in Sources */,
-				895C94C313A144207809736D /* StudentProfileView.swift in Sources */,
-				88D5286126C8538F1BB9000A /* StudentTaskView.swift in Sources */,
-				32CC8AE9D8F0EE051029D277 /* TeacherHomeView.swift in Sources */,
-				7FA50059655DF7F348ECB150 /* TeacherStudentsView.swift in Sources */,
-				AC61A71BFFFE264384B75624 /* Untitled.swift in Sources */,
-				475AB791167F6A535B7EECBF /* User.swift in Sources */,
+				B7ED87FD68F8E41F0DF4957E /* Comfort_School_UnivercityApp.swift in Sources */,
+				326AF6F8CB65D65549F09190 /* CustomTextField.swift in Sources */,
+				3ABF9409677A15D2783C1348 /* ForgotPasswordView.swift in Sources */,
+				A61EFF6F777B21CFB3304155 /* LessonsView.swift in Sources */,
+				2DA16DF4F67CC1B9F8490153 /* LoginView.swift in Sources */,
+				B476ED753F1348A3C46FA41A /* ParentHomeView.swift in Sources */,
+				DADE73B095A2E89C2F3DE2DE /* ParentProgressView.swift in Sources */,
+				E0E5EB558A23614F5CC0A787 /* PrimaryButton.swift in Sources */,
+				729B47CF1B80CD0625F225B8 /* RegistrationView.swift in Sources */,
+				6E9D584CFCB3D813F60D7107 /* TeacherHomeView.swift in Sources */,
+				EE138B41CA37A841030DCDCF /* TeacherStudentsView.swift in Sources */,
+				DBA7CF0DC6399B8EB9B3AAA6 /* User.swift in Sources */,
 				1AB8484E65981374F9D6012F /* KKSUAIService.swift in Sources */,
 				9228DE0642EB6BE36A23CB20 /* KKSUAnalyticsEngine.swift in Sources */,
 				5965DF225080593A70CB6D03 /* KKSUBilling.swift in Sources */,
