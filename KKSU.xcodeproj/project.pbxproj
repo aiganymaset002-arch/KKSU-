@@ -50,6 +50,7 @@
 		312D11EBE7D3C95DCCAE767C /* KKSUStudentModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7AD9A0B74C7402532851FC /* KKSUStudentModules.swift */; };
 		B02622A77BBDE5F9208EDCEE /* KKSUTeacherAcademy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */; };
 		D59A1F9D1014643B20E14229 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 21CEC257FEB15BCC84E0ACD5 /* PrivacyInfo.xcprivacy */; };
+		6EEEE39B1AB4355FA617C29C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32BB636196F91ED59D7A4919 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		7A722C05576EB350C702273B /* KKSUTeacherAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUTeacherAcademy.swift"; sourceTree = "<group>"; };
 		CAF9B6B99962BF5C22648242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21CEC257FEB15BCC84E0ACD5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		32BB636196F91ED59D7A4919 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		593AD2687342375443766B2B /* KKSU.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = KKSU.storekit; sourceTree = "<group>"; };
 		3905D7917F2B3429490B01CF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2CB1AD4F3EB0EA704C74A736 /* KKSU_TASKS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = KKSU_TASKS.md; path = docs/KKSU_TASKS.md; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				30BAE363BF904CFF4BA52B3A /* App */,
 				5624E3F01804C9A0FC687E23 /* Core */,
 				45DAB6B8C2FC2337C0F86FDD /* Features */,
+				32BB636196F91ED59D7A4919 /* Assets.xcassets */,
 			);
 			path = KKSU;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D59A1F9D1014643B20E14229 /* PrivacyInfo.xcprivacy in Resources */,
+				6EEEE39B1AB4355FA617C29C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +414,7 @@
 		FA7C752E798F561D7D156D98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -439,6 +444,7 @@
 		22F75101C717335ACF4089A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
