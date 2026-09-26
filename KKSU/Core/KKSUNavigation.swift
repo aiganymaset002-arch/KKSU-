@@ -38,6 +38,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     case revenue, paymentsAdmin, promoCodes, scholarships, pricing, paymentSettings
     // Сервер и конфиденциальность
     case cloudSettings, myData
+    // Конструктор курсов педагога
+    case courseStudio, schoolCourses
 
     var id: String { rawValue }
 
@@ -135,6 +137,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .paymentSettings: return "Настройки оплаты"
         case .cloudSettings: return "Сервер KKSU"
         case .myData: return "Данные и конфиденциальность"
+        case .courseStudio: return "Мои курсы (конструктор)"
+        case .schoolCourses: return "Курсы и уроки"
         }
     }
 
@@ -232,6 +236,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .paymentSettings: return "banknote.fill"
         case .cloudSettings: return "icloud.fill"
         case .myData: return "hand.raised.fill"
+        case .courseStudio: return "square.and.pencil"
+        case .schoolCourses: return "books.vertical.fill"
         }
     }
 
@@ -240,7 +246,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         switch self {
         case .studentCabinet, .homework, .portfolio, .trajectory, .studyPlan, .intake: return [.student, .parent, .teacher, .psychologist, .mentor, .admin]
         case .parentCabinet, .consents: return [.parent, .admin]
-        case .teacherCabinet, .grading, .testBuilder, .teacherAI, .aiTaskGenerator, .teacherRecommendations: return [.teacher, .admin]
+        case .teacherCabinet, .grading, .testBuilder, .courseStudio, .teacherAI, .aiTaskGenerator, .teacherRecommendations: return [.teacher, .admin]
         case .expertCabinet, .methodologyReview, .yiReview: return [.expert, .mentor, .admin]
         case .psychologistCabinet: return [.psychologist, .admin]
         case .partnerCabinet: return [.partner, .admin]
@@ -363,6 +369,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .paymentSettings: return AnyView(PaymentSettingsView())
         case .cloudSettings: return AnyView(CloudSettingsView())
         case .myData: return AnyView(MyDataView())
+        case .courseStudio: return AnyView(CourseStudioView())
+        case .schoolCourses: return AnyView(SchoolCoursesView())
         }
     }
 }
@@ -375,11 +383,11 @@ struct KKSUModuleSection: Identifiable {
     let routes: [KKSURoute]
 
     static let all: [KKSUModuleSection] = [
-        KKSUModuleSection(title: "Обучение", routes: [.programs, .trajectory, .studyPlan, .schedule, .calendar, .homework, .deadlines, .tests, .progressDashboard, .history]),
+        KKSUModuleSection(title: "Обучение", routes: [.schoolCourses, .programs, .trajectory, .studyPlan, .schedule, .calendar, .homework, .deadlines, .tests, .progressDashboard, .history]),
         KKSUModuleSection(title: "Моё", routes: [.studentProfile, .portfolio, .achievements, .certificates, .intake, .application, .consents]),
         KKSUModuleSection(title: "Библиотеки", routes: [.videoLibrary, .methodicalLibrary, .documents]),
         KKSUModuleSection(title: "Связь", routes: [.onlineLessons, .chat, .notifications]),
-        KKSUModuleSection(title: "Педагогу", routes: [.grading, .testBuilder, .teacherAI, .aiTaskGenerator, .progressAnalysis, .teacherRecommendations]),
+        KKSUModuleSection(title: "Педагогу", routes: [.courseStudio, .grading, .testBuilder, .teacherAI, .aiTaskGenerator, .progressAnalysis, .teacherRecommendations]),
         KKSUModuleSection(title: "KKSU Teacher Academy", routes: [.teacherAcademy, .academyRegistration, .academyCourses, .academyLibrary, .academyTasks, .methodologies, .pilots, .methodologyReview, .pilotRegistry]),
         KKSUModuleSection(title: "Изобретения", routes: [.inventions, .teams, .prototypes, .youngInventors, .yiApply, .yiReview, .exhibition]),
         KKSUModuleSection(title: "Global Classroom", routes: [.globalClassroom, .globalClasses, .internationalProjects, .internationalExperts]),
@@ -527,7 +535,12 @@ struct KKSUFeature: Identifiable {
         KKSUFeature(id: 122, title: "Продажи по курсам, преподавателям и программам", route: .revenue),
         KKSUFeature(id: 123, title: "Возвраты и отмены", route: .paymentsAdmin),
         KKSUFeature(id: 124, title: "Автооткрытие курса после подтверждённой оплаты", route: .paymentsAdmin),
-        KKSUFeature(id: 125, title: "Блокировка платного контента до оплаты", route: .marketplace, note: "PaywallGate во всех платных модулях")
+        KKSUFeature(id: 125, title: "Блокировка платного контента до оплаты", route: .marketplace, note: "PaywallGate во всех платных модулях"),
+        KKSUFeature(id: 126, title: "Конструктор курсов и уроков для педагога", route: .courseStudio),
+        KKSUFeature(id: 127, title: "Онлайн-урок по ссылке (Jitsi, Zoom, Meet, Teams) с добавлением в расписание", route: .courseStudio),
+        KKSUFeature(id: 128, title: "Запись урока на YouTube — просмотр прямо в приложении", route: .schoolCourses),
+        KKSUFeature(id: 129, title: "Конспект урока текстом, файлы и полезные ссылки", route: .schoolCourses),
+        KKSUFeature(id: 130, title: "Прохождение курса учеником: прогресс, тест, ДЗ, вопрос учителю", route: .schoolCourses)
     ]
 }
 

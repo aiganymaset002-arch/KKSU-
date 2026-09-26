@@ -1,6 +1,6 @@
 # KKSU Online — технические задачи
 
-В iOS-приложении (SwiftUI) реализованы 100 технических задач платформы и 25 задач монетизации (101–125). В приложении список открывается в разделе **Профиль → Карта 100 задач** (`FeatureMapView`): каждая строка ведёт в соответствующий модуль.
+В iOS-приложении (SwiftUI) реализованы 100 технических задач платформы 25 задач монетизации (101–125) и конструктор курсов для педагога (126–130). В приложении список открывается в разделе **Профиль → Карта 100 задач** (`FeatureMapView`): каждая строка ведёт в соответствующий модуль.
 
 | № | Задача | Экран / тип | Файл |
 |---|---|---|---|
@@ -134,3 +134,13 @@
 | 123 | Возвраты и отмены | `PaymentsAdminView` | `KKSU/Features/KKSUPayments.swift` |
 | 124 | Автооткрытие курса после подтверждённой оплаты | `KKSUStore.confirmPayment → fulfill` | `KKSU/Core/KKSUBillingLogic.swift` |
 | 125 | Блокировка платного контента до оплаты | `PaywallGate, PaywallCard` | `KKSU/Features/KKSUPayments.swift` |
+
+## Конструктор курсов для педагога (126–130)
+
+| № | Задача | Экран / тип | Файл |
+|---|--------|-------------|------|
+| 126 | Конструктор курсов и уроков для педагога | `CourseStudioView, SchoolCourseEditorView, LessonEditorView` | `KKSU/Features/KKSUCourseStudio.swift` |
+| 127 | Онлайн-урок по ссылке (Jitsi, Zoom, Meet, Teams) с добавлением в расписание | `LessonEditorView`, `scheduleLiveLesson` | `KKSU/Core/KKSUCourseLogic.swift` |
+| 128 | Запись урока на YouTube — просмотр в приложении | `YouTubePlayer` | `KKSU/Features/KKSUCourseStudio.swift` |
+| 129 | Конспект урока текстом, файлы и полезные ссылки | `LessonNotesText, AttachmentPicker` | `KKSU/Features/KKSUCourseStudio.swift` |
+| 130 | Прохождение курса учеником: прогресс, тест, ДЗ, вопрос учителю | `SchoolCoursesView, LessonPlayerView` | `KKSU/Features/KKSUCourseStudio.swift` |

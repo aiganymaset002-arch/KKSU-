@@ -100,7 +100,7 @@ struct StudentCabinetView: View {
             }
             KSectionHeader(title: "Быстрый доступ", icon: "square.grid.2x2")
             LazyVGrid(columns: [GridItem(.adaptive(minimum: a11y.simplifiedInterface ? 200 : 140), spacing: 10)], spacing: 10) {
-                ForEach([KKSURoute.homework, .schedule, .tests, .trajectory, .portfolio, .inventions, .videoLibrary, .achievements], id: \.self) {
+                ForEach([KKSURoute.schoolCourses, .homework, .schedule, .tests, .trajectory, .portfolio, .inventions, .achievements], id: \.self) {
                     RouteTile(route: $0)
                 }
             }

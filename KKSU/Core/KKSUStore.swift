@@ -59,7 +59,66 @@ struct KKSUDatabase: Codable {
     var preferences: [UUID: LearningPreferences] = [:]
     var aiChats: [UUID: [AIChatMessage]] = [:]
     var viewedLibraryIDs: [UUID: [UUID]] = [:]
+    var schoolCourses: [SchoolCourse] = []
+    var lessonProgress: [LessonProgress] = []
     var currentUserID: UUID?
+
+    init() {}
+
+    /// Мягкое чтение: новые разделы приложения не ломают ранее сохранённые данные,
+    /// а повреждённый раздел не стирает остальные.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        users = (try? c.decodeIfPresent([KKSUUser].self, forKey: .users)) ?? users
+        studentProfiles = (try? c.decodeIfPresent([StudentProfile].self, forKey: .studentProfiles)) ?? studentProfiles
+        questionnaires = (try? c.decodeIfPresent([IntakeQuestionnaire].self, forKey: .questionnaires)) ?? questionnaires
+        applications = (try? c.decodeIfPresent([EnrollmentApplication].self, forKey: .applications)) ?? applications
+        consents = (try? c.decodeIfPresent([ParentConsent].self, forKey: .consents)) ?? consents
+        programs = (try? c.decodeIfPresent([EducationProgram].self, forKey: .programs)) ?? programs
+        trajectory = (try? c.decodeIfPresent([TrajectoryStep].self, forKey: .trajectory)) ?? trajectory
+        studyPlan = (try? c.decodeIfPresent([StudyPlanItem].self, forKey: .studyPlan)) ?? studyPlan
+        sessions = (try? c.decodeIfPresent([ScheduleSession].self, forKey: .sessions)) ?? sessions
+        calendarNotes = (try? c.decodeIfPresent([CalendarNote].self, forKey: .calendarNotes)) ?? calendarNotes
+        assignments = (try? c.decodeIfPresent([Assignment].self, forKey: .assignments)) ?? assignments
+        submissions = (try? c.decodeIfPresent([Submission].self, forKey: .submissions)) ?? submissions
+        portfolio = (try? c.decodeIfPresent([PortfolioItem].self, forKey: .portfolio)) ?? portfolio
+        achievements = (try? c.decodeIfPresent([Achievement].self, forKey: .achievements)) ?? achievements
+        certificates = (try? c.decodeIfPresent([Certificate].self, forKey: .certificates)) ?? certificates
+        history = (try? c.decodeIfPresent([HistoryEntry].self, forKey: .history)) ?? history
+        library = (try? c.decodeIfPresent([LibraryItem].self, forKey: .library)) ?? library
+        tests = (try? c.decodeIfPresent([KKSUTest].self, forKey: .tests)) ?? tests
+        attempts = (try? c.decodeIfPresent([TestAttempt].self, forKey: .attempts)) ?? attempts
+        threads = (try? c.decodeIfPresent([ChatThread].self, forKey: .threads)) ?? threads
+        messages = (try? c.decodeIfPresent([ChatMessage].self, forKey: .messages)) ?? messages
+        notifications = (try? c.decodeIfPresent([KKSUNotification].self, forKey: .notifications)) ?? notifications
+        academyProfiles = (try? c.decodeIfPresent([TeacherAcademyProfile].self, forKey: .academyProfiles)) ?? academyProfiles
+        teacherCourses = (try? c.decodeIfPresent([TeacherCourse].self, forKey: .teacherCourses)) ?? teacherCourses
+        methodologies = (try? c.decodeIfPresent([Methodology].self, forKey: .methodologies)) ?? methodologies
+        pilots = (try? c.decodeIfPresent([MethodologyPilot].self, forKey: .pilots)) ?? pilots
+        reviews = (try? c.decodeIfPresent([ExpertReview].self, forKey: .reviews)) ?? reviews
+        projects = (try? c.decodeIfPresent([InventionProject].self, forKey: .projects)) ?? projects
+        teams = (try? c.decodeIfPresent([ProjectTeam].self, forKey: .teams)) ?? teams
+        experiments = (try? c.decodeIfPresent([ExperimentEntry].self, forKey: .experiments)) ?? experiments
+        notebook = (try? c.decodeIfPresent([LabNotebookPage].self, forKey: .notebook)) ?? notebook
+        yiApplications = (try? c.decodeIfPresent([YoungInventorsApplication].self, forKey: .yiApplications)) ?? yiApplications
+        globalClasses = (try? c.decodeIfPresent([GlobalClass].self, forKey: .globalClasses)) ?? globalClasses
+        internationalProjects = (try? c.decodeIfPresent([InternationalProject].self, forKey: .internationalProjects)) ?? internationalProjects
+        internationalExperts = (try? c.decodeIfPresent([InternationalExpert].self, forKey: .internationalExperts)) ?? internationalExperts
+        engineeringCourses = (try? c.decodeIfPresent([EngineeringCourse].self, forKey: .engineeringCourses)) ?? engineeringCourses
+        challenges = (try? c.decodeIfPresent([EngineeringChallenge].self, forKey: .challenges)) ?? challenges
+        partners = (try? c.decodeIfPresent([Partner].self, forKey: .partners)) ?? partners
+        internships = (try? c.decodeIfPresent([Internship].self, forKey: .internships)) ?? internships
+        internshipApplications = (try? c.decodeIfPresent([InternshipApplication].self, forKey: .internshipApplications)) ?? internshipApplications
+        events = (try? c.decodeIfPresent([KKSUEvent].self, forKey: .events)) ?? events
+        eventRegistrations = (try? c.decodeIfPresent([EventRegistration].self, forKey: .eventRegistrations)) ?? eventRegistrations
+        accessibility = (try? c.decodeIfPresent([UUID: AccessibilitySettings].self, forKey: .accessibility)) ?? accessibility
+        preferences = (try? c.decodeIfPresent([UUID: LearningPreferences].self, forKey: .preferences)) ?? preferences
+        aiChats = (try? c.decodeIfPresent([UUID: [AIChatMessage]].self, forKey: .aiChats)) ?? aiChats
+        viewedLibraryIDs = (try? c.decodeIfPresent([UUID: [UUID]].self, forKey: .viewedLibraryIDs)) ?? viewedLibraryIDs
+        schoolCourses = (try? c.decodeIfPresent([SchoolCourse].self, forKey: .schoolCourses)) ?? schoolCourses
+        lessonProgress = (try? c.decodeIfPresent([LessonProgress].self, forKey: .lessonProgress)) ?? lessonProgress
+        currentUserID = try c.decodeIfPresent(UUID.self, forKey: .currentUserID)
+    }
 }
 
 enum KKSUAuthError: LocalizedError {
