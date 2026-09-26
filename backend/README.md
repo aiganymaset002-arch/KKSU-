@@ -34,19 +34,21 @@ Supabase — облачная база данных с бесплатным та
 
 ## 4. Подключить приложение
 
-1. **Project Settings → API**: скопируйте **Project URL** и ключ **anon public**.
-2. Впишите их в `KKSU/Core/KKSUCloud.swift`:
+Проект KKSU уже подключён в `KKSU/Core/KKSUCloud.swift`:
 
    ```swift
    enum KKSUCloudDefaults {
-       static let projectURL = "https://xxxx.supabase.co"
-       static let anonKey = "eyJhbGciOi..."
+       static let projectURL = "https://vllechyeunbtozhubuud.supabase.co"
+       static let anonKey = "sb_publishable_ThNRdPI2yoG1rQxLAiwusg_CmxF8Y7Y"
        static let schoolID = "kksu"
    }
    ```
 
-   Ключ `anon` можно хранить в приложении: доступ к данным ограничивают правила RLS в базе.
-   Ключ `service_role` в приложение **никогда не вставляйте**.
+1. Для другого проекта: **Project Settings → API Keys** — скопируйте **Project URL** и ключ **Publishable** (`sb_publishable_…`) или старый **anon public** (`eyJhbGciOi…`) и впишите их сюда.
+2. Приложение работает через REST API Supabase напрямую (`URLSession`), пакет `supabase-swift` не нужен.
+
+   Публичный ключ (publishable/anon) можно хранить в приложении: доступ к данным ограничивают правила RLS в базе.
+   Ключи `service_role` и `sb_secret_…` в приложение **никогда не вставляйте**.
 
    Для быстрой проверки то же самое можно ввести прямо в приложении: «Сервер KKSU» на главной странице или «Модули → Сервер KKSU».
 
