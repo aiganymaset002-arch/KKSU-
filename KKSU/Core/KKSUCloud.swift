@@ -18,8 +18,9 @@ import CryptoKit
 /// или введите в приложении: «Модули → Сервер KKSU».
 /// anon-ключ публичный по замыслу Supabase: доступ к данным ограничивают правила RLS в базе.
 enum KKSUCloudDefaults {
-    static let projectURL = ""
-    static let anonKey = ""
+    static let projectURL = "https://vllechyeunbtozhubuud.supabase.co"
+    /// Публичный (publishable/anon) ключ. Секретный ключ service_role в приложение не добавлять никогда.
+    static let anonKey = "sb_publishable_ThNRdPI2yoG1rQxLAiwusg_CmxF8Y7Y"
     static let schoolID = "kksu"
 }
 
@@ -113,9 +114,11 @@ final class KKSUCloud: ObservableObject {
 
     private init() {
         let defaults = UserDefaults.standard
-        projectURL = defaults.string(forKey: "kksu.cloud.url") ?? KKSUCloudDefaults.projectURL
-        anonKey = defaults.string(forKey: "kksu.cloud.key") ?? KKSUCloudDefaults.anonKey
-        schoolID = defaults.string(forKey: "kksu.cloud.school") ?? KKSUCloudDefaults.schoolID
+        // Пустые значения из настроек не перекрывают параметры проекта по умолчанию.
+        func stored(_ key: String) -> String? { defaults.string(forKey: key).flatMap { $0.isEmpty ? nil : $0 } }
+        projectURL = stored("kksu.cloud.url") ?? KKSUCloudDefaults.projectURL
+        anonKey = stored("kksu.cloud.key") ?? KKSUCloudDefaults.anonKey
+        schoolID = stored("kksu.cloud.school") ?? KKSUCloudDefaults.schoolID
         knownHashes = defaults.dictionary(forKey: "kksu.cloud.hashes") as? [String: String] ?? [:]
         lastPull = defaults.string(forKey: "kksu.cloud.lastPull")
         if let data = KKSUKeychain.read(account: "cloud-session")?.data(using: .utf8) {
@@ -154,8 +157,11 @@ final class KKSUCloud: ObservableObject {
         var request = URLRequest(url: url, timeoutInterval: 60)
         request.httpMethod = method
         request.setValue(anonKey, forHTTPHeaderField: "apikey")
-        let token = authorized ? (session?.accessToken ?? anonKey) : anonKey
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        // Токен пользователя передаём только после входа. Новые ключи sb_publishable_ — не JWT,
+        // поэтому без сессии достаточно заголовка apikey.
+        if authorized, let token = session?.accessToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         for (key, value) in headers { request.setValue(value, forHTTPHeaderField: key) }
         if let json { request.httpBody = try JSONSerialization.data(withJSONObject: json) }
