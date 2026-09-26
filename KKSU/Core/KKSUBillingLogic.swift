@@ -244,6 +244,67 @@ extension KKSUStore {
         }
     }
 
+    // MARK: - Покупки через App Store
+
+    /// Счёт-намерение перед покупкой в App Store (нужен для отложенных покупок Ask to Buy).
+    @discardableResult
+    func createAppStorePending(product: Product, beneficiaries: [UUID], targetID: UUID?, storeProductID: String) -> Invoice {
+        billing.invoiceCounter += 1
+        let invoice = Invoice(number: KKSUBillingSeed.invoiceNumber(billing.invoiceCounter), payerID: currentUser?.id ?? UUID(),
+                              beneficiaryIDs: beneficiaries.isEmpty ? [currentUser?.id].compactMap { $0 } : beneficiaries,
+                              productID: product.id, productTitle: product.title, productKind: product.kind, targetID: targetID,
+                              priceUSD: product.priceUSD, currency: .usd, rate: billing.settings.usdToKzt, method: .appStore,
+                              storeProductID: storeProductID)
+        billing.invoices.append(invoice)
+        return invoice
+    }
+
+    func pendingAppStoreInvoice(storeProductID: String, payerID: UUID?) -> Invoice? {
+        billing.invoices.last {
+            $0.method == .appStore && $0.status == .awaitingPayment && $0.storeProductID == storeProductID &&
+            (payerID == nil || $0.payerID == payerID)
+        }
+    }
+
+    /// Транзакция App Store подтверждена — доступ открывается сразу, без проверки администратором.
+    func completeAppStorePurchase(invoiceID: UUID, transactionID: String, expires: Date?) {
+        guard !billing.invoices.contains(where: { $0.appStoreTransactionID == transactionID }),
+              let index = billing.invoices.firstIndex(where: { $0.id == invoiceID }),
+              billing.invoices[index].status != .paid else { return }
+        billing.invoices[index].status = .paid
+        billing.invoices[index].paidAt = Date()
+        billing.invoices[index].appStoreTransactionID = transactionID
+        fulfill(billing.invoices[index])
+        if let expires {
+            for eIndex in billing.entitlements.indices where billing.entitlements[eIndex].invoiceID == invoiceID {
+                billing.entitlements[eIndex].expiresAt = expires
+            }
+        }
+    }
+
+    /// Продление или восстановление подписки App Store.
+    func syncAppStoreSubscription(storeProductID: String, transactionID: String, userID: UUID?, expires: Date?, revoked: Bool) {
+        guard let userID,
+              let product = billing.products.first(where: { $0.kind == .subscription && KKSUStoreCatalog.appStoreID(for: $0) == storeProductID }) else { return }
+        if let eIndex = billing.entitlements.lastIndex(where: { $0.userID == userID && $0.productID == product.id && $0.source == .subscription }) {
+            billing.entitlements[eIndex].expiresAt = expires
+            billing.entitlements[eIndex].revoked = revoked
+        } else if !revoked {
+            billing.entitlements.append(Entitlement(userID: userID, productID: product.id, source: .subscription, expiresAt: expires, note: "App Store: \(transactionID)"))
+        }
+    }
+
+    /// Apple вернула деньги — доступ закрывается.
+    func revokeAppStoreTransaction(_ transactionID: String) {
+        guard let index = billing.invoices.firstIndex(where: { $0.appStoreTransactionID == transactionID }) else { return }
+        billing.invoices[index].status = .refunded
+        billing.invoices[index].refundedAt = Date()
+        let invoiceID = billing.invoices[index].id
+        for eIndex in billing.entitlements.indices where billing.entitlements[eIndex].invoiceID == invoiceID {
+            billing.entitlements[eIndex].revoked = true
+        }
+    }
+
     // MARK: - Возвраты и отмены
 
     func canRequestRefund(_ invoice: Invoice) -> Bool {

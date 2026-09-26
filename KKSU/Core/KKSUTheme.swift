@@ -166,6 +166,28 @@ struct KProgressBar: View {
     }
 }
 
+/// Кольцо прогресса (0...1) с процентом в центре.
+struct KProgressRing: View {
+    let progress: Double
+    var size: CGFloat = 80
+
+    var body: some View {
+        ZStack {
+            Circle().stroke(Color.gray.opacity(0.15), lineWidth: 8)
+            Circle()
+                .trim(from: 0, to: min(max(progress, 0), 1))
+                .stroke(KKSUTheme.primary, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+            Text("\(Int(progress * 100))%")
+                .font(.system(size: size * 0.22, weight: .bold))
+                .foregroundStyle(KKSUTheme.primary)
+        }
+        .frame(width: size, height: size)
+        .accessibilityElement()
+        .accessibilityLabel("Прогресс \(Int(progress * 100)) процентов")
+    }
+}
+
 struct KEmptyState: View {
     let text: String
     var icon: String = "tray"

@@ -20,6 +20,12 @@ struct KKSURootView: View {
             }
         }
         .kksuAdaptive(store.accessibility)
+        .task {
+            // Встроенные покупки: загрузка каталога App Store и прослушивание транзакций.
+            KKSUAppStore.shared.start(with: store)
+            KKSUCloud.shared.start(with: store)
+            await KKSUAppStore.shared.refreshSubscriptions()
+        }
     }
 }
 
@@ -98,6 +104,20 @@ struct KKSULandingView: View {
                             AccessibilitySettingsView()
                         } label: {
                             Label("Настройки доступности", systemImage: "textformat.size")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.bordered)
+                        NavigationLink {
+                            CloudSettingsView()
+                        } label: {
+                            Label("Сервер KKSU", systemImage: "icloud")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(.bordered)
+                        NavigationLink {
+                            PrivacyPolicyView()
+                        } label: {
+                            Label("Политика конфиденциальности", systemImage: "hand.raised")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
@@ -268,6 +288,12 @@ struct AccountView: View {
                     RouteRow(route: .learningSettings, subtitle: "Темп, форматы, цели")
                     RouteRow(route: .aiAssistant)
                 }
+                Section("Конфиденциальность") {
+                    NavigationLink { MyDataView() } label: {
+                        Label("Мои данные и конфиденциальность", systemImage: "hand.raised.fill")
+                    }
+                    RouteRow(route: .cloudSettings, subtitle: KKSUCloud.shared.status.title)
+                }
                 Section("Платформа") {
                     RouteRow(route: .featureMap, subtitle: "Все 125 модулей KKSU Online")
                     RouteRow(route: .impactPublic)
@@ -324,22 +350,5 @@ struct FeatureMapView: View {
         }
         .searchable(text: $query, prompt: "Номер или название")
         .navigationTitle("Карта 100 задач")
-    }
-}
-
-// MARK: - Исходные прототипы экранов
-
-struct LegacyScreensView: View {
-    var body: some View {
-        List {
-            Section("Первые прототипы Comfort School-University") {
-                NavigationLink("Главная ученика (прототип)") { StudentHomeView() }
-                NavigationLink("Моё обучение") { LearningView() }
-                NavigationLink("Моя траектория и прогресс") { StudentProgressView() }
-                NavigationLink("Курс «Математика»") { MathCourseView() }
-                NavigationLink("Задание с автопроверкой") { StudentTaskView() }
-            }
-        }
-        .navigationTitle("Прототипы экранов")
     }
 }

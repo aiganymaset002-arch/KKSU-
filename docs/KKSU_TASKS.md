@@ -5,12 +5,12 @@
 | № | Задача | Экран / тип | Файл |
 |---|---|---|---|
 | 1 | Главная страница KKSU Online | `KKSULandingView` | `KKSU/Features/KKSURootViews.swift` |
-| 2 | Регистрация пользователей | `RegistrationView` | `RegistrationView.swift` |
-| 3 | Вход и восстановление пароля | `LoginView, ForgotPasswordView` | `LoginView.swift`, `ForgotPasswordView.swift` |
-| 4 | Роли: ученик, родитель, педагог, психолог, эксперт, наставник, партнёр, администратор | `KKSURole, UserManagementView` | `User.swift`, `KKSU/Features/KKSUCabinets.swift` |
+| 2 | Регистрация пользователей | `RegistrationView` | `KKSU/App/RegistrationView.swift` |
+| 3 | Вход и восстановление пароля | `LoginView, ForgotPasswordView` | `KKSU/App/LoginView.swift`, `KKSU/App/ForgotPasswordView.swift` |
+| 4 | Роли: ученик, родитель, педагог, психолог, эксперт, наставник, партнёр, администратор | `KKSURole, UserManagementView` | `KKSU/App/User.swift`, `KKSU/Features/KKSUCabinets.swift` |
 | 5 | Личный кабинет ученика | `StudentCabinetView` | `KKSU/Features/KKSUCabinets.swift` |
-| 6 | Кабинет родителя | `ParentHomeView` | `ParentHomeView.swift` |
-| 7 | Кабинет преподавателя | `TeacherHomeView` | `TeacherHomeView.swift` |
+| 6 | Кабинет родителя | `ParentHomeView` | `KKSU/App/ParentHomeView.swift` |
+| 7 | Кабинет преподавателя | `TeacherHomeView` | `KKSU/App/TeacherHomeView.swift` |
 | 8 | Кабинет эксперта/наставника | `ExpertCabinetView` | `KKSU/Features/KKSUCabinets.swift` |
 | 9 | Административная панель | `AdminPanelView` | `KKSU/Features/KKSUCabinets.swift` |
 | 10 | Профиль ученика | `StudentProfileEditorView` | `KKSU/Features/KKSUStudentModules.swift` |
@@ -20,7 +20,7 @@
 | 14 | Каталог образовательных программ | `ProgramCatalogView` | `KKSU/Features/KKSUStudentModules.swift` |
 | 15 | Индивидуальная образовательная траектория | `TrajectoryView` | `KKSU/Features/KKSUStudentModules.swift` |
 | 16 | Индивидуальный учебный план | `StudyPlanView` | `KKSU/Features/KKSUStudentModules.swift` |
-| 17 | Расписание занятий | `LessonsView` | `LessonsView.swift` |
+| 17 | Расписание занятий | `LessonsView` | `KKSU/App/LessonsView.swift` |
 | 18 | Календарь ученика | `StudentCalendarView` | `KKSU/Features/KKSUStudentModules.swift` |
 | 19 | Система домашних заданий | `HomeworkListView` | `KKSU/Features/KKSUStudentModules.swift` |
 | 20 | Загрузка выполненных работ | `HomeworkListView` — Фото, видео, документы | `KKSU/Features/KKSUStudentModules.swift` |
@@ -35,8 +35,8 @@
 | 29 | Онлайн-тестирование | `TestListView` | `KKSU/Features/KKSULibraryAndTests.swift` |
 | 30 | Автоматическая проверка тестов | `TestListView` — Один/несколько ответов, число, текст | `KKSU/Features/KKSULibraryAndTests.swift` |
 | 31 | Конструктор тестов для преподавателей | `TestBuilderView` | `KKSU/Features/KKSULibraryAndTests.swift` |
-| 32 | Модуль онлайн-занятий | `LessonsView` | `LessonsView.swift` |
-| 33 | Ссылки/интеграция видеоконференций | `LessonsView` — Jitsi (автокомната), Zoom, Meet, Teams | `LessonsView.swift` |
+| 32 | Модуль онлайн-занятий | `LessonsView` | `KKSU/App/LessonsView.swift` |
+| 33 | Ссылки/интеграция видеоконференций | `LessonsView` — Jitsi (автокомната), Zoom, Meet, Teams | `KKSU/App/LessonsView.swift` |
 | 34 | Внутренний чат ученик–преподаватель | `ChatListView` | `KKSU/Features/KKSUCommunication.swift` |
 | 35 | Уведомления | `NotificationsView` — В приложении + системные | `KKSU/Features/KKSUCommunication.swift` |
 | 36 | Система дедлайнов | `DeadlinesView` | `KKSU/Features/KKSUStudentModules.swift` |
@@ -109,7 +109,7 @@
 
 | № | Задача | Экран / тип | Файл |
 |---|---|---|---|
-| 101 | Регистрация пользователя — бесплатно | `RegistrationView` | `RegistrationView.swift` |
+| 101 | Регистрация пользователя — бесплатно | `RegistrationView` | `KKSU/App/RegistrationView.swift` |
 | 102 | Подача заявки в KKSU — бесплатно | `EnrollmentApplicationView` | `KKSU/Features/KKSUStudentModules.swift` |
 | 103 | Статус ученика KKSU (enrollment) — $200 | `EnrollmentGate, EnrollmentStatusCard` | `KKSU/Features/KKSUPayments.swift` |
 | 104 | Отдельный образовательный курс — $10–50 | `LibraryItemDetailView + PaywallGate` | `KKSU/Features/KKSULibraryAndTests.swift` |

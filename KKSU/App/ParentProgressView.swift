@@ -27,7 +27,7 @@ struct ParentProgressView: View {
                         }
                     }
                     Spacer()
-                    ProgressCircle(progress: analysis.overall)
+                    KProgressRing(progress: analysis.overall)
                 }
             }
             KSectionHeader(title: "Оценки по предметам", icon: "star.fill")

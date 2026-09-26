@@ -32,10 +32,12 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     // Impact, партнёры, аналитика
     case impactDashboard, impactReport, impactPublic
     case partners, internships, events, analytics
-    case users, featureMap, legacyScreens
+    case users, featureMap
     // Монетизация
     case marketplace, subscriptions, paymentHistory, teacherMarketplace, teacherCertification, inventionsServices
     case revenue, paymentsAdmin, promoCodes, scholarships, pricing, paymentSettings
+    // Сервер и конфиденциальность
+    case cloudSettings, myData
 
     var id: String { rawValue }
 
@@ -119,7 +121,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return "Аналитика KKSU"
         case .users: return "Пользователи и роли"
         case .featureMap: return "Карта 100 задач"
-        case .legacyScreens: return "Прототипы экранов"
         case .marketplace: return "KKSU Marketplace"
         case .subscriptions: return "Подписка KKSU"
         case .paymentHistory: return "История платежей"
@@ -132,6 +133,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return "Стипендии"
         case .pricing: return "Цены и продукты"
         case .paymentSettings: return "Настройки оплаты"
+        case .cloudSettings: return "Сервер KKSU"
+        case .myData: return "Данные и конфиденциальность"
         }
     }
 
@@ -215,7 +218,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return "chart.pie.fill"
         case .users: return "person.3.sequence.fill"
         case .featureMap: return "map.fill"
-        case .legacyScreens: return "iphone.gen3"
         case .marketplace: return "cart.fill"
         case .subscriptions: return "star.circle.fill"
         case .paymentHistory: return "list.bullet.rectangle.portrait.fill"
@@ -228,6 +230,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return "gift.fill"
         case .pricing: return "tablecells.badge.ellipsis"
         case .paymentSettings: return "banknote.fill"
+        case .cloudSettings: return "icloud.fill"
+        case .myData: return "hand.raised.fill"
         }
     }
 
@@ -345,7 +349,6 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .analytics: return AnyView(AnalyticsView())
         case .users: return AnyView(UserManagementView())
         case .featureMap: return AnyView(FeatureMapView())
-        case .legacyScreens: return AnyView(LegacyScreensView())
         case .marketplace: return AnyView(MarketplaceView())
         case .subscriptions: return AnyView(SubscriptionsView())
         case .paymentHistory: return AnyView(PaymentHistoryView())
@@ -358,6 +361,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .scholarships: return AnyView(ScholarshipsView())
         case .pricing: return AnyView(PricingAdminView())
         case .paymentSettings: return AnyView(PaymentSettingsView())
+        case .cloudSettings: return AnyView(CloudSettingsView())
+        case .myData: return AnyView(MyDataView())
         }
     }
 }
@@ -384,7 +389,7 @@ struct KKSUModuleSection: Identifiable {
         KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .adminPanel]),
         KKSUModuleSection(title: "Оплата и Marketplace", routes: [.marketplace, .subscriptions, .paymentHistory, .teacherMarketplace, .teacherCertification, .inventionsServices]),
         KKSUModuleSection(title: "Финансы (администратор)", routes: [.revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings]),
-        KKSUModuleSection(title: "О платформе", routes: [.featureMap, .legacyScreens])
+        KKSUModuleSection(title: "О платформе", routes: [.cloudSettings, .myData, .featureMap])
     ]
 }
 
