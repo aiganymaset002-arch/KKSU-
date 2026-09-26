@@ -197,6 +197,12 @@ enum KKSUCloudCollections {
         },
         list("events", \.events) { _, _ in [] },
         list("eventRegistrations", \.eventRegistrations) { item, _ in [item.userID] },
+        // Курсы педагогов: черновик видят только сотрудники, опубликованный — выбранные ученики или все.
+        list("schoolCourses", \.schoolCourses) { item, store in
+            if !item.isPublished { return staffOnlyAudience }
+            return item.studentIDs.isEmpty ? [] : audience(of: item.studentIDs, store)
+        },
+        list("lessonProgress", \.lessonProgress) { item, store in audience(item.studentID, store) },
         // Оплата
         billingList("products", \.products) { _, _ in [] },
         billingList("promoCodes", \.promoCodes) { _, _ in [] },

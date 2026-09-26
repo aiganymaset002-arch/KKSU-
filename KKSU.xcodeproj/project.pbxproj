@@ -27,6 +27,8 @@
 		541A6075EA274AF4F5307B02 /* KKSUCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282C173FB8812EAA419D5399 /* KKSUCloud.swift */; };
 		4E70C4050399A393F2F9F0BA /* KKSUCloudStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */; };
 		46A974A74D431B641BB1D44A /* KKSUCloudSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */; };
+		DABA90328E658798939D307C /* KKSUCourseLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125165CAF7325227596B2775 /* KKSUCourseLogic.swift */; };
+		652D8093A4B4497E5DCB4B3E /* KKSUCourseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968BF164FC00E073B60B8A97 /* KKSUCourseModels.swift */; };
 		EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5DB70E620E98DCC39F050 /* KKSUModels.swift */; };
 		53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF08BD985871C8881E996C /* KKSUNavigation.swift */; };
 		0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968425F513916E8637D28971 /* KKSUSeed.swift */; };
@@ -36,6 +38,7 @@
 		13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */; };
 		9F9E7F6FE4D601324EC9A1E5 /* KKSUCloudViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */; };
 		0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE292168B8F015324A61AC /* KKSUCommunication.swift */; };
+		431B25683A8DCEECF1F8B702 /* KKSUCourseStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9362BE4AD085D3ACA682F /* KKSUCourseStudio.swift */; };
 		84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */; };
 		69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */; };
 		712F75D75C39680610641B1B /* KKSUInventions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */; };
@@ -70,6 +73,8 @@
 		282C173FB8812EAA419D5399 /* KKSUCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloud.swift"; sourceTree = "<group>"; };
 		1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudStore.swift"; sourceTree = "<group>"; };
 		637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudSync.swift"; sourceTree = "<group>"; };
+		125165CAF7325227596B2775 /* KKSUCourseLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCourseLogic.swift"; sourceTree = "<group>"; };
+		968BF164FC00E073B60B8A97 /* KKSUCourseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCourseModels.swift"; sourceTree = "<group>"; };
 		01A5DB70E620E98DCC39F050 /* KKSUModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUModels.swift"; sourceTree = "<group>"; };
 		03AF08BD985871C8881E996C /* KKSUNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUNavigation.swift"; sourceTree = "<group>"; };
 		968425F513916E8637D28971 /* KKSUSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUSeed.swift"; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCabinets.swift"; sourceTree = "<group>"; };
 		0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCloudViews.swift"; sourceTree = "<group>"; };
 		56DE292168B8F015324A61AC /* KKSUCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCommunication.swift"; sourceTree = "<group>"; };
+		58E9362BE4AD085D3ACA682F /* KKSUCourseStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUCourseStudio.swift"; sourceTree = "<group>"; };
 		9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUGlobalAndEngineering.swift"; sourceTree = "<group>"; };
 		3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUImpact.swift"; sourceTree = "<group>"; };
 		259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KKSUInventions.swift"; sourceTree = "<group>"; };
@@ -160,6 +166,8 @@
 				282C173FB8812EAA419D5399 /* KKSUCloud.swift */,
 				1A9E2A30E98AEA848577B6FB /* KKSUCloudStore.swift */,
 				637BD061BA810EBEE3EEFD20 /* KKSUCloudSync.swift */,
+				125165CAF7325227596B2775 /* KKSUCourseLogic.swift */,
+				968BF164FC00E073B60B8A97 /* KKSUCourseModels.swift */,
 				01A5DB70E620E98DCC39F050 /* KKSUModels.swift */,
 				03AF08BD985871C8881E996C /* KKSUNavigation.swift */,
 				968425F513916E8637D28971 /* KKSUSeed.swift */,
@@ -176,6 +184,7 @@
 				A99F4F29FACBE6695D4BD1AD /* KKSUCabinets.swift */,
 				0E945AFBA3E483657D197F92 /* KKSUCloudViews.swift */,
 				56DE292168B8F015324A61AC /* KKSUCommunication.swift */,
+				58E9362BE4AD085D3ACA682F /* KKSUCourseStudio.swift */,
 				9342ADDCF9AF616D12D65D20 /* KKSUGlobalAndEngineering.swift */,
 				3FBBA4F7FE390401FC32CA24 /* KKSUImpact.swift */,
 				259CEBEB5289B97630ACEDE1 /* KKSUInventions.swift */,
@@ -309,6 +318,8 @@
 				541A6075EA274AF4F5307B02 /* KKSUCloud.swift in Sources */,
 				4E70C4050399A393F2F9F0BA /* KKSUCloudStore.swift in Sources */,
 				46A974A74D431B641BB1D44A /* KKSUCloudSync.swift in Sources */,
+				DABA90328E658798939D307C /* KKSUCourseLogic.swift in Sources */,
+				652D8093A4B4497E5DCB4B3E /* KKSUCourseModels.swift in Sources */,
 				EA4E6552214E60E581C0C62E /* KKSUModels.swift in Sources */,
 				53352F0C8F4548257977CE09 /* KKSUNavigation.swift in Sources */,
 				0962C9E7ED746E00C041F542 /* KKSUSeed.swift in Sources */,
@@ -318,6 +329,7 @@
 				13A3C0B8F2FA2AE8381130B4 /* KKSUCabinets.swift in Sources */,
 				9F9E7F6FE4D601324EC9A1E5 /* KKSUCloudViews.swift in Sources */,
 				0E535C8E3AC4A837106094C3 /* KKSUCommunication.swift in Sources */,
+				431B25683A8DCEECF1F8B702 /* KKSUCourseStudio.swift in Sources */,
 				84B2FF87613DBBB3E3155B3D /* KKSUGlobalAndEngineering.swift in Sources */,
 				69E152EB6A9C84EEF1D6585E /* KKSUImpact.swift in Sources */,
 				712F75D75C39680610641B1B /* KKSUInventions.swift in Sources */,

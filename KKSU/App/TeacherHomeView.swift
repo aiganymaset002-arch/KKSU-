@@ -54,7 +54,7 @@ struct TeacherHomeView: View {
 
             KSectionHeader(title: "Инструменты", icon: "wrench.and.screwdriver.fill")
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 10)], spacing: 10) {
-                ForEach([KKSURoute.grading, .homework, .testBuilder, .schedule, .aiTaskGenerator, .teacherAI, .progressAnalysis, .teacherAcademy], id: \.self) {
+                ForEach([KKSURoute.courseStudio, .grading, .homework, .testBuilder, .schedule, .aiTaskGenerator, .teacherAI, .progressAnalysis], id: \.self) {
                     RouteTile(route: $0)
                 }
             }

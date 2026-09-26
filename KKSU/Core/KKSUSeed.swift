@@ -197,6 +197,18 @@ enum KKSUSeed {
             TestAttempt(testID: mathTest.id, userID: timur.id, date: date(-3), answers: [], score: 3, maxScore: 5, passed: true)
         ]
 
+        // MARK: Курс педагога из конструктора (126–130)
+        let fractionsIntro = CourseLesson(title: "Что такое дробь", summary: "Числитель, знаменатель и доли на примерах.",
+                                          notes: "**Дробь** — это часть целого.\n\nВерхнее число — *числитель*, нижнее — *знаменатель*.\n\nПример: 3/4 — взяли 3 части из 4.",
+                                          links: [LessonLink(title: "Тренажёр дробей", url: "https://www.mathsisfun.com/fractions.html")])
+        let fractionsLive = CourseLesson(title: "Сложение дробей (онлайн)", summary: "Разбираем задачи вместе на онлайн-уроке.",
+                                         liveStart: date(2, 16), testID: mathTest.id)
+        db.schoolCourses = [
+            SchoolCourse(title: "Дроби за 2 недели", subject: "Математика", summary: "Короткий курс: видео, конспекты и онлайн-урок с педагогом.",
+                         teacherID: teacher.id, icon: "function", isPublished: true, createdAt: date(-5),
+                         lessons: [fractionsIntro, fractionsLive])
+        ]
+
         // MARK: Чат и уведомления (34, 35)
         let thread = ChatThread(participantIDs: [aliya.id, teacher.id], title: "")
         db.threads = [thread, ChatThread(participantIDs: [parent.id, teacher.id], title: "")]
