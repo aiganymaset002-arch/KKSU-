@@ -15,7 +15,11 @@ struct ChatListView: View {
 
     var body: some View {
         let me = store.currentUser?.id
-        let threads = store.db.threads.filter { thread in me.map { thread.participantIDs.contains($0) } ?? false }
+        let blocked = store.blockedUserIDs
+        let threads = store.db.threads.filter { thread in
+            guard let me, thread.participantIDs.contains(me) else { return false }
+            return !thread.participantIDs.contains { blocked.contains($0) }
+        }
             .sorted { lastDate($0) > lastDate($1) }
         List {
             if threads.isEmpty {
@@ -23,7 +27,7 @@ struct ChatListView: View {
             }
             ForEach(threads) { thread in
                 let other = thread.participantIDs.first { $0 != me }
-                let last = store.db.messages.filter { $0.threadID == thread.id }.max { $0.date < $1.date }
+                let last = store.db.messages.filter { $0.threadID == thread.id && !store.isReportedByMe($0.id) }.max { $0.date < $1.date }
                 let unread = store.db.messages.filter { message in
                     guard let me else { return false }
                     return message.threadID == thread.id && !message.readBy.contains(me)
@@ -73,7 +77,7 @@ struct NewChatView: View {
         let me = store.currentUser
         let staff: Set<KKSURole> = [.teacher, .mentor, .psychologist, .admin]
         return store.db.users.filter { user in
-            guard user.id != me?.id else { return false }
+            guard user.id != me?.id, !user.isBlocked, !store.hasBlocked(user.id) else { return false }
             switch me?.role {
             case .student, .parent: return staff.contains(user.role)
             default: return true
@@ -106,6 +110,8 @@ struct ChatThreadView: View {
     private let otherID: UUID?
     @State private var createdThreadID: UUID?
     @State private var text = ""
+    @State private var reportTarget: ReportTarget?
+    @State private var filterWarning = false
 
     init(threadID: UUID) {
         fixedThreadID = threadID
@@ -126,8 +132,13 @@ struct ChatThreadView: View {
 
     var body: some View {
         let me = store.currentUser?.id
-        let messages = threadID.map { id in store.db.messages.filter { $0.threadID == id }.sorted { $0.date < $1.date } } ?? []
         let partner = otherID ?? store.db.threads.first { $0.id == threadID }?.participantIDs.first { $0 != me }
+        let isBlocked = store.hasBlocked(partner)
+        // Сообщения заблокированных пользователей и сообщения, на которые пожаловались, скрыты.
+        let messages = threadID.map { id in
+            store.db.messages.filter { $0.threadID == id && !store.isReportedByMe($0.id) && !($0.senderID != me && isBlocked) }
+                .sorted { $0.date < $1.date }
+        } ?? []
         VStack(spacing: 0) {
             ScrollViewReader { proxy in
                 ScrollView {
@@ -138,6 +149,21 @@ struct ChatThreadView: View {
                         ForEach(messages) { message in
                             ChatBubble(message: message, isMine: message.senderID == me)
                                 .id(message.id)
+                                .contextMenu {
+                                    if message.senderID != me {
+                                        Button(role: .destructive) {
+                                            reportTarget = ReportTarget(kind: .message, contentID: message.id,
+                                                                        reportedUserID: message.senderID, excerpt: message.text)
+                                        } label: {
+                                            Label("Пожаловаться", systemImage: "exclamationmark.bubble")
+                                        }
+                                    }
+                                    Button {
+                                        UIPasteboard.general.string = message.text
+                                    } label: {
+                                        Label("Скопировать", systemImage: "doc.on.doc")
+                                    }
+                                }
                         }
                     }
                     .padding()
@@ -151,21 +177,61 @@ struct ChatThreadView: View {
                 }
             }
             Divider()
-            HStack(spacing: 10) {
-                TextField("Сообщение", text: $text, axis: .vertical)
-                    .lineLimit(1...5)
-                    .textFieldStyle(.roundedBorder)
-                Button {
-                    send()
-                } label: {
-                    Image(systemName: "paperplane.fill").font(.title3)
+            if isBlocked, let partner {
+                HStack {
+                    Text("Вы заблокировали этого пользователя").font(.callout).foregroundStyle(.secondary)
+                    Spacer()
+                    Button("Разблокировать") { store.unblockUser(partner) }
                 }
-                .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                .accessibilityLabel("Отправить")
+                .padding(12)
+            } else {
+                if filterWarning {
+                    Text("Сообщение содержит недопустимые слова и не может быть отправлено.")
+                        .font(.caption).foregroundStyle(KKSUTheme.danger)
+                        .padding(.horizontal, 12).padding(.top, 8)
+                }
+                HStack(spacing: 10) {
+                    TextField("Сообщение", text: $text, axis: .vertical)
+                        .lineLimit(1...5)
+                        .textFieldStyle(.roundedBorder)
+                    Button {
+                        send()
+                    } label: {
+                        Image(systemName: "paperplane.fill").font(.title3)
+                    }
+                    .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    .accessibilityLabel("Отправить")
+                }
+                .padding(12)
             }
-            .padding(12)
         }
         .navigationTitle(store.userName(partner))
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                if let partner {
+                    Menu {
+                        Button(role: .destructive) {
+                            reportTarget = ReportTarget(kind: .user, contentID: partner, reportedUserID: partner,
+                                                        excerpt: "Пользователь \(store.userName(partner))")
+                        } label: {
+                            Label("Пожаловаться на пользователя", systemImage: "exclamationmark.triangle")
+                        }
+                        if isBlocked {
+                            Button { store.unblockUser(partner) } label: { Label("Разблокировать", systemImage: "hand.raised") }
+                        } else {
+                            Button(role: .destructive) { store.blockUser(partner) } label: {
+                                Label("Заблокировать", systemImage: "hand.raised.slash")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                    .accessibilityLabel("Действия с пользователем")
+                }
+            }
+        }
+        .sheet(item: $reportTarget) { ReportContentSheet(target: $0) }
+        .onChange(of: text) { _, _ in filterWarning = false }
     }
 
     private func send() {
@@ -175,6 +241,10 @@ struct ChatThreadView: View {
             createdThreadID = id
         }
         guard let id else { return }
+        if KKSUContentFilter.containsObjectionable(text) {
+            filterWarning = true
+            return
+        }
         store.send(text, in: id)
         text = ""
     }

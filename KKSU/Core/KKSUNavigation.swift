@@ -40,6 +40,8 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
     case cloudSettings, myData
     // Конструктор курсов педагога
     case courseStudio, schoolCourses
+    // Безопасность контента
+    case moderation
 
     var id: String { rawValue }
 
@@ -139,6 +141,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .myData: return "Данные и конфиденциальность"
         case .courseStudio: return "Мои курсы (конструктор)"
         case .schoolCourses: return "Курсы и уроки"
+        case .moderation: return "Модерация и жалобы"
         }
     }
 
@@ -238,6 +241,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .myData: return "hand.raised.fill"
         case .courseStudio: return "square.and.pencil"
         case .schoolCourses: return "books.vertical.fill"
+        case .moderation: return "exclamationmark.shield.fill"
         }
     }
 
@@ -250,7 +254,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .expertCabinet, .methodologyReview, .yiReview: return [.expert, .mentor, .admin]
         case .psychologistCabinet: return [.psychologist, .admin]
         case .partnerCabinet: return [.partner, .admin]
-        case .adminPanel, .analytics, .users, .impactReport, .revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings: return [.admin]
+        case .adminPanel, .moderation, .analytics, .users, .impactReport, .revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings: return [.admin]
         case .teacherCertification: return [.teacher, .psychologist, .admin]
         case .teacherAcademy, .academyRegistration, .academyCourses, .academyLibrary, .academyTasks, .methodologies, .pilots, .pilotRegistry:
             return [.teacher, .psychologist, .expert, .mentor, .admin]
@@ -371,6 +375,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .myData: return AnyView(MyDataView())
         case .courseStudio: return AnyView(CourseStudioView())
         case .schoolCourses: return AnyView(SchoolCoursesView())
+        case .moderation: return AnyView(ModerationView())
         }
     }
 }
@@ -394,7 +399,7 @@ struct KKSUModuleSection: Identifiable {
         KKSUModuleSection(title: "Future Engineers", routes: [.futureEngineers, .engineeringCourses, .challenges, .mashstroyCases, .araiAI, .iken, .ataMura, .inclusiveEngineering, .inclusiveCatalog]),
         KKSUModuleSection(title: "AI и персонализация", routes: [.aiAssistant, .recommendations, .learningSettings, .accessibility]),
         KKSUModuleSection(title: "Партнёрство и события", routes: [.partners, .internships, .events]),
-        KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .adminPanel]),
+        KKSUModuleSection(title: "Impact и управление", routes: [.impactDashboard, .impactReport, .impactPublic, .analytics, .users, .moderation, .adminPanel]),
         KKSUModuleSection(title: "Оплата и Marketplace", routes: [.marketplace, .subscriptions, .paymentHistory, .teacherMarketplace, .teacherCertification, .inventionsServices]),
         KKSUModuleSection(title: "Финансы (администратор)", routes: [.revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings]),
         KKSUModuleSection(title: "О платформе", routes: [.cloudSettings, .myData, .featureMap])
@@ -540,7 +545,11 @@ struct KKSUFeature: Identifiable {
         KKSUFeature(id: 127, title: "Онлайн-урок по ссылке (Jitsi, Zoom, Meet, Teams) с добавлением в расписание", route: .courseStudio),
         KKSUFeature(id: 128, title: "Запись урока на YouTube — просмотр прямо в приложении", route: .schoolCourses),
         KKSUFeature(id: 129, title: "Конспект урока текстом, файлы и полезные ссылки", route: .schoolCourses),
-        KKSUFeature(id: 130, title: "Прохождение курса учеником: прогресс, тест, ДЗ, вопрос учителю", route: .schoolCourses)
+        KKSUFeature(id: 130, title: "Прохождение курса учеником: прогресс, тест, ДЗ, вопрос учителю", route: .schoolCourses),
+        KKSUFeature(id: 131, title: "Жалобы на сообщения, проекты и пользователей", route: .chat, note: "Долгое нажатие на сообщение или меню «…»"),
+        KKSUFeature(id: 132, title: "Блокировка пользователей", route: .chat, note: "Профиль → Заблокированные пользователи"),
+        KKSUFeature(id: 133, title: "Модерация жалоб администратором", route: .moderation),
+        KKSUFeature(id: 134, title: "Удаление аккаунта из приложения", route: .myData, note: "Профиль → Аккаунт → Удалить аккаунт")
     ]
 }
 

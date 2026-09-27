@@ -44,7 +44,8 @@ enum KKSULegal {
         ("Платные услуги", "Цифровые курсы, программы и подписки в iOS-приложении оплачиваются через App Store. Конференции, конкурсы и очные услуги могут оплачиваться переводом по реквизитам KKSU."),
         ("Подписки", "Подписка продлевается автоматически, пока вы не отмените её в настройках Apple ID не позднее чем за 24 часа до конца периода."),
         ("Возвраты", "Возврат покупок App Store оформляется через Apple (reportaproblem.apple.com). Возврат оплат переводом — по запросу в приложении в течение срока, указанного в настройках оплаты."),
-        ("Поведение", "Запрещены оскорбления, травля, публикация чужих персональных данных и материалов, нарушающих права других людей. Администратор может заблокировать аккаунт за нарушения."),
+        ("Поведение", "В KKSU действует нулевая терпимость к неприемлемому контенту и оскорбительному поведению. Запрещены оскорбления, травля, угрозы, непристойные материалы, спам, публикация чужих персональных данных и материалов, нарушающих права других людей. Сообщения проверяются фильтром недопустимых слов."),
+        ("Жалобы и блокировка", "На любое сообщение, проект или пользователя можно пожаловаться (долгое нажатие или меню «…»), а нарушителя — заблокировать. Модератор рассматривает жалобы в течение 24 часов, удаляет недопустимый контент и блокирует аккаунты нарушителей."),
         ("Материалы", "Педагоги, размещающие курсы, подтверждают, что имеют права на материалы. Проекты учеников остаются собственностью их авторов.")
     ]
 }
@@ -80,7 +81,6 @@ struct TermsOfUseView: View {
 struct MyDataView: View {
     @EnvironmentObject private var store: KKSUStore
     @State private var exportURL: URL?
-    @State private var confirmDelete = false
     @State private var deleteChildID: UUID?
 
     var body: some View {
@@ -122,25 +122,12 @@ struct MyDataView: View {
                 }
             }
             Section {
-                Button("Удалить аккаунт", role: .destructive) { confirmDelete = true }
+                DeleteAccountButton()
             } footer: {
                 Text("Аккаунт и связанные с ним данные будут удалены без возможности восстановления. Записи об оплатах хранятся обезличенно, как требует бухгалтерский учёт. Активные подписки App Store отменяются в настройках Apple ID.")
             }
         }
         .navigationTitle("Данные и конфиденциальность")
-        .confirmationDialog("Удалить аккаунт навсегда?", isPresented: $confirmDelete, titleVisibility: .visible) {
-            Button("Удалить", role: .destructive) {
-                guard let id = store.currentUser?.id else { return }
-                if KKSUCloud.shared.isSignedIn {
-                    Task {
-                        try? await KKSUCloud.shared.deleteAccount()
-                        store.deleteAccount(id)
-                    }
-                } else {
-                    store.deleteAccount(id)
-                }
-            }
-        }
         .confirmationDialog("Удалить аккаунт ребёнка и все его данные?", isPresented: Binding(get: { deleteChildID != nil }, set: { if !$0 { deleteChildID = nil } }), titleVisibility: .visible) {
             Button("Удалить", role: .destructive) {
                 if let id = deleteChildID { store.deleteAccount(id) }

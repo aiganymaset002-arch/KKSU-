@@ -292,13 +292,28 @@ struct AccountView: View {
                     NavigationLink { MyDataView() } label: {
                         Label("Мои данные и конфиденциальность", systemImage: "hand.raised.fill")
                     }
+                    NavigationLink { BlockedUsersView() } label: {
+                        Label("Заблокированные пользователи", systemImage: "hand.raised.slash")
+                    }
+                    if user.role == .admin {
+                        RouteRow(route: .moderation, subtitle: store.openReports.isEmpty ? "Новых жалоб нет" : "Новых жалоб: \(store.openReports.count)")
+                    }
                     RouteRow(route: .cloudSettings, subtitle: KKSUCloud.shared.status.title)
                 }
                 Section("Платформа") {
-                    RouteRow(route: .featureMap, subtitle: "Все 125 модулей KKSU Online")
+                    RouteRow(route: .featureMap, subtitle: "Все модули KKSU Online")
                     RouteRow(route: .impactPublic)
-                    Button("Сбросить демо-данные", role: .destructive) { confirmReset = true }
+                    if !KKSUCloud.shared.isConfigured {
+                        Button("Сбросить демо-данные", role: .destructive) { confirmReset = true }
+                    }
+                }
+                Section {
                     Button("Выйти", role: .destructive) { store.logout() }
+                    DeleteAccountButton()
+                } header: {
+                    Text("Аккаунт")
+                } footer: {
+                    Text("Удаление аккаунта стирает профиль и ваши данные без возможности восстановления.")
                 }
             }
         }
