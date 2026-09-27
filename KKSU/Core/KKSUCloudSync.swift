@@ -203,6 +203,9 @@ enum KKSUCloudCollections {
             return item.studentIDs.isEmpty ? [] : audience(of: item.studentIDs, store)
         },
         list("lessonProgress", \.lessonProgress) { item, store in audience(item.studentID, store) },
+        // Жалобы видят автор жалобы и сотрудники; блокировки — только тот, кто заблокировал.
+        list("contentReports", \.contentReports) { item, _ in [item.reporterID] },
+        list("userBlocks", \.userBlocks) { item, _ in [item.blockerID] },
         // Оплата
         billingList("products", \.products) { _, _ in [] },
         billingList("promoCodes", \.promoCodes) { _, _ in [] },

@@ -732,9 +732,16 @@ struct YoungInventorsReviewView: View {
 struct VirtualExhibitionView: View {
     @EnvironmentObject private var store: KKSUStore
     @State private var liked: Set<UUID> = []
+    @State private var reportTarget: ReportTarget?
 
     var body: some View {
-        let exhibits = store.db.projects.filter(\.showInExhibition).sorted { $0.likes > $1.likes }
+        let blocked = store.blockedUserIDs
+        let exhibits = store.db.projects
+            .filter { project in
+                project.showInExhibition && !store.isReportedByMe(project.id)
+                    && !project.authorIDs.contains { author in blocked.contains(author) }
+            }
+            .sorted { $0.likes > $1.likes }
         KPage("Виртуальная выставка") {
             Text("Изобретения учеников KKSU. Голосуйте за понравившиеся проекты!")
                 .font(.callout).foregroundStyle(.secondary)
@@ -745,18 +752,23 @@ struct VirtualExhibitionView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
                             ForEach(items) { project in
-                                ExhibitCard(project: project, liked: liked.contains(project.id)) {
+                                ExhibitCard(project: project, liked: liked.contains(project.id), onLike: {
                                     guard !liked.contains(project.id),
                                           let index = store.db.projects.firstIndex(where: { $0.id == project.id }) else { return }
                                     store.db.projects[index].likes += 1
                                     liked.insert(project.id)
-                                }
+                                }, onReport: {
+                                    reportTarget = ReportTarget(kind: .project, contentID: project.id,
+                                                                reportedUserID: project.authorIDs.first,
+                                                                excerpt: "\(project.title)\n\(project.summary)")
+                                })
                             }
                         }
                     }
                 }
             }
         }
+        .sheet(item: $reportTarget) { ReportContentSheet(target: $0) }
     }
 }
 
@@ -765,6 +777,7 @@ struct ExhibitCard: View {
     let project: InventionProject
     let liked: Bool
     let onLike: () -> Void
+    var onReport: (() -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -788,6 +801,16 @@ struct ExhibitCard: View {
                 Spacer()
                 NavigationLink("Подробнее") { ProjectDetailView(projectID: project.id) }
                     .font(.caption)
+                if let onReport, !project.authorIDs.contains(where: { $0 == store.currentUser?.id }) {
+                    Menu {
+                        Button(role: .destructive, action: onReport) {
+                            Label("Пожаловаться", systemImage: "exclamationmark.bubble")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                    .accessibilityLabel("Ещё")
+                }
             }
         }
         .padding(12)

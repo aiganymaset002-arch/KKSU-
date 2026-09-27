@@ -61,6 +61,8 @@ struct KKSUDatabase: Codable {
     var viewedLibraryIDs: [UUID: [UUID]] = [:]
     var schoolCourses: [SchoolCourse] = []
     var lessonProgress: [LessonProgress] = []
+    var contentReports: [ContentReport] = []
+    var userBlocks: [UserBlock] = []
     var currentUserID: UUID?
 
     init() {}
@@ -117,6 +119,8 @@ struct KKSUDatabase: Codable {
         viewedLibraryIDs = (try? c.decodeIfPresent([UUID: [UUID]].self, forKey: .viewedLibraryIDs)) ?? viewedLibraryIDs
         schoolCourses = (try? c.decodeIfPresent([SchoolCourse].self, forKey: .schoolCourses)) ?? schoolCourses
         lessonProgress = (try? c.decodeIfPresent([LessonProgress].self, forKey: .lessonProgress)) ?? lessonProgress
+        contentReports = (try? c.decodeIfPresent([ContentReport].self, forKey: .contentReports)) ?? contentReports
+        userBlocks = (try? c.decodeIfPresent([UserBlock].self, forKey: .userBlocks)) ?? userBlocks
         currentUserID = try c.decodeIfPresent(UUID.self, forKey: .currentUserID)
     }
 }
@@ -644,7 +648,10 @@ final class KKSUStore: ObservableObject {
     }
 
     func send(_ text: String, in threadID: UUID) {
-        guard let me = db.currentUserID, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        guard let me = db.currentUserID, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+              !KKSUContentFilter.containsObjectionable(text) else { return }
+        if let thread = db.threads.first(where: { $0.id == threadID }),
+           thread.participantIDs.contains(where: { $0 != me && hasBlocked($0) }) { return }
         db.messages.append(ChatMessage(threadID: threadID, senderID: me, text: text, readBy: [me]))
         if let thread = db.threads.first(where: { $0.id == threadID }) {
             for other in thread.participantIDs where other != me {

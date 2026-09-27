@@ -302,6 +302,8 @@ struct AdminPanelView: View {
                 Divider()
                 RouteRow(route: .users, subtitle: "Роли, блокировка, привязка детей")
                 Divider()
+                RouteRow(route: .moderation, subtitle: store.openReports.isEmpty ? "Новых жалоб нет" : "Новых жалоб: \(store.openReports.count)")
+                Divider()
                 RouteRow(route: .analytics, subtitle: "Единая аналитика KKSU")
                 Divider()
                 RouteRow(route: .impactReport, subtitle: "Сформировать отчёт в PDF")
@@ -312,7 +314,7 @@ struct AdminPanelView: View {
                 Divider()
                 RouteRow(route: .events, subtitle: "Мероприятия и сертификаты")
                 Divider()
-                RouteRow(route: .featureMap, subtitle: "Статус 125 модулей")
+                RouteRow(route: .featureMap, subtitle: "Статус всех модулей")
             }
         }
     }
