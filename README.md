@@ -352,3 +352,11 @@ Prototype / Research & Development
 
 ### Focus
 Inclusive Education • AI • EdTech • Accessibility • Personalized Learning
+
+---
+
+## 🏭 MASHSTROY AI Control
+
+В папке [`MashstroyAI/`](MashstroyAI/README.md) — отдельное промышленное
+приложение MASHSTROY AI Control (Swift Package, SwiftUI). Первый модуль —
+Smart Conveyor.
