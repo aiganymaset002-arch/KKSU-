@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+/* Begin PBXBuildFile section */
+		431080C883C8A7928E60E4CB /* ATAMURAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A1826C578D2D847F28EDEB /* ATAMURAApp.swift */; };
+		7074E62EC1CF23024CCF817F /* AMAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74E139074BAA9081089E0EC /* AMAI.swift */; };
+		BD3506DAAC8CF1F4B4AF86AE /* AMCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF0D0E50CC86F27F915F41D /* AMCloud.swift */; };
+		FC25221C7AD25BED68DCD5DB /* AMLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C4F73B20695FCD48FC6A8 /* AMLocalization.swift */; };
+		64FFC94B9A1B9BF6700ED4F8 /* AMModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475A605DE2EAC37BFB29B70 /* AMModels.swift */; };
+		F387A5EBF6A49425A4EB93A3 /* AMSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95C80320C1A4BB98692792C /* AMSeed.swift */; };
+		203E974FB6AEBC4925CD46F7 /* AMStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01240682FB66A062D5F97C9A /* AMStore.swift */; };
+		216C050B90BC3223A8C7A1C0 /* AMStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD0FBEEC8E4CEB9A35EAFE6 /* AMStrings.swift */; };
+		64ABB03FCDCCB66F45706767 /* AMTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DA69D0636DC39FA95DCEB8 /* AMTheme.swift */; };
+		444292CA853738BC2FE560D7 /* AMAcademy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0F70556C80BCBABECEDB1 /* AMAcademy.swift */; };
+		713AEA95B3206A8BD4D5C6F5 /* AMAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5BB83C368C7C559DE97421 /* AMAssistant.swift */; };
+		A43104C4F4AC8692521E41C6 /* AMHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E2E0CFC760C007E9319AE7 /* AMHome.swift */; };
+		4D4CA3FAEF1D1918669E3D51 /* AMInventors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B641A2AACE8794B858B7ECE1 /* AMInventors.swift */; };
+		83EE3CAA7B0CE637A32F60CA /* AMMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E6955BDC7D382DA7DE61CF /* AMMap.swift */; };
+		AB0F78A024BF3D38B625824C /* AMMuseumKids.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8EDE646EFF381AD0D014F4 /* AMMuseumKids.swift */; };
+		ACE2AF67FEC22E6A16DA322D /* AMPeople.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6021E59118BEBDF87D24088F /* AMPeople.swift */; };
+		AA28806A02B56D30FD681802 /* AMResearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4438124084E1F66C7E146EA /* AMResearch.swift */; };
+		3106DAEFB8898EFC979C2DA6 /* AMRootViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A8DB5FB50E87E6BD17963 /* AMRootViews.swift */; };
+		7AE845DF0D95E028537027C0 /* AMStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78AEEF6C76B58973953F60F /* AMStories.swift */; };
+		81A7828E05A9BB6509D8982E /* AMTarih.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7D71839D8E98C95A87EAB6 /* AMTarih.swift */; };
+		2BF619099AFBE969DAA7D807 /* AMAdminHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898FD28F5A06EAF23F88392 /* AMAdminHome.swift */; };
+		C825FD46E4DE8442093C4018 /* AMAdminModeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89068F038CAE8CF8FA45D896 /* AMAdminModeration.swift */; };
+		9DA5031EBC9DD47620E5DB03 /* AMAdminPublishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091086C20E1D50C4A068112 /* AMAdminPublishing.swift */; };
+		76A6FE6F91D3582BAD99A1AD /* AMCreatorStudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB16C78D46552CEB6A14675 /* AMCreatorStudio.swift */; };
+		E550F15D2B7EBADB9DE861E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4A4835B6E19E5E24063CD79 /* Assets.xcassets */; };
+		41CD25F504BDC1B9830874C8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B1E17190794D6914D21615DD /* PrivacyInfo.xcprivacy */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B0A1826C578D2D847F28EDEB /* ATAMURAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATAMURAApp.swift; sourceTree = "<group>"; };
+		F74E139074BAA9081089E0EC /* AMAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAI.swift; sourceTree = "<group>"; };
+		2DF0D0E50CC86F27F915F41D /* AMCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMCloud.swift; sourceTree = "<group>"; };
+		9D2C4F73B20695FCD48FC6A8 /* AMLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMLocalization.swift; sourceTree = "<group>"; };
+		1475A605DE2EAC37BFB29B70 /* AMModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMModels.swift; sourceTree = "<group>"; };
+		A95C80320C1A4BB98692792C /* AMSeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSeed.swift; sourceTree = "<group>"; };
+		01240682FB66A062D5F97C9A /* AMStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMStore.swift; sourceTree = "<group>"; };
+		DFD0FBEEC8E4CEB9A35EAFE6 /* AMStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMStrings.swift; sourceTree = "<group>"; };
+		14DA69D0636DC39FA95DCEB8 /* AMTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTheme.swift; sourceTree = "<group>"; };
+		5CB0F70556C80BCBABECEDB1 /* AMAcademy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAcademy.swift; sourceTree = "<group>"; };
+		5F5BB83C368C7C559DE97421 /* AMAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAssistant.swift; sourceTree = "<group>"; };
+		A7E2E0CFC760C007E9319AE7 /* AMHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMHome.swift; sourceTree = "<group>"; };
+		B641A2AACE8794B858B7ECE1 /* AMInventors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMInventors.swift; sourceTree = "<group>"; };
+		A5E6955BDC7D382DA7DE61CF /* AMMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMMap.swift; sourceTree = "<group>"; };
+		DC8EDE646EFF381AD0D014F4 /* AMMuseumKids.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMMuseumKids.swift; sourceTree = "<group>"; };
+		6021E59118BEBDF87D24088F /* AMPeople.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMPeople.swift; sourceTree = "<group>"; };
+		F4438124084E1F66C7E146EA /* AMResearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMResearch.swift; sourceTree = "<group>"; };
+		988A8DB5FB50E87E6BD17963 /* AMRootViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMRootViews.swift; sourceTree = "<group>"; };
+		F78AEEF6C76B58973953F60F /* AMStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMStories.swift; sourceTree = "<group>"; };
+		2E7D71839D8E98C95A87EAB6 /* AMTarih.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMTarih.swift; sourceTree = "<group>"; };
+		8898FD28F5A06EAF23F88392 /* AMAdminHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAdminHome.swift; sourceTree = "<group>"; };
+		89068F038CAE8CF8FA45D896 /* AMAdminModeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAdminModeration.swift; sourceTree = "<group>"; };
+		4091086C20E1D50C4A068112 /* AMAdminPublishing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMAdminPublishing.swift; sourceTree = "<group>"; };
+		FDB16C78D46552CEB6A14675 /* AMCreatorStudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMCreatorStudio.swift; sourceTree = "<group>"; };
+		C4A4835B6E19E5E24063CD79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1E17190794D6914D21615DD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		5050F078BF14B50ADEE734C8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BCF0261E4FAD6B79E69A244B /* schema.sql */ = {isa = PBXFileReference; lastKnownFileType = text; name = schema.sql; path = backend/schema.sql; sourceTree = "<group>"; };
+		DF7240E006E7BDD5A822A6FF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = "Server README.md"; path = backend/README.md; sourceTree = "<group>"; };
+		3A5C46F40956A22808A16A28 /* ATAMURA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATAMURA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		45BB7D926D66E137938A7C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A5E2CAA6A9F2B523568BCF3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F2481A2FD651BA56AA8A2866 /* ATAMURA */,
+				A6FF8EB6157C03B1BF846E10 /* Supporting Files */,
+				06245AB1628D96F5E8CF18D8 /* Docs */,
+				06C8E593FDE51AD5C611A8F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2481A2FD651BA56AA8A2866 /* ATAMURA */ = {
+			isa = PBXGroup;
+			children = (
+				23B2F6A70F41D4CFAEBF1439 /* App */,
+				35D2BF31423D1704A1F1A899 /* Core */,
+				E8AC0591B69239556D143222 /* Features */,
+				5B564A1AE96327B5BF47D3CE /* Admin */,
+				C4A4835B6E19E5E24063CD79 /* Assets.xcassets */,
+			);
+			path = ATAMURA;
+			sourceTree = "<group>";
+		};
+		23B2F6A70F41D4CFAEBF1439 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B0A1826C578D2D847F28EDEB /* ATAMURAApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		35D2BF31423D1704A1F1A899 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F74E139074BAA9081089E0EC /* AMAI.swift */,
+				2DF0D0E50CC86F27F915F41D /* AMCloud.swift */,
+				9D2C4F73B20695FCD48FC6A8 /* AMLocalization.swift */,
+				1475A605DE2EAC37BFB29B70 /* AMModels.swift */,
+				A95C80320C1A4BB98692792C /* AMSeed.swift */,
+				01240682FB66A062D5F97C9A /* AMStore.swift */,
+				DFD0FBEEC8E4CEB9A35EAFE6 /* AMStrings.swift */,
+				14DA69D0636DC39FA95DCEB8 /* AMTheme.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E8AC0591B69239556D143222 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5CB0F70556C80BCBABECEDB1 /* AMAcademy.swift */,
+				5F5BB83C368C7C559DE97421 /* AMAssistant.swift */,
+				A7E2E0CFC760C007E9319AE7 /* AMHome.swift */,
+				B641A2AACE8794B858B7ECE1 /* AMInventors.swift */,
+				A5E6955BDC7D382DA7DE61CF /* AMMap.swift */,
+				DC8EDE646EFF381AD0D014F4 /* AMMuseumKids.swift */,
+				6021E59118BEBDF87D24088F /* AMPeople.swift */,
+				F4438124084E1F66C7E146EA /* AMResearch.swift */,
+				988A8DB5FB50E87E6BD17963 /* AMRootViews.swift */,
+				F78AEEF6C76B58973953F60F /* AMStories.swift */,
+				2E7D71839D8E98C95A87EAB6 /* AMTarih.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		5B564A1AE96327B5BF47D3CE /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				8898FD28F5A06EAF23F88392 /* AMAdminHome.swift */,
+				89068F038CAE8CF8FA45D896 /* AMAdminModeration.swift */,
+				4091086C20E1D50C4A068112 /* AMAdminPublishing.swift */,
+				FDB16C78D46552CEB6A14675 /* AMCreatorStudio.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		A6FF8EB6157C03B1BF846E10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1E17190794D6914D21615DD /* PrivacyInfo.xcprivacy */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		06245AB1628D96F5E8CF18D8 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				5050F078BF14B50ADEE734C8 /* README.md */,
+				DF7240E006E7BDD5A822A6FF /* README.md */,
+				BCF0261E4FAD6B79E69A244B /* schema.sql */,
+			);
+			name = "Docs";
+			sourceTree = "<group>";
+		};
+		06C8E593FDE51AD5C611A8F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A5C46F40956A22808A16A28 /* ATAMURA.app */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CAFDEBD5045E18C3991014AD /* ATAMURA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 43E82AFFD9A859B6D42F2D51 /* Build configuration list for PBXNativeTarget "ATAMURA" */;
+			buildPhases = (
+				08E92ECA55D2B010D301F5CA /* Sources */,
+				45BB7D926D66E137938A7C1E /* Frameworks */,
+				BA1F75557B79BC0E79D36719 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ATAMURA;
+			productName = ATAMURA;
+			productReference = 3A5C46F40956A22808A16A28 /* ATAMURA.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6A8FA26AA0EC515B99D264F4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					CAFDEBD5045E18C3991014AD = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 386D1DB9B5090B4B7A828759 /* Build configuration list for PBXProject "ATAMURA" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = ru;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				ru,
+				en,
+				kk,
+				Base,
+			);
+			mainGroup = 4A5E2CAA6A9F2B523568BCF3;
+			productRefGroup = 06C8E593FDE51AD5C611A8F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CAFDEBD5045E18C3991014AD /* ATAMURA */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA1F75557B79BC0E79D36719 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E550F15D2B7EBADB9DE861E1 /* Assets.xcassets in Resources */,
+				41CD25F504BDC1B9830874C8 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		08E92ECA55D2B010D301F5CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				431080C883C8A7928E60E4CB /* ATAMURAApp.swift in Sources */,
+				7074E62EC1CF23024CCF817F /* AMAI.swift in Sources */,
+				BD3506DAAC8CF1F4B4AF86AE /* AMCloud.swift in Sources */,
+				FC25221C7AD25BED68DCD5DB /* AMLocalization.swift in Sources */,
+				64FFC94B9A1B9BF6700ED4F8 /* AMModels.swift in Sources */,
+				F387A5EBF6A49425A4EB93A3 /* AMSeed.swift in Sources */,
+				203E974FB6AEBC4925CD46F7 /* AMStore.swift in Sources */,
+				216C050B90BC3223A8C7A1C0 /* AMStrings.swift in Sources */,
+				64ABB03FCDCCB66F45706767 /* AMTheme.swift in Sources */,
+				444292CA853738BC2FE560D7 /* AMAcademy.swift in Sources */,
+				713AEA95B3206A8BD4D5C6F5 /* AMAssistant.swift in Sources */,
+				A43104C4F4AC8692521E41C6 /* AMHome.swift in Sources */,
+				4D4CA3FAEF1D1918669E3D51 /* AMInventors.swift in Sources */,
+				83EE3CAA7B0CE637A32F60CA /* AMMap.swift in Sources */,
+				AB0F78A024BF3D38B625824C /* AMMuseumKids.swift in Sources */,
+				ACE2AF67FEC22E6A16DA322D /* AMPeople.swift in Sources */,
+				AA28806A02B56D30FD681802 /* AMResearch.swift in Sources */,
+				3106DAEFB8898EFC979C2DA6 /* AMRootViews.swift in Sources */,
+				7AE845DF0D95E028537027C0 /* AMStories.swift in Sources */,
+				81A7828E05A9BB6509D8982E /* AMTarih.swift in Sources */,
+				2BF619099AFBE969DAA7D807 /* AMAdminHome.swift in Sources */,
+				C825FD46E4DE8442093C4018 /* AMAdminModeration.swift in Sources */,
+				9DA5031EBC9DD47620E5DB03 /* AMAdminPublishing.swift in Sources */,
+				76A6FE6F91D3582BAD99A1AD /* AMCreatorStudio.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		699C35CCAB90F910E152A886 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5020766C1498D316C7D2F0B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8CBEA1D5BA7B9E50C0CE9ABF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ATA MURA";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.atamura.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97B0F7BFDD23C0AC8A9CB382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "ATA MURA";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kz.atamura.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		386D1DB9B5090B4B7A828759 /* Build configuration list for PBXProject "ATAMURA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				699C35CCAB90F910E152A886 /* Debug */,
+				5020766C1498D316C7D2F0B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		43E82AFFD9A859B6D42F2D51 /* Build configuration list for PBXNativeTarget "ATAMURA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CBEA1D5BA7B9E50C0CE9ABF /* Debug */,
+				97B0F7BFDD23C0AC8A9CB382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6A8FA26AA0EC515B99D264F4 /* Project object */;
+}

@@ -8,6 +8,14 @@ The project is currently in the **prototype / MVP development stage** and demons
 
 ---
 
+## 🌞 ATA MURA — Digital Heritage & Innovation Platform
+
+В этом репозитории также находится отдельное приложение **ATA MURA** (SwiftUI, RU / EN / KZ):
+история Казахстана → человек → идея → исследование → изобретение → будущее.
+Проект — в папке [`ATAMURA/`](ATAMURA/README.md), открывается через `ATAMURA/ATAMURA.xcodeproj`.
+
+---
+
 ## 🌍 Our Mission
 
 Our mission is to create an educational environment where every student can learn at their own pace and receive support adapted to their individual needs.
