@@ -27,6 +27,7 @@ struct CloudSettingsView: View {
                 Text("С сервером аккаунты, задания, оценки, чат и оплаты доступны на всех устройствах. Без сервера приложение работает в демо-режиме на одном устройстве.")
             }
 
+            if !KKSUCloudDefaults.isBuiltIn {
             Section {
                 TextField("Project URL (https://xxxx.supabase.co)", text: $cloud.projectURL)
                     .autocorrectionDisabled()
@@ -46,6 +47,7 @@ struct CloudSettingsView: View {
                 Text("Данные проекта: Supabase → Settings → API. Чтобы не вводить их на каждом устройстве, впишите их в KKSUCloudDefaults (файл KKSU/Core/KKSUCloud.swift) перед сборкой. Пошаговая инструкция — backend/README.md.")
             }
             .disabled(cloud.isSignedIn)
+            }
 
             if cloud.isSignedIn && store.role == .admin {
                 Section {
@@ -88,7 +90,7 @@ struct CloudSettingsView: View {
                 }
             }
 
-            if cloud.isConfigured && store.cloudDataLoaded {
+            if cloud.isConfigured && store.cloudDataLoaded && !KKSUCloudDefaults.isBuiltIn {
                 Section {
                     Button("Отключиться и вернуться к демо-режиму", role: .destructive) { confirmLeave = true }
                 } footer: {

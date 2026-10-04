@@ -26,6 +26,9 @@ enum KKSUStoreCatalog {
     static let familyYearly = "\(prefix).sub.family.yearly"
     static let subscriptionIDs = [monthly, yearly, familyMonthly, familyYearly]
 
+    /// Самая высокая цена цифрового продукта, которую можно продать в App Store (верхний уровень unlock).
+    static var maxDigitalPriceUSD: Double { Double(unlockTiers.last ?? 300) }
+
     static func unlockID(tier: Int) -> String { "\(prefix).unlock.usd\(tier)" }
     static var unlockIDs: [String] { unlockTiers.map(unlockID(tier:)) }
     static var allIDs: [String] { unlockIDs + subscriptionIDs }
@@ -86,7 +89,8 @@ final class KKSUAppStore: ObservableObject {
     /// Нужно ли продавать этот продукт через App Store.
     func usesAppStore(_ product: Product, settings: PaymentSettings) -> Bool {
         #if os(iOS)
-        return settings.useAppStoreForDigital && KKSUStoreCatalog.appStoreID(for: product) != nil
+        // В iOS цифровой контент продаётся только через App Store (Guideline 3.1.1) — независимо от настроек оплаты.
+        return KKSUStoreCatalog.appStoreID(for: product) != nil
         #else
         return false
         #endif

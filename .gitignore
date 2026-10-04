@@ -1,0 +1,22 @@
+# Xcode
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+*.dSYM.zip
+xcuserdata/
+*.xcuserstate
+
+# Секреты: ключи App Store Connect API, сертификаты, профили — никогда не коммитить
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+AuthKey_*.p8
+.env
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+.DS_Store

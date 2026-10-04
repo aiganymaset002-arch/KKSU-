@@ -200,7 +200,7 @@ struct SchoolCourseEditorView: View {
                 }
 
                 Section {
-                    Stepper(price > 0 ? store.priceText(price) : "Бесплатно", value: $price, in: 0...500, step: 5)
+                    Stepper(price > 0 ? store.priceText(price) : "Бесплатно", value: $price, in: 0...KKSUStoreCatalog.maxDigitalPriceUSD, step: 5)
                         .onChange(of: price) { _, value in setPrice(value, course: course) }
                 } header: {
                     Text("Цена")

@@ -258,6 +258,9 @@ struct KPage<Content: View>: View {
 struct AttachmentRow: View {
     @Environment(\.kksuAccessibility) private var a11y
     let attachment: Attachment
+    @State private var downloadedURL: URL?
+    @State private var downloading = false
+    @State private var downloadError: String?
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -273,14 +276,43 @@ struct AttachmentRow: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
+                if let downloadError {
+                    Text(downloadError).font(.caption).foregroundStyle(KKSUTheme.danger)
+                }
             }
             Spacer()
-            if let url = KKSUStore.fileURL(for: attachment) {
+            if let url = downloadedURL ?? KKSUStore.fileURL(for: attachment) {
                 ShareLink(item: url) { Image(systemName: "square.and.arrow.up") }
                     .accessibilityLabel("Открыть или поделиться файлом")
+            } else if attachment.remoteURL?.hasPrefix(KKSUCloud.storageScheme) == true {
+                if downloading {
+                    ProgressView()
+                } else {
+                    Button {
+                        download()
+                    } label: {
+                        Image(systemName: "arrow.down.circle")
+                    }
+                    .buttonStyle(.borderless)
+                    .accessibilityLabel("Скачать файл")
+                }
             }
         }
         .accessibilityElement(children: .combine)
+    }
+
+    private func download() {
+        guard let remote = attachment.remoteURL else { return }
+        downloading = true
+        downloadError = nil
+        Task {
+            do {
+                downloadedURL = try await KKSUCloud.shared.downloadFile(remote)
+            } catch {
+                downloadError = error.localizedDescription
+            }
+            downloading = false
+        }
     }
 }
 
@@ -290,6 +322,8 @@ struct AttachmentPicker: View {
     @State private var photoItems: [PhotosPickerItem] = []
     @State private var showImporter = false
     @State private var altText = ""
+    @State private var uploading = 0
+    @State private var uploadWarning: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -304,6 +338,15 @@ struct AttachmentPicker: View {
                     .buttonStyle(.borderless)
                     .accessibilityLabel("Удалить вложение")
                 }
+            }
+            if uploading > 0 {
+                HStack(spacing: 8) {
+                    ProgressView()
+                    Text("Загрузка файлов на сервер…").font(.caption).foregroundStyle(.secondary)
+                }
+            }
+            if let uploadWarning {
+                Text(uploadWarning).font(.caption).foregroundStyle(KKSUTheme.warning)
             }
             TextField("Описание для незрячих (текстовая альтернатива)", text: $altText, axis: .vertical)
                 .textFieldStyle(.roundedBorder)
@@ -325,7 +368,7 @@ struct AttachmentPicker: View {
                 for url in urls {
                     if var attachment = KKSUStore.importFile(at: url) {
                         attachment.altText = altText
-                        attachments.append(attachment)
+                        attach(attachment)
                     }
                 }
                 altText = ""
@@ -341,13 +384,35 @@ struct AttachmentPicker: View {
                         let name = isVideo ? "video-\(index + 1).mov" : "photo-\(index + 1).jpg"
                         if var attachment = KKSUStore.storeFile(data: data, fileName: name) {
                             attachment.altText = alt
-                            attachments.append(attachment)
+                            attach(attachment)
                         }
                     }
                 }
                 photoItems = []
                 altText = ""
             }
+        }
+    }
+
+    /// Прикрепляет файл. Если есть вход на сервер, сначала загружает его в хранилище школы,
+    /// чтобы файл открывался и на других устройствах.
+    private func attach(_ attachment: Attachment) {
+        guard KKSUCloud.shared.isSignedIn, let stored = attachment.storedName,
+              let data = try? Data(contentsOf: KKSUStore.uploadsDirectory.appendingPathComponent(stored)) else {
+            attachments.append(attachment)
+            return
+        }
+        uploading += 1
+        uploadWarning = nil
+        Task { @MainActor in
+            var uploaded = attachment
+            do {
+                uploaded.remoteURL = try await KKSUCloud.shared.uploadFile(data, fileName: attachment.fileName)
+            } catch {
+                uploadWarning = "«\(attachment.fileName)» не загружен на сервер: \(error.localizedDescription) Файл откроется только на этом устройстве."
+            }
+            attachments.append(uploaded)
+            uploading -= 1
         }
     }
 }

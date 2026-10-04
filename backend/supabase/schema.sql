@@ -168,3 +168,28 @@ begin
 end $$;
 
 grant execute on function public.kksu_delete_my_account() to authenticated;
+
+-- ---------------------------------------------------------------------------
+-- Файлы уроков, заданий и работ (Supabase Storage)
+-- Путь файла: <код школы>/<id пользователя>/<случайное имя>. Читать файлы могут участники
+-- своей школы, загружать — только в свою папку. Ограничение размера — 50 МБ.
+-- ---------------------------------------------------------------------------
+insert into storage.buckets (id, name, public, file_size_limit)
+values ('kksu-files', 'kksu-files', false, 52428800)
+on conflict (id) do nothing;
+
+drop policy if exists "kksu files: read school" on storage.objects;
+create policy "kksu files: read school" on storage.objects for select to authenticated
+    using (bucket_id = 'kksu-files'
+           and (storage.foldername(name))[1] = public.kksu_my_school());
+
+drop policy if exists "kksu files: upload own" on storage.objects;
+create policy "kksu files: upload own" on storage.objects for insert to authenticated
+    with check (bucket_id = 'kksu-files'
+                and (storage.foldername(name))[1] = public.kksu_my_school()
+                and (storage.foldername(name))[2] = auth.uid()::text);
+
+drop policy if exists "kksu files: delete own" on storage.objects;
+create policy "kksu files: delete own" on storage.objects for delete to authenticated
+    using (bucket_id = 'kksu-files'
+           and (storage.foldername(name))[2] = auth.uid()::text);
