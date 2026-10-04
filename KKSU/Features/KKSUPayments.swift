@@ -138,6 +138,8 @@ struct CheckoutView: View {
 
     /// Цифровой контент в iOS продаётся через App Store (правила Apple 3.1.1).
     private var viaAppStore: Bool { appStore.usesAppStore(product, settings: store.billing.settings) }
+    /// Платный цифровой продукт без товара App Store нельзя оплатить переводом в iOS-приложении.
+    private var digitalUnavailable: Bool { product.kind.isDigital && !product.isFree && !viaAppStore }
 
     private var candidates: [KKSUUser] {
         guard let me = store.currentUser else { return [] }
@@ -190,7 +192,13 @@ struct CheckoutView: View {
                         }
                     }
                 }
-                if viaAppStore {
+                if digitalUnavailable {
+                    Section {
+                        Label("Сейчас этот продукт нельзя купить в приложении", systemImage: "exclamationmark.circle")
+                            .foregroundStyle(KKSUTheme.warning)
+                        Text("Попробуйте позже.").font(.caption).foregroundStyle(.secondary)
+                    }
+                } else if viaAppStore {
                     Section {
                         HStack {
                             Image(systemName: "apple.logo").font(.title2)
@@ -808,7 +816,7 @@ struct MarketplaceCourseEditorView: View {
                 TextField("Уроки (каждый с новой строки)", text: $lessons, axis: .vertical)
             }
             Section("Цена для учеников") {
-                Stepper(store.priceText(price), value: $price, in: 0...500, step: 5)
+                Stepper(store.priceText(price), value: $price, in: 0...KKSUStoreCatalog.maxDigitalPriceUSD, step: 5)
             }
             Section {
                 Text("После сохранения оплатите публикацию курса. Курс появится в KKSU Marketplace автоматически после подтверждения оплаты.")
@@ -1184,7 +1192,8 @@ struct PricingAdminView: View {
                                     Toggle("", isOn: $store.billing.products[index].isActive).labelsHidden()
                                 }
                                 Stepper(store.priceText(store.billing.products[index].priceUSD),
-                                        value: $store.billing.products[index].priceUSD, in: 0...5000, step: 5)
+                                        value: $store.billing.products[index].priceUSD,
+                                        in: 0...(store.billing.products[index].kind.isDigital ? KKSUStoreCatalog.maxDigitalPriceUSD : 5000), step: 5)
                                     .font(.caption)
                             }
                         }
@@ -1196,7 +1205,11 @@ struct PricingAdminView: View {
                 Picker("Программа", selection: $newKind) {
                     ForEach(ProductKind.allCases) { Text($0.title).tag($0) }
                 }
-                Stepper(store.priceText(newPrice), value: $newPrice, in: 0...5000, step: 5)
+                Stepper(store.priceText(newPrice), value: $newPrice,
+                        in: 0...(newKind.isDigital ? KKSUStoreCatalog.maxDigitalPriceUSD : 5000), step: 5)
+                    .onChange(of: newKind) { _, kind in
+                        if kind.isDigital { newPrice = min(newPrice, KKSUStoreCatalog.maxDigitalPriceUSD) }
+                    }
                 Button("Добавить") {
                     store.billing.products.append(Product(title: newTitle, kind: newKind, priceUSD: newPrice, summary: "",
                                                           durationDays: newKind == .subscription ? 30 : nil))
@@ -1230,11 +1243,11 @@ struct PaymentSettingsView: View {
                 Text("Цены хранятся в долларах. Банк плательщика конвертирует валюту по своему курсу.").font(.caption).foregroundStyle(.secondary)
             }
             Section {
-                Toggle("Цифровой контент — через App Store", isOn: $store.billing.settings.useAppStoreForDigital)
+                Label("Цифровой контент — только через App Store", systemImage: "apple.logo")
             } header: {
                 Text("App Store")
             } footer: {
-                Text("Apple требует продавать курсы, программы и подписки в iOS-приложении через встроенные покупки. Переводы на счёт остаются для конференций, конкурсов и очных услуг. Выключайте только для внутренних сборок.")
+                Text("Apple требует продавать курсы, программы и подписки в iOS-приложении через встроенные покупки. Переводы на счёт остаются для конференций, конкурсов и очных услуг.")
             }
             Section("Способы оплаты переводом") {
                 ForEach(PaymentMethod.manualCases) { method in

@@ -685,9 +685,25 @@ final class KKSUStore: ObservableObject {
         return storeFile(data: data, fileName: url.lastPathComponent)
     }
 
+    /// Локальный файл вложения: свой файл, скачанная копия с сервера или внешняя ссылка.
+    /// nil — файл есть только на сервере и его нужно скачать (KKSUCloud.downloadFile).
     static func fileURL(for attachment: Attachment) -> URL? {
-        if let stored = attachment.storedName { return uploadsDirectory.appendingPathComponent(stored) }
-        return attachment.remoteURL.flatMap(URL.init(string:))
+        if let stored = attachment.storedName {
+            let local = uploadsDirectory.appendingPathComponent(stored)
+            if FileManager.default.fileExists(atPath: local.path) || attachment.remoteURL == nil { return local }
+        }
+        guard let remote = attachment.remoteURL else { return nil }
+        if remote.hasPrefix(KKSUCloud.storageScheme) {
+            let cached = cachedFileURL(forRemote: remote)
+            return FileManager.default.fileExists(atPath: cached.path) ? cached : nil
+        }
+        return URL(string: remote)
+    }
+
+    /// Куда сохраняется скачанная с сервера копия файла.
+    static func cachedFileURL(forRemote remote: String) -> URL {
+        let name = remote.split(separator: "/").last.map(String.init) ?? UUID().uuidString
+        return uploadsDirectory.appendingPathComponent("remote-" + name)
     }
 }
 

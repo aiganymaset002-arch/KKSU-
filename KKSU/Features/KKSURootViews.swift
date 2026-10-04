@@ -36,6 +36,9 @@ struct KKSULandingView: View {
     @State private var showLogin = false
     @State private var showRegistration = false
 
+    /// До первого входа на сервер на устройстве лежат демо-данные — их цифры и даты не показываем.
+    private var showsLiveData: Bool { !KKSUCloud.shared.isConfigured || store.cloudDataLoaded }
+
     private let initiatives: [(String, String, String)] = [
         ("building.columns.fill", "KKSU Teacher Academy", "Повышение квалификации педагогов и авторские методики"),
         ("lightbulb.max.fill", "KKSU Inventions", "Проекты учеников: от идеи до прототипа"),
@@ -50,7 +53,7 @@ struct KKSULandingView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     hero
-                    stats
+                    if showsLiveData { stats }
                     KSectionHeader(title: "Направления", icon: "square.grid.2x2.fill")
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 260), spacing: 12)], spacing: 12) {
                         ForEach(initiatives, id: \.1) { item in
@@ -74,32 +77,47 @@ struct KKSULandingView: View {
                             }
                         }
                     }
-                    KSectionHeader(title: "Ближайшие мероприятия", icon: "calendar")
-                    ForEach(store.db.events.filter { $0.date > Date() }.sorted { $0.date < $1.date }) { event in
-                        KCard {
-                            Text(event.title).font(.headline)
-                            Text("\(event.kind.title) · \(event.date.kksuDateTime) · \(event.location)")
-                                .font(.caption).foregroundStyle(.secondary)
+                    if showsLiveData {
+                        KSectionHeader(title: "Ближайшие мероприятия", icon: "calendar")
+                        ForEach(store.db.events.filter { $0.date > Date() }.sorted { $0.date < $1.date }) { event in
+                            KCard {
+                                Text(event.title).font(.headline)
+                                Text("\(event.kind.title) · \(event.date.kksuDateTime) · \(event.location)")
+                                    .font(.caption).foregroundStyle(.secondary)
+                            }
                         }
                     }
                     KSectionHeader(title: "Партнёры", icon: "handshake.fill")
                     Text(store.db.partners.map(\.name).joined(separator: " · "))
                         .foregroundStyle(.secondary)
                     VStack(spacing: 12) {
-                        NavigationLink {
-                            EnrollmentApplicationView()
-                        } label: {
-                            Label("Подать заявку на обучение", systemImage: "doc.text.fill")
-                                .frame(maxWidth: .infinity)
+                        if KKSUCloud.shared.isConfigured {
+                            // Заявка сохраняется на сервере, поэтому сначала нужен аккаунт.
+                            Button {
+                                showRegistration = true
+                            } label: {
+                                Label("Подать заявку на обучение", systemImage: "doc.text.fill")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
+                        } else {
+                            NavigationLink {
+                                EnrollmentApplicationView()
+                            } label: {
+                                Label("Подать заявку на обучение", systemImage: "doc.text.fill")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
                         }
-                        .buttonStyle(.bordered)
-                        NavigationLink {
-                            ImpactPublicView()
-                        } label: {
-                            Label("Наш Impact — публичный отчёт", systemImage: "megaphone.fill")
-                                .frame(maxWidth: .infinity)
+                        if showsLiveData {
+                            NavigationLink {
+                                ImpactPublicView()
+                            } label: {
+                                Label("Наш Impact — публичный отчёт", systemImage: "megaphone.fill")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
                         }
-                        .buttonStyle(.bordered)
                         NavigationLink {
                             AccessibilitySettingsView()
                         } label: {
@@ -107,13 +125,15 @@ struct KKSULandingView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.bordered)
-                        NavigationLink {
-                            CloudSettingsView()
-                        } label: {
-                            Label("Сервер KKSU", systemImage: "icloud")
-                                .frame(maxWidth: .infinity)
+                        if !KKSUCloudDefaults.isBuiltIn {
+                            NavigationLink {
+                                CloudSettingsView()
+                            } label: {
+                                Label("Сервер KKSU", systemImage: "icloud")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
                         }
-                        .buttonStyle(.bordered)
                         NavigationLink {
                             PrivacyPolicyView()
                         } label: {
@@ -301,7 +321,9 @@ struct AccountView: View {
                     RouteRow(route: .cloudSettings, subtitle: KKSUCloud.shared.status.title)
                 }
                 Section("Платформа") {
-                    RouteRow(route: .featureMap, subtitle: "Все модули KKSU Online")
+                    if user.role == .admin {
+                        RouteRow(route: .featureMap, subtitle: "Все модули KKSU Online")
+                    }
                     RouteRow(route: .impactPublic)
                     if !KKSUCloud.shared.isConfigured {
                         Button("Сбросить демо-данные", role: .destructive) { confirmReset = true }

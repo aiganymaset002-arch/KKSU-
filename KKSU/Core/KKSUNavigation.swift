@@ -254,7 +254,7 @@ enum KKSURoute: String, Hashable, CaseIterable, Identifiable {
         case .expertCabinet, .methodologyReview, .yiReview: return [.expert, .mentor, .admin]
         case .psychologistCabinet: return [.psychologist, .admin]
         case .partnerCabinet: return [.partner, .admin]
-        case .adminPanel, .moderation, .analytics, .users, .impactReport, .revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings: return [.admin]
+        case .adminPanel, .moderation, .featureMap, .analytics, .users, .impactReport, .revenue, .paymentsAdmin, .promoCodes, .scholarships, .pricing, .paymentSettings: return [.admin]
         case .teacherCertification: return [.teacher, .psychologist, .admin]
         case .teacherAcademy, .academyRegistration, .academyCourses, .academyLibrary, .academyTasks, .methodologies, .pilots, .pilotRegistry:
             return [.teacher, .psychologist, .expert, .mentor, .admin]

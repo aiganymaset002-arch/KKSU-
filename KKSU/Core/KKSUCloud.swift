@@ -13,6 +13,7 @@
 
 import Foundation
 import CryptoKit
+import UniformTypeIdentifiers
 
 /// Параметры проекта Supabase. Заполните после создания проекта (Settings → API)
 /// или введите в приложении: «Модули → Сервер KKSU».
@@ -22,6 +23,15 @@ enum KKSUCloudDefaults {
     /// Публичный (publishable/anon) ключ. Секретный ключ service_role в приложение не добавлять никогда.
     static let anonKey = "sb_publishable_ThNRdPI2yoG1rQxLAiwusg_CmxF8Y7Y"
     static let schoolID = "kksu"
+
+    /// Сервер вшит в сборку: экран ручного подключения и выход в демо-режим скрыты (кроме Debug-сборок).
+    static var isBuiltIn: Bool {
+        #if DEBUG
+        return false
+        #else
+        return !projectURL.isEmpty && !anonKey.isEmpty
+        #endif
+    }
 }
 
 struct CloudSession: Codable {
@@ -311,6 +321,61 @@ final class KKSUCloud: ObservableObject {
         session = recovery
         _ = try await request("/auth/v1/user", method: "PUT", json: ["password": newPassword])
         await signOut()
+    }
+
+    // MARK: - Файлы (Supabase Storage)
+
+    static let filesBucket = "kksu-files"
+    /// Префикс ссылки на файл в хранилище сервера: "kksu-storage:школа/пользователь/файл".
+    static let storageScheme = "kksu-storage:"
+    /// Ограничение Supabase Storage для одного файла (бесплатный план — 50 МБ).
+    static let maxUploadBytes = 50 * 1024 * 1024
+
+    /// Загружает файл в хранилище школы и возвращает ссылку для поля Attachment.remoteURL.
+    func uploadFile(_ data: Data, fileName: String) async throws -> String {
+        guard isSignedIn, let session else { throw KKSUCloudError.noSession }
+        guard data.count <= Self.maxUploadBytes else {
+            throw KKSUCloudError.http(413, "Файл больше 50 МБ. Для видео используйте ссылку YouTube.")
+        }
+        try await refreshIfNeeded()
+        let ext = (fileName as NSString).pathExtension.lowercased()
+        let objectName = UUID().uuidString.lowercased() + (ext.isEmpty ? "" : ".\(ext)")
+        let path = "\(schoolID)/\(session.userID.uuidString.lowercased())/\(objectName)"
+        guard let url = URL(string: "\(baseURL)/storage/v1/object/\(Self.filesBucket)/\(path)") else { throw KKSUCloudError.notConfigured }
+        var request = URLRequest(url: url, timeoutInterval: 300)
+        request.httpMethod = "POST"
+        request.setValue(anonKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(self.session?.accessToken ?? session.accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue(UTType(filenameExtension: ext)?.preferredMIMEType ?? "application/octet-stream", forHTTPHeaderField: "Content-Type")
+        let (body, response) = try await URLSession.shared.upload(for: request, from: data)
+        try Self.check(response, body)
+        return Self.storageScheme + path
+    }
+
+    /// Скачивает файл из хранилища школы в локальную папку и возвращает путь к нему.
+    func downloadFile(_ remote: String) async throws -> URL {
+        guard isSignedIn else { throw KKSUCloudError.noSession }
+        let path = String(remote.dropFirst(Self.storageScheme.count))
+        try await refreshIfNeeded()
+        guard let token = session?.accessToken,
+              let url = URL(string: "\(baseURL)/storage/v1/object/authenticated/\(Self.filesBucket)/\(path)") else { throw KKSUCloudError.noSession }
+        var request = URLRequest(url: url, timeoutInterval: 300)
+        request.setValue(anonKey, forHTTPHeaderField: "apikey")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let (data, response) = try await URLSession.shared.data(for: request)
+        try Self.check(response, data)
+        let destination = KKSUStore.cachedFileURL(forRemote: remote)
+        try data.write(to: destination, options: .atomic)
+        return destination
+    }
+
+    private static func check(_ response: URLResponse, _ data: Data) throws {
+        let code = (response as? HTTPURLResponse)?.statusCode ?? 0
+        guard (200..<300).contains(code) else {
+            let object = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any]
+            let message = (object?["message"] ?? object?["error"]) as? String ?? ""
+            throw KKSUCloudError.http(code, translate(message))
+        }
     }
 
     func deleteAccount() async throws {
